@@ -1,0 +1,20 @@
+name: CI/CD React App
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2  # This checks out the code from your repository
+
+        - name: Install dependencies
+          run: npm install  # Install dependencies for the React app
+
+        - name: Build the app
+          run: npm run build  # Build the React app into static files
