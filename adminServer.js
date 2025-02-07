@@ -22,7 +22,7 @@ import path from 'path';
 const app = express();
 
 app.use(cors({
-  origin: 'http://192.168.224.1:3000',  // Allow requests from any origin
+  origin: '*',  // Allow requests from any origin
 }));
 app.use(express.json());
 
