@@ -17,16 +17,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22  # Set the Node.js version
+          node-version: 20  # Use a stable Node.js version
 
-      - name: install Backend dependencies
-        run: npm install
+      - name: Install Backend dependencies
+        run: |
+          npm install
 
-      - name: navigate to frontend
-        run: cd admin-portal 
-
-      - name: install frontend dependencies
-        run: npm install
+      - name: Install frontend dependencies
+        run: |
+          cd admin-portal
+          npm install
 
       - name: Build the app
-        run: npm run build  # Builds the React app
+        run: |
+          cd admin-portal
+          npm run build  # Builds the React app
