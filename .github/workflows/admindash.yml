@@ -1,20 +1,32 @@
-name: CI/CD React App
+name: Admin Dashboard
 
 on:
   push:
-    branches:
-      - main  
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: self-hosted
 
     steps:
-        - name: Checkout code
-          uses: actions/checkout@v2  # This checks out the code from your repository
+      - name: Checkout code
+        uses: actions/checkout@v2  # Fetches the latest code from the repository
 
-        - name: Install dependencies
-          run: npm install  # Install dependencies for the React app
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22  # Set the Node.js version
 
-        - name: Build the app
-          run: npm run build  # Build the React app into static files
+      - name: install Backend dependencies
+        run: npm install
+
+      - name: navigate to frontend
+        run: cd admin-portal 
+
+      - name: install frontend dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build  # Builds the React app
