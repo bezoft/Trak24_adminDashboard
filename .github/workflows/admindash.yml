@@ -21,9 +21,8 @@ jobs:
       
       - run: |
           ls
-          npm install
+          sudo npm install
           cd admin-portal
           ls
-          npm install
-          set -x  # Show all executed commands
-          npm run build --verbose || (echo "⚠️ Build failed! Printing logs..." && cat /home/bezelel/.npm/_logs/*.log && exit 1)
+          sudo npm install
+          sudo npm run build 
