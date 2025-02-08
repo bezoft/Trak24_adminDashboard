@@ -21,8 +21,10 @@ jobs:
       
       - run: |
           ls
+          whoami
+          ls -la /var/www/adminDash/_work/adminDashboard/adminDashboard/admin-portal
           npm install
           cd admin-portal
           ls
           npm install
-          npm run build 
+          CI=false npm run build
