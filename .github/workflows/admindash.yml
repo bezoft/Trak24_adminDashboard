@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20  # Use a stable Node.js version
+      - name: List files
+        run: ls
 
       - name: Install Backend dependencies
         run: |
@@ -27,7 +29,8 @@ jobs:
         run: |
           cd admin-portal
           npm install
-
+      - name: List files
+        run: ls
       - name: Build the app
         run: |
           cd admin-portal
