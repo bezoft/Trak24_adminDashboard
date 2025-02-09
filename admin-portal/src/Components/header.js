@@ -7,9 +7,11 @@ import CreateSimBatch from '../adminpages/Modals/CreateSimBatch';
 import AttachSim from '../adminpages/Modals/Attachsim';
 import DetachSim from '../adminpages/Modals/DetachSim';
 import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate()
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null); // Tracks the open submenu
   const [selected, setselected] = useState("");
@@ -25,7 +27,7 @@ const Header = () => {
   const closedetachsimModal = () => setdetachsimModal(false);
   const { decryptData } = useAuth()
 
-const DispalyName=decryptData().name
+  const DispalyName = decryptData().name
   useEffect(() => {
 
     const path = window.location.pathname;
@@ -184,8 +186,8 @@ const DispalyName=decryptData().name
           <nav className="space-y-1 mt-5">
             {/* Simple Menu Items */}
 
-            <div onClick={() => changeselected("#0")} className={`${selected === "#0" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-              <a href="/" className="block text-gray-800 dark:text-gray-200">
+            <div onClick={() => navigate("/")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+              <a className="block text-gray-800 dark:text-gray-200">
                 Home
               </a>
             </div>
@@ -203,32 +205,32 @@ const DispalyName=decryptData().name
                   }`}
               >
                 <div>
-                  <div onClick={() => changeselected("#1")} className={`${selected === "#1" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/eagle-eye-monitoring" className="block ">
-                      EagleEye
+                  <div onClick={() => navigate("/eagle-eye-monitoring")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a  className="block ">
+                      Eagle Eye
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#2")} className={`${selected === "#2" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/maintanace" className="block ">
+                  <div onClick={() => navigate("/maintanace")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       Maintanace
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#3")} className={`${selected === "#3" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/manage-incidents" className="block ">
+                  <div onClick={() => navigate("/manage-incidents")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       Incidents
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#4")} className={`${selected === "#4" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/auto-report-log" className="block ">
+                  <div onClick={() => navigate("/auto-report-log")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       Auto Report Log
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#5")} className={`${selected === "#5" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/live-caution" className="block ">
+                  <div onClick={() => navigate("/live-caution")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       Live Caution
                     </a>
                   </div>
@@ -256,26 +258,26 @@ const DispalyName=decryptData().name
                 className={`transition-[max-height] duration-300 overflow-hidden ${openSubmenu === 'Customers' ? 'max-h-64' : 'max-h-0'
                   }`}
               >
-                <div onClick={() => changeselected("#7")} className={`${selected === "#7" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                  <a href="/customer-info" className="block ">
+                <div onClick={() => navigate("/customer-info")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <a className="block ">
                     Customer Info
                   </a>
                 </div>
-                <div onClick={() => changeselected("#6")} className={`${selected === "#6" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                  <a href="/new-customer" className="block ">
+                <div onClick={() => navigate("/new-customer")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <a className="block ">
                     New Customer
                   </a>
                 </div>
 
                 <div>
-                  <div onClick={() => changeselected("#8")} className={`${selected === "#8" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/login-log" className="block ">
+                  <div onClick={() => navigate("/login-log")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       Login Log
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#9")} className={`${selected === "#9" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/custom-reports" className="block ">
+                  <div onClick={() => navigate("/custom-reports")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       Custom Reports
                     </a>
                   </div>
@@ -296,32 +298,32 @@ const DispalyName=decryptData().name
                   }`}
               >
                 <div>
-                  <div onClick={() => changeselected("#10")} className={`${selected === "#10" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/stock-list")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a href="/stock-list" className="block ">
                       Stock List
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#21")} className={`${selected === "#21" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/config-new-unit" className="block ">
+                  <div onClick={() => navigate("/config-new-unit")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       Configure New Unit
                     </a>
                   </div>
 
-                  <div onClick={() => { setIsDrawerOpen(false); setIsModalOpen(true) }} className={`${selected === "#11" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] cursor-pointer w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => { setIsDrawerOpen(false); setIsModalOpen(true) }} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] cursor-pointer w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Create Vehicle
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#11")} className={`${selected === "#11" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/unit-ststus" className="block ">
+                  <div onClick={() => navigate("/unit-status")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       Unit status
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#12")} className={`${selected === "#12" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/new-shipment" className="block ">
+                  <div onClick={() => navigate("/new-shipment")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       New Shipment
                     </a>
                   </div>
@@ -329,8 +331,8 @@ const DispalyName=decryptData().name
               </div>
             </div>
 
-            <div onClick={() => changeselected("#13")} className={`${selected === "#13" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-              <a href="/sms-center" className="block text-gray-800 dark:text-gray-200">
+            <div onClick={() => navigate("/sms-center")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+              <a className="block text-gray-800 dark:text-gray-200">
                 SMS Center
               </a>
             </div>
@@ -348,14 +350,14 @@ const DispalyName=decryptData().name
                   }`}
               >
                 <div>
-                  <div onClick={() => changeselected("#14")} className={`${selected === "#14" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/sim-cards" className="block ">
+                  <div onClick={() => navigate("/sim-cards")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       SIM List
                     </a>
                   </div>
 
-                  <div onClick={() => changeselected("#15")} className={`${selected === "#15" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-                    <a href="/sim-entry" className="block ">
+                  <div onClick={() => navigate("/sim-entry")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                    <a className="block ">
                       SIM Entry
                     </a>
                   </div>
@@ -366,13 +368,13 @@ const DispalyName=decryptData().name
                     </a>
                   </div>
 
-                  <div onClick={() => { setIsDrawerOpen(false); setattachsimModal(true) }} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => { setIsDrawerOpen(false); setattachsimModal(true) }} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Attach SIM
                     </a>
                   </div>
 
-                  <div onClick={() => { setIsDrawerOpen(false); setdetachsimModal(true) }} className={`${selected === "#17" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => { setIsDrawerOpen(false); setdetachsimModal(true) }} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Detach SIM
                     </a>
@@ -381,14 +383,14 @@ const DispalyName=decryptData().name
               </div>
             </div>
 
-            <div onClick={() => changeselected("#18")} className={`${selected === "#18" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-              <a href="/customer-billing" className="block text-gray-800 dark:text-gray-200">
+            <div onClick={() => navigate("/customer-billing")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+              <a className="block text-gray-800 dark:text-gray-200">
                 Customer Billing
               </a>
             </div>
 
-            <div onClick={() => changeselected("#20")} className={`${selected === "#20" ? "dark:bg-[#412e28] bg-[#ffeee6]" : ""} hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
-              <a href="/admin-roles" className="block text-gray-800 dark:text-gray-200">
+            <div onClick={() => navigate("/admin-roles")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+              <a className="block text-gray-800 dark:text-gray-200">
                 Admin Roles
               </a>
             </div>
