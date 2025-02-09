@@ -37,10 +37,9 @@ function AdminRoles() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log(formData);
             
             const response = await axios.post("/api-trkadn/new-admin", formData);
-            console.log(response);
+         
 
             if (response.status ===201) {
 
@@ -106,15 +105,12 @@ function AdminRoles() {
 
     const GetallAdmins = async () => {
         try {
-            console.log("Loading");
             //setIsLoading(true);
             const res = await axios.get("/api-trkadn/all-admins");
             if (res.statusText === "OK") {
-                console.log(res.data);
-
                 setData(res.data.admins);
             } else {
-                console.log("Empty data received");
+         
             }
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -124,7 +120,7 @@ function AdminRoles() {
             //   setIsRefreshing(false);
         }
     };
-    console.log(Data);
+
 
     return (
         <>

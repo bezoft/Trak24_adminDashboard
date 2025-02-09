@@ -46,7 +46,7 @@ function CreateIncident() {
             const response = await axios.post('/api-trkadn/create-incident', formData);
 
             if (response.status === 201) {
-                console.log("susssess");
+        
 
                 setFormData({
                     unit: "",
@@ -81,15 +81,13 @@ function CreateIncident() {
 
     const GetUserUnits = async () => {
         try {
-            console.log("Loading");
+   
             //setIsLoading(true);
             const res = await axios.get(`/api-trkadn/get-units/${id}`);
 
             if (res.status === 200) {
                 setuserUnits(res.data.data);
-            } else {
-                console.log("Empty data received");
-            }
+            } 
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {

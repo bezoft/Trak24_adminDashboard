@@ -42,12 +42,12 @@ function ConfigureNewUnit() {
         return `${datePart}, ${timePart}`;
     }
 
-    console.log(stockList);
+
 
     const handleSearch = async () => {
         try {
             const response = await axios.get(`/api-trkadn/search-unit/${unitId}`);
-            console.log(response.data);
+       
 
             if (response.data && response.data.unit?.stockListed === true) {
                 setstockList(true); // Unit is in stock
@@ -60,18 +60,16 @@ function ConfigureNewUnit() {
             setstockList(null); // Set to null if an error occurs
         }
     };
-    console.log(Data);
+   
     
     const GetallShipments = async () => {
         try {
             const res = await axios.get("/api-trkadn/getall-shipmentcodes");
-            console.log(res.data);
+      
             
             if (res.statusText === "OK") {
                 setShipmentCodes(res.data.shipmentCodes);
-            } else {
-                console.log("Empty data received");
-            }
+            } 
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
@@ -91,7 +89,7 @@ function ConfigureNewUnit() {
 
     const handleAddToStock = async (e) => {
         e.preventDefault();
-        console.log(formData);
+      
 
         try {
             const response = await axios.post("/api-trkadn/config-new-unit", formData);

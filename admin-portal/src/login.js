@@ -19,14 +19,12 @@ function Login() {
     }, []);
 
     const HandleLogin = async () => {
-        console.log(username, password);
 
         try {
             const response = await axios.post("/api-trkadn/admin-login", {
                 "username": username,
                 "password": password
             })
-            console.log(response.data);
 
             if (response.status === 200) {
                 localStorage.setItem('token', response.data?.token)

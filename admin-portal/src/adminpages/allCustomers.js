@@ -36,7 +36,7 @@ function AllCustomers() {
 
 
     const updatePermissions = (newPermissions, id) => {
-        console.log(newPermissions);
+   
         setuserid(id)
         setPermissions((prevPermissions) => ({
             ...prevPermissions,
@@ -53,7 +53,7 @@ function AllCustomers() {
 
         try {
             const response = await axios.put(`/api-trkadn/update-permissions/${userid}`, permissions);
-            console.log(response.data);
+       
 
             if (response.status === 200) {
                 setOpen(false)
@@ -71,14 +71,12 @@ function AllCustomers() {
 
     const GetallUsers = async () => {
         try {
-            console.log("Loading");
+       
             //setIsLoading(true);
             const res = await axios.get("/api-trkadn/all-users");
             if (res.statusText === "OK") {
                 setData(res.data);
-            } else {
-                console.log("Empty data received");
-            }
+            } 
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
