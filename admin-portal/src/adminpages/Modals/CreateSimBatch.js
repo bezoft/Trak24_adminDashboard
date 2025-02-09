@@ -25,8 +25,9 @@ function CreateSimBatch({ open, onClose }) {
             console.log(formData);
 
             const response = await axios.post('/api-trkadn/create-sim-batch', formData);
+console.log(response);
 
-            if (response.status === 200) {
+            if (response.status === 201) {
                 setFormData({
                     sbatch: '',
                     purchaseDate: '', // Default branch

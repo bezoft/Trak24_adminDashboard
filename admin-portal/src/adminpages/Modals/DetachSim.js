@@ -39,10 +39,10 @@ function DetachSim({ open, onClose }) {
 
         try {
             const response = await axios.get('/api-trkadn/get-attchedunits');
-            console.log("makes", response.data.receivedData.data);
+            console.log("makes", response.data.data);
 
             if (response.statusText === "OK") {
-                setAvUnits(response.data.receivedData.data)
+                setAvUnits(response.data.data)
             }
         } catch (error) {
             alert('Error creating user: ' + error.response.data.message);

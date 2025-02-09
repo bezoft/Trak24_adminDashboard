@@ -47,10 +47,10 @@ function CreateVehicle({ open, onClose }) {
 
         try {
             const response = await axios.get('/api-trkadn/get-all-makes');
-            console.log("makes", response.data.receivedData.data);
+            console.log("makes", response);
 
-            if (response.statusText === "OK") {
-                setallMake(response.data.receivedData.data)
+            if (response.status === 200) {
+                setallMake(response.data.data)
             }
         } catch (error) {
             alert('Error creating user: ' + error.response.data.message);
@@ -59,7 +59,7 @@ function CreateVehicle({ open, onClose }) {
 
     useEffect(() => {
         GetAllMakes()
-    }, [])
+    }, [activeTab])
 
 
     return (

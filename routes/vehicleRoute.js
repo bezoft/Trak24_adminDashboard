@@ -7,9 +7,9 @@ router.post("/create-vehicle", createMake)
 
 router.post("/add-model", addMakeModel)
 
-router.post("/get-all-makes", getAllMakes)
+router.get("/get-all-makes", getAllMakes)
 
-router.post("/get-models/:make", getModelsByMake)
+router.get("/get-models/:make", getModelsByMake)
 
 router.post("/create-vehicle", createMake)
 

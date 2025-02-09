@@ -20,11 +20,7 @@ jobs:
           node-version: 20  # Use a stable Node.js version
       
       - run: |
-          ls
-          whoami
-          ls -la /var/www/adminDash/_work/adminDashboard/adminDashboard/admin-portal
           npm install
-          cd admin-portal
-          ls
+          cd admin-portal 
           npm install
           CI=false npm run build

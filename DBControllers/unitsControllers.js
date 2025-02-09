@@ -108,6 +108,7 @@ export const getAllStock = async (req, res) => {
 export const installUnit = async (req, res) => {
   try {
     const { imei, customer, assetRegNo, assetMake, assetModel, gprsPort } = req.body;
+console.log(req.body);
 
     // Find the unit by IMEI
     let unit = await Units.findOne({ imei });

@@ -12,8 +12,9 @@ import AnalyticsModel from '../models/AnalyticsModel.js';
 export const addAdmin = async (req, res) => {
   try {
     const { name, adminType, password, username } = req.body; // Extract data from request body
+console.log(req.body);
 
-    if (!name || !adminType || !password || !username) {
+    if (!name || !password || !username) {
       return res.status(400).json({ success: false, message: "All fields are required" });
     }
 

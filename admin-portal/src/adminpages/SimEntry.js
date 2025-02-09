@@ -25,10 +25,10 @@ const SimEntry = () => {
 
     try {
       const response = await axios.get('/api-trkadn/get-all-simbatches');
-      console.log("makes", response.data.receivedData.data);
+      console.log("makes", response.data.data);
 
       if (response.statusText === "OK") {
-        setAllBatches(response.data.receivedData.data)
+        setAllBatches(response.data.data)
       }
     } catch (error) {
       alert('Error creating user: ' + error.response.data.message);
@@ -58,7 +58,7 @@ console.log(formData);
       const response = await axios.post('/api-trkadn/create-sim-card', formData);
       console.log(response);
 
-      if (response.statusText === "OK") {
+      if (response.status === 201) {
         window.location.href = '/sim-cards';
       }
     } catch (error) {

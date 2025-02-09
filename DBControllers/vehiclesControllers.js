@@ -34,17 +34,17 @@ export const createMake = async (req, res) => {
 
 export const addMakeModel = async (req, res) => {
   try {
-    const { make, makeModel } = req.body; // Extract 'make' and 'makeModel' from the request body
+    const { make, model } = req.body; // Extract 'make' and 'makeModel' from the request body
 
     // Validate input
-    if (!makeModel) {
+    if (!model) {
       return res.status(400).json({ success: false, message: "Make model is required." });
     }
 
     // Find the make and update its makeModels array
     const updatedMake = await VehiclesModel.findOneAndUpdate(
       { make },
-      { $addToSet: { makeModels: makeModel } }, // $addToSet ensures no duplicates
+      { $addToSet: { makeModels: model } }, // $addToSet ensures no duplicates
       { new: true } // Return the updated document
     );
 

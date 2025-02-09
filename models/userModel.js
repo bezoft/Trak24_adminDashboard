@@ -80,7 +80,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     imeis: {
-      type: [Number],
+      type: [String],
       default: [],
     },
     permissions: {

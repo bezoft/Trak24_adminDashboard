@@ -96,7 +96,7 @@ function SimCardsList() {
       //setIsLoading(true);
       const res = await axios.get(`/api-trkadn/getsim-by-id/${id}`);
       if (res.status === 200) {
-        console.log(res.data.data);
+        console.log(res);
         setData([...res.data.data]);
 
       } else {
@@ -303,11 +303,11 @@ function SimCardsList() {
                               </div>
                               <div className="flex flex-col space-y-1 ">
                                 <span className="text-sm ">Unit Info</span>
-                                <span className="text-md font-semibold ">{item.unitid.imei}<br/>{item.unitid.shipment} - {item.unitid.model}</span>
+                                <span className="text-md font-semibold ">{item.unitid?.imei}<br/>{item.unitid?.shipment} - {item.unitid?.model}</span>
                               </div>
                               <div className="flex flex-col space-y-1 ">
                                 <span className="text-sm ">Customer & Vehicle Info</span>
-                                <span className="text-md font-semibold">{item.unitid.customer.firstname}, {item.unitid.customer.company}<br/>{item.unitid.assetRegNo} - {item.unitid.assetMake}, {item.unitid.assetModel}</span>
+                                <span className="text-md font-semibold">{item.unitid?.customer.firstname}, {item.unitid?.customer.company}<br/>{item.unitid?.assetRegNo} - {item.unitid?.assetMake}, {item.unitid?.assetModel}</span>
                               </div>
                               <div className="flex flex-col space-y-1 ">
                                 <span className="text-sm ">Comments</span>

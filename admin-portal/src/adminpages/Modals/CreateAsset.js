@@ -10,10 +10,10 @@ function CreateAsset({ open, formData, handleChange, onClose,action }) {
 
         try {
             const response = await axios.get('/api-trkadn/get-all-makes');
-            console.log("makes", response.data.receivedData.data);
+            console.log("makes", response.data.data);
 
             if (response.statusText === "OK") {
-                setallMake(response.data.receivedData.data)
+                setallMake(response.data.data)
             }
         } catch (error) {
             alert('Error creating user: ' + error.response.data.message);
@@ -25,10 +25,10 @@ function CreateAsset({ open, formData, handleChange, onClose,action }) {
        if(formData.assetMake!==""){
         try {
             const response = await axios.get(`/api-trkadn/get-models/${formData.assetMake}`);
-            console.log("models", response.data.receivedData.data);
+            console.log("models", response.data.data);
 
             if (response.statusText === "OK") {
-                setAllModels(response.data.receivedData.data)
+                setAllModels(response.data.data)
             }
         } catch (error) {
             alert('Error creating user: ' + error.response.data.message);

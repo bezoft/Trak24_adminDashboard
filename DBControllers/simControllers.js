@@ -170,16 +170,17 @@ export const findSimByBatch = async (req, res) => {
 
 
 export const findByESim2Provider = async (req, res) => {
-  const { eSim2Provider } = req.params;
+  const { provider } = req.params;
+console.log(provider);
 
   try {
     // Validate input
-    if (!eSim2Provider) {
+    if (!provider) {
       return res.status(400).json({ success: false, message: "eSim2Provider is required." });
     }
 
     // Fetch data by eSim2Provider
-    const data = await SimCardsModel.find({ eSim2Provider }).populate({
+    const data = await SimCardsModel.find({ eSim2Provider:provider }).populate({
       path: 'unitid', // Populate the unitid reference in the SimCards schema
       select: 'imei assetRegNo assetMake assetModel model shipment', // Select the fields you want from the Units model
       populate: {
@@ -209,16 +210,16 @@ export const findByESim2Provider = async (req, res) => {
 
 
 export const findBySim1Number = async (req, res) => {
-  const { sim1Number } = req.params;
+  const { number } = req.params;
 
   try {
     // Validate input
-    if (!sim1Number) {
-      return res.status(400).json({ success: false, message: "sim1Number is required." });
+    if (!number) {
+      return res.status(400).json({ success: false, message: "number is required." });
     }
 
-    // Fetch data by sim1Number
-    const data = await SimCardsModel.find({ sim1Number }).populate({
+    // Fetch data by number
+    const data = await SimCardsModel.find({ eSim2Number:number }).populate({
       path: 'unitid', // Populate the unitid reference in the SimCards schema
       select: 'imei assetRegNo assetMake assetModel model shipment', // Select the fields you want from the Units model
       populate: {
@@ -248,16 +249,16 @@ export const findBySim1Number = async (req, res) => {
 
 
 export const findBySimId = async (req, res) => {
-  const { simId } = req.params;
+  const { id } = req.params;
 
   try {
     // Validate input
-    if (!simId) {
+    if (!id) {
       return res.status(400).json({ success: false, message: "simId is required." });
     }
 
     // Fetch data by simId
-    const data = await SimCardsModel.find({ simId }).populate({
+    const data = await SimCardsModel.find({ simId: id  }).populate({
       path: 'unitid',
       select: 'imei assetRegNo assetMake assetModel model shipment',
       populate: {
@@ -341,12 +342,12 @@ export const getSimNotAttached = async (req, res) => {
 
 
 export const attachSimToUnit = async (req, res) => {
-  const { simId, unitId, simNumber } = req.body;
+  const { simid, unitid, simNumber } = req.body;
 
   try {
     // Find the unit and update `simAttached` to true and add the `simNumber`
     const updatedUnit = await Units.findByIdAndUpdate(
-      unitId,
+      unitid,
       {
         simAttached: true,
         simNumber: simNumber,
@@ -357,16 +358,16 @@ export const attachSimToUnit = async (req, res) => {
     if (!updatedUnit) {
       return res.status(404).json({
         success: false,
-        message: `No unit found with ID: ${unitId}`,
+        message: `No unit found with ID: ${unitid}`,
       });
     }
 
     // Find the SimCard and update `attached` to true and add the `unitId`
     const updatedSim = await SimCardsModel.findByIdAndUpdate(
-      simId,
+      simid,
       {
         attached: true,
-        unitid: unitId,
+        unitid: unitid,
       },
       { new: true } // Return the updated document
     );
@@ -374,7 +375,7 @@ export const attachSimToUnit = async (req, res) => {
     if (!updatedSim) {
       return res.status(404).json({
         success: false,
-        message: `No SIM card found with ID: ${simId}`,
+        message: `No SIM card found with ID: ${simid}`,
       });
     }
 
@@ -421,12 +422,12 @@ export const getAttachedSimUnits = async (req, res) => {
 
 
 export const detachSimToUnit = async (req, res) => {
-  const { simId, unitId, simNumber } = req.body;
+  const { simid, unitid, simNumber } = req.body;
 
   try {
     // Find the unit and update `simAttached` to false and remove the `simNumber`
     const updatedUnit = await Units.findByIdAndUpdate(
-      unitId,
+      unitid,
       {
         simAttached: false,
         simNumber: 0,
@@ -437,13 +438,13 @@ export const detachSimToUnit = async (req, res) => {
     if (!updatedUnit) {
       return res.status(404).json({
         success: false,
-        message: `No unit found with ID: ${unitId}`,
+        message: `No unit found with ID: ${unitid}`,
       });
     }
 
     // Find the SimCard and update `attached` to false and remove the `unitId`
     const updatedSim = await SimCardsModel.findByIdAndUpdate(
-      simId,
+      simid,
       {
         attached: false,
         unitid: null,
@@ -454,7 +455,7 @@ export const detachSimToUnit = async (req, res) => {
     if (!updatedSim) {
       return res.status(404).json({
         success: false,
-        message: `No SIM card found with ID: ${simId}`,
+        message: `No SIM card found with ID: ${simid}`,
       });
     }
 

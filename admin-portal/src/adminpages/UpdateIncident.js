@@ -60,7 +60,7 @@ console.log(res.data.data[0]);
                     datetime: ""
                 });
                 setOpen(false)
-                Getuserbyid()
+                window.location.href = "/manage-incidents"
             }
 
         } catch (error) {

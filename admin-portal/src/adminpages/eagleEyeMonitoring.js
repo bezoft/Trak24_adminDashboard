@@ -80,11 +80,9 @@ function EagleEyeMonitoring() {
 
     const GetUserUnits = async (selectedCustomer) => {
         try {
-            console.log("Loading");
             //setIsLoading(true);
             const res = await axios.get(`/api-trkadn/get-units/${selectedCustomer}`);
             if (res.status === 200) {
-                console.log(res.data.data);
                 setData(res.data.data);
             } else {
                 console.log("Empty data received");
@@ -97,7 +95,7 @@ function EagleEyeMonitoring() {
             //   setIsRefreshing(false);
         }
     };
-    console.log(formData);
+    console.log(Data, "dataaaa");
 
 
     useEffect(() => {
@@ -108,7 +106,6 @@ function EagleEyeMonitoring() {
 
     const GetallUsers = async () => {
         try {
-            console.log("Loading");
             //setIsLoading(true);
             const res = await axios.get("/api-trkadn/all-users");
             if (res.statusText === "OK") {
@@ -130,7 +127,6 @@ function EagleEyeMonitoring() {
             //setIsLoading(true);
             const res = await axios.put(`/api-trkadn/update-vehicle/${formData.id}`, formData);
             if (res.statusText === "OK") {
-                console.log(res.data);
                 closeModal();
                 setFormData({
                     id: "",
@@ -157,7 +153,6 @@ function EagleEyeMonitoring() {
         setselectedCustomer(e.target.value);
     };
 
-    console.log(Data);
 
 
     return (
@@ -203,89 +198,89 @@ function EagleEyeMonitoring() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                        {Array.isArray(Data) && Data.length > 0 &&
-  Data.map((item, index) => (
-                                <React.Fragment key={index}>
-                                    {/* Main Row */}
-                                    <tr
-                                        className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer"
-                                        onClick={() => toggleRow(index)}
-                                    >
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{index + 1}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.assetMake} {item.assetModel},<br />{item.assetRegNo}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.imei}<br />{item.simNumber ? item.simNumber : "Sim Not Attatched"}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{DateTimeFRMT(item.liveData.date,item.liveData.time)}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center"><AddressCell latitude={item.liveData.latitude} longitude={item.liveData.longitude} /></td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 flex justify-center " title={`Signal Strength ${item.liveData.gsm_signal}%`}><SignalStrengthIcon strength={item.liveData.gsm_signal} /></td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.liveData.speed} km/h<br />{item.liveData.gps_odometer} km</td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">
-                                            {item.liveData.digital_input_1_status === "0" || item.liveData.speed === "0"
-                                                ? "Stopped"
-                                                : item.liveData.digital_input_1_status === "1" && item.liveData.speed === "0"
-                                                    ? "Engine Started"
-                                                    : item.liveData.digital_input_1_status === "1" && item.liveData.speed > "0"
-                                                        ? "Moving"
-                                                        : "Unknown"
-                                            }
-                                        </td>
+                            {Array.isArray(Data) && Data?.length > 0 &&
+                                Data?.map((item, index) => (
+                                    <React.Fragment key={index}>
+                                        {/* Main Row */}
+                                        <tr
+                                            className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer"
+                                            onClick={() => toggleRow(index)}
+                                        >
+                                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{index + 1}</td>
+                                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.assetMake} {item.assetModel},<br />{item.assetRegNo}</td>
+                                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.imei}<br />{item.simNumber ? item.simNumber : "Sim Not Attatched"}</td>
+                                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{DateTimeFRMT(item.liveData?.date, item.liveData?.time)}</td>
+                                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center"><AddressCell latitude={item.liveData?.latitude} longitude={item.liveData?.longitude} /></td>
+                                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 flex justify-center " title={`Signal Strength ${item.liveData?.gsm_signal}%`}><SignalStrengthIcon strength={item.liveData?.gsm_signal} /></td>
+                                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.liveData?.speed} km/h<br />{item.liveData?.gps_odometer} km</td>
+                                            <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">
+                                                {item.liveData?.digital_input_1_status === "0" || item.liveData?.speed === "0"
+                                                    ? "Stopped"
+                                                    : item.liveData?.digital_input_1_status === "1" && item.liveData?.speed === "0"
+                                                        ? "Engine Started"
+                                                        : item.liveData?.digital_input_1_status === "1" && item.liveData?.speed > "0"
+                                                            ? "Moving"
+                                                            : "Unknown"
+                                                }
+                                            </td>
 
 
-                                    </tr>
-                                    {/* Collapsible Row */}
-                                    {expandedRow === index && (
-                                        <tr>
-                                            <td colSpan="10" className="px-6 py-4 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300">
-                                                <div className="flex justify-between items-start">
-                                                    {/* Information Section */}
-                                                    <div className='space-y-7'>
+                                        </tr>
+                                        {/* Collapsible Row */}
+                                        {expandedRow === index && (
+                                            <tr>
+                                                <td colSpan="10" className="px-6 py-4 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300">
+                                                    <div className="flex justify-between items-start">
+                                                        {/* Information Section */}
+                                                        <div className='space-y-7'>
 
-                                                        <div className="flex space-x-16">
-                                                            <div className="flex flex-col space-y-1">
-                                                                <span className="text-sm ">Client Portal</span>
-                                                                <span className="text-md font-semibold underline hover:cursor-pointer">Log In</span>
-                                                            </div>
-                                                            <div className="flex flex-col space-y-1">
-                                                                <span className="text-sm ">GPS Coordinates</span>
-                                                                <span className="text-md font-semibold">{item.liveData.latitude}, {item.liveData.longitude}</span>
-                                                            </div>
-                                                            <div className="flex flex-col space-y-1">
-                                                                <span className="text-sm ">Add To Incidents</span>
-                                                                <span className="text-md font-semibold underline hover:cursor-pointer"><a href={`/create-incident/${item.customer.company ? item.customer.company : item.customer.firstname}/${item.customer._id}`}>Add</a></span>
-                                                            </div>
-                                                            <div className="flex flex-col space-y-1">
-                                                                <span className="text-sm ">Contacts</span>
-                                                                <span className="text-md font-semibold underline hover:cursor-pointer" onClick={() => setallContactModal(true)}>View All{allContactModal === true ? (<AllContacts Aopen={allContactModal} AonClose={closeallContactModal} contacts={item.customer.contacts} />) : null} </span>
-                                                            </div>
-                                                            <div className="flex flex-col space-y-1">
-                                                                <span className="text-sm ">Update Vehicle</span>
-                                                                <span className="text-md font-semibold underline hover:cursor-pointer" onClick={() => {
-                                                                    setIsModalOpen(true);
-                                                                    setFormData({
-                                                                        assetMake: item.assetMake,
-                                                                        assetModel: item.assetModel,
-                                                                        assetRegNo: item.assetRegNo,
-                                                                        id: item._id,
-                                                                        assetType: item.assetType
-                                                                    })
-                                                                }}>Update </span>
-                                                            </div>
-                                                            <div className="flex flex-col space-y-1">
-                                                                <span className="text-sm ">Quick Map View</span>
-                                                                <a className="text-md font-semibold underline hover:cursor-pointer"
-                                                                    title="Directions"
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    href={`https://www.google.com/maps/search/${item.liveData.latitude},${item.liveData.longitude}`}>Open</a>
+                                                            <div className="flex space-x-16">
+                                                                <div className="flex flex-col space-y-1">
+                                                                    <span className="text-sm ">Client Portal</span>
+                                                                    <span className="text-md font-semibold underline hover:cursor-pointer">Log In</span>
+                                                                </div>
+                                                                <div className="flex flex-col space-y-1">
+                                                                    <span className="text-sm ">GPS Coordinates</span>
+                                                                    <span className="text-md font-semibold">{item.liveData?.latitude}, {item.liveData?.longitude}</span>
+                                                                </div>
+                                                                <div className="flex flex-col space-y-1">
+                                                                    <span className="text-sm ">Add To Incidents</span>
+                                                                    <span className="text-md font-semibold underline hover:cursor-pointer"><a href={`/create-incident/${item.customer.company ? item.customer.company : item.customer.firstname}/${item.customer._id}`}>Add</a></span>
+                                                                </div>
+                                                                <div className="flex flex-col space-y-1">
+                                                                    <span className="text-sm ">Contacts</span>
+                                                                    <span className="text-md font-semibold underline hover:cursor-pointer" onClick={() => setallContactModal(true)}>View All{allContactModal === true ? (<AllContacts Aopen={allContactModal} AonClose={closeallContactModal} contacts={item.customer.contacts} />) : null} </span>
+                                                                </div>
+                                                                <div className="flex flex-col space-y-1">
+                                                                    <span className="text-sm ">Update Vehicle</span>
+                                                                    <span className="text-md font-semibold underline hover:cursor-pointer" onClick={() => {
+                                                                        setIsModalOpen(true);
+                                                                        setFormData({
+                                                                            assetMake: item.assetMake,
+                                                                            assetModel: item.assetModel,
+                                                                            assetRegNo: item.assetRegNo,
+                                                                            id: item._id,
+                                                                            assetType: item.assetType
+                                                                        })
+                                                                    }}>Update </span>
+                                                                </div>
+                                                                <div className="flex flex-col space-y-1">
+                                                                    <span className="text-sm ">Quick Map View</span>
+                                                                    <a className="text-md font-semibold underline hover:cursor-pointer"
+                                                                        title="Directions"
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        href={`https://www.google.com/maps/search/${item.liveData?.latitude},${item.liveData?.longitude}`}>Open</a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )}
+                                                </td>
+                                            </tr>
+                                        )}
 
-                                </React.Fragment>
-                            ))}
+                                    </React.Fragment>
+                                ))}
                         </tbody>
                     </table>
                 </div>

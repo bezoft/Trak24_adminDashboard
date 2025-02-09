@@ -42,6 +42,7 @@ function IncidentManage() {
     useEffect(() => {
         GetallIncidents()
     }, [])
+console.log(Data);
 
     return (
         <>
@@ -116,9 +117,13 @@ function IncidentManage() {
                                                                 <span className="text-sm ">Created by:</span>
                                                                 <span className="text-md font-semibold">{item.created}</span>
                                                             </div>
-                                                            <div className="flex flex-col space-y-1 w-1/2">
+                                                            <div className="flex flex-col space-y-1">
                                                                 <span className="text-sm ">Case Details:</span>
                                                                 <span className="text-md font-semibold">{item.details}</span>
+                                                            </div>
+                                                            <div className="flex flex-col space-y-1">
+                                                                <span className="text-sm ">Updates:</span>
+                                                                <span className="text-md font-semibold">{item.updates.length>0?item.updates[item.updates?.length - 1].details:"NIL"}</span>
                                                             </div>
                                                             <div className="flex flex-col space-y-1">
                                                                 <span className="text-sm ">Edit Case:</span>
