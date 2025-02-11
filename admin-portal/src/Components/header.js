@@ -205,31 +205,31 @@ const Header = () => {
                   }`}
               >
                 <div>
-                  <div onClick={() => navigate("/eagle-eye-monitoring")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/eagle-eye-monitoring")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a  className="block ">
                       Eagle Eye
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/maintanace")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/maintanace")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Maintanace
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/manage-incidents")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/manage-incidents")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Incidents
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/auto-report-log")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/auto-report-log")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Auto Report Log
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/live-caution")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/live-caution")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Live Caution
                     </a>
@@ -258,25 +258,25 @@ const Header = () => {
                 className={`transition-[max-height] duration-300 overflow-hidden ${openSubmenu === 'Customers' ? 'max-h-64' : 'max-h-0'
                   }`}
               >
-                <div onClick={() => navigate("/customer-info")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                <div onClick={() => navigate("/customer-info")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                   <a className="block ">
                     Customer Info
                   </a>
                 </div>
-                <div onClick={() => navigate("/new-customer")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                <div onClick={() => navigate("/new-customer")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                   <a className="block ">
                     New Customer
                   </a>
                 </div>
 
                 <div>
-                  <div onClick={() => navigate("/login-log")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/login-log")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Login Log
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/custom-reports")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/custom-reports")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Custom Reports
                     </a>
@@ -298,13 +298,13 @@ const Header = () => {
                   }`}
               >
                 <div>
-                  <div onClick={() => navigate("/stock-list")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/stock-list")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a href="/stock-list" className="block ">
                       Stock List
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/config-new-unit")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/config-new-unit")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Configure New Unit
                     </a>
@@ -316,13 +316,13 @@ const Header = () => {
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/unit-status")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/unit-status")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Unit status
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/new-shipment")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/new-shipment")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       New Shipment
                     </a>
@@ -331,7 +331,7 @@ const Header = () => {
               </div>
             </div>
 
-            <div onClick={() => navigate("/sms-center")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+            <div onClick={() => navigate("/sms-center")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
               <a className="block text-gray-800 dark:text-gray-200">
                 SMS Center
               </a>
@@ -350,13 +350,13 @@ const Header = () => {
                   }`}
               >
                 <div>
-                  <div onClick={() => navigate("/sim-cards")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/sim-cards")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       SIM List
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/sim-entry")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/sim-entry")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       SIM Entry
                     </a>
@@ -383,13 +383,13 @@ const Header = () => {
               </div>
             </div>
 
-            <div onClick={() => navigate("/customer-billing")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+            <div onClick={() => navigate("/customer-billing")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
               <a className="block text-gray-800 dark:text-gray-200">
                 Customer Billing
               </a>
             </div>
 
-            <div onClick={() => navigate("/admin-roles")} className={` hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+            <div onClick={() => navigate("/admin-roles")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#343A46] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
               <a className="block text-gray-800 dark:text-gray-200">
                 Admin Roles
               </a>
