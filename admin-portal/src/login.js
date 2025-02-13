@@ -3,6 +3,8 @@ import { BsGlobe2 } from "react-icons/bs";
 import ThemeSwitcher from './Components/themeSwitcher';
 import axios from "axios"
 import {  useAuth } from './contexts/AuthContext';
+import {message}from "antd"
+
 
 function Login() {
 
@@ -27,13 +29,17 @@ function Login() {
             })
 
             if (response.status === 200) {
+                message.success("Log In Success")
                 localStorage.setItem('token', response.data?.token)
                 localStorage.setItem('user', response.data?.userId)
                 
                 encryptData({id:response.data?.userId,name:response.data?.name,type:response.data?.type})
            window.location.href = "/"
+            }else{
+                message.error("Invalid credentials")
             }
         } catch (error) {
+            message.error("Failed to login")
             console.error(error)
         }
     }
@@ -95,7 +101,7 @@ function Login() {
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
                                          className="w-full px-4 py-2 mt-2 rounded-full border text-black border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
-                                        placeholder="Enter your email"
+                                        placeholder="Enter your username"
                                         required
                                     />
                                 </div>
@@ -155,7 +161,7 @@ function Login() {
                                             type="uername"
                                             id="uername-d"
                                             className="w-full px-4 py-2 mt-2 rounded-full border text-white bg-transparent border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
-                                            placeholder="Enter your email"
+                                            placeholder="Enter your username"
                                             required
                                         />
                                     </div>

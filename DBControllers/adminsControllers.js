@@ -1,13 +1,5 @@
 import AdminRoles from '../models/AdminRoles.js';
-import Units from '../models/UnitsModel.js';
-import ShipmentsModel from '../models/ShipmentsModel.js';
-import User from '../models/userModel.js';
 import bcrypt from 'bcrypt';
-import VehiclesModel from '../models/VehiclesModel.js';
-import SimBatchesModel from '../models/SimBatchesModel.js';
-import SimCardsModel from '../models/SimCardsModel.js';
-import IncidentModel from '../models/IncidentModel.js';
-import AnalyticsModel from '../models/AnalyticsModel.js';
 
 export const addAdmin = async (req, res) => {
   try {

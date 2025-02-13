@@ -10,6 +10,7 @@ import SignalStrengthIcon from '../Components/SignalStrength';
 import AllContacts from './Modals/AllContacts';
 import CreateAsset from './Modals/CreateAsset';
 import { DateTimeFRMT } from '../DataHelpers/Date&Time';
+import { useAuth } from '../contexts/AuthContext';
 
 function EagleEyeMonitoring() {
 
@@ -18,6 +19,7 @@ function EagleEyeMonitoring() {
     const [expandedRow, setExpandedRow] = useState(null);
     const [selectedCustomer, setselectedCustomer] = useState("")
     const navigate = useNavigate();
+     const { decryptData } = useAuth()
     const [open, setOpen] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [company, setcompany] = useState("")
@@ -125,7 +127,7 @@ function EagleEyeMonitoring() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.put(`/api-trkadn/update-vehicle/${formData.id}`, formData);
+            const res = await axios.post(`/api-trkadn/update-vehicle/${formData.id}`, formData);
             if (res.statusText === "OK") {
                 closeModal();
                 setFormData({
@@ -152,7 +154,13 @@ function EagleEyeMonitoring() {
         GetUserUnits(e.target.value)
         setselectedCustomer(e.target.value);
     };
-
+    const ClientLogin = (id) => {
+        console.log(id);
+        const admid = decryptData().id
+        const data = encodeURIComponent(JSON.stringify({ admid: admid, clid: id }));
+        
+       window.open(`http://192.168.224.1:3001/login?data=${data}`,"_blank")
+    }
 
 
     return (
@@ -237,7 +245,7 @@ function EagleEyeMonitoring() {
                                                             <div className="flex space-x-16">
                                                                 <div className="flex flex-col space-y-1">
                                                                     <span className="text-sm ">Client Portal</span>
-                                                                    <span className="text-md font-semibold underline hover:cursor-pointer">Log In</span>
+                                                                    <span className="text-md font-semibold underline hover:cursor-pointer" onClick={() => ClientLogin(item.customer._id)}>Log In</span>
                                                                 </div>
                                                                 <div className="flex flex-col space-y-1">
                                                                     <span className="text-sm ">GPS Coordinates</span>
