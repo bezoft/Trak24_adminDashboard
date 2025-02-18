@@ -19,7 +19,7 @@ import CreateIncident from "./adminpages/CreateIncident";
 import UpdateIncident from "./adminpages/UpdateIncident";
 import EditIncident from "./adminpages/EditIncident";
 
-axios.defaults.baseURL = "https://manage.trak24.in"
+axios.defaults.baseURL = "https://manage.trak24.in//api/"
 
 
 function App() {

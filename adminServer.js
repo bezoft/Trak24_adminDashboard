@@ -27,15 +27,15 @@ app.use(cors({
 app.use(express.json());
 
 
-app.use("/api-trkadn",authRoute)
-app.use("/api-trkadn",unitRoute)
-app.use("/api-trkadn",simRoute)
-app.use("/api-trkadn",incidentRoute)
-app.use("/api-trkadn",shipmentRoute)
-app.use("/api-trkadn",vehicleRoute)
-app.use("/api-trkadn",analyticsRoute)
-app.use("/api-trkadn",adminRoute)
-app.use("/api-trkadn",userRoute)
+app.use("/api/api-trkadn",authRoute)
+app.use("/api/api-trkadn",unitRoute)
+app.use("/api/api-trkadn",simRoute)
+app.use("/api/api-trkadn",incidentRoute)
+app.use("/api/api-trkadn",shipmentRoute)
+app.use("/api/api-trkadn",vehicleRoute)
+app.use("/api/api-trkadn",analyticsRoute)
+app.use("/api/api-trkadn",adminRoute)
+app.use("/api/api-trkadn",userRoute)
 
 
 const __filename = fileURLToPath(import.meta.url);
