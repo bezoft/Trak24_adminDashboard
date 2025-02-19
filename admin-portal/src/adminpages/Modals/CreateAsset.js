@@ -12,7 +12,7 @@ function CreateAsset({ open, formData, handleChange, onClose,action }) {
             const response = await axios.get('/api-trkadn/get-all-makes');
             console.log("makes", response.data.data);
 
-            if (response.statusText === "OK") {
+            if (response.status === 200) {
                 setallMake(response.data.data)
             }
         } catch (error) {
@@ -27,7 +27,7 @@ function CreateAsset({ open, formData, handleChange, onClose,action }) {
             const response = await axios.get(`/api-trkadn/get-models/${formData.assetMake}`);
             console.log("models", response.data.data);
 
-            if (response.statusText === "OK") {
+            if (response.status === 200) {
                 setAllModels(response.data.data)
             }
         } catch (error) {

@@ -41,7 +41,7 @@ function AttachSim({ open, onClose }) {
             const response = await axios.get('/api-trkadn/get-unitnotAttached');
             console.log("makes", response.data.data);
 
-            if (response.statusText === "OK") {
+            if (response.status === 200) {
                 setAvUnits(response.data.data)
             }
         } catch (error) {
@@ -55,7 +55,7 @@ function AttachSim({ open, onClose }) {
             const response = await axios.get('/api-trkadn/get-simnotAttached');
             console.log("makes", response.data.data);
 
-            if (response.statusText === "OK") {
+            if (response.status === 200) {
                 setAvSIM(response.data.data)
             }
         } catch (error) {

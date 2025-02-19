@@ -41,7 +41,7 @@ function DetachSim({ open, onClose }) {
             const response = await axios.get('/api-trkadn/get-attchedunits');
             console.log("makes", response.data.data);
 
-            if (response.statusText === "OK") {
+            if (response.statusText === 200) {
                 setAvUnits(response.data.data)
             }
         } catch (error) {

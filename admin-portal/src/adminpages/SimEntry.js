@@ -27,7 +27,7 @@ const SimEntry = () => {
       const response = await axios.get('/api-trkadn/get-all-simbatches');
       console.log("makes", response.data.data);
 
-      if (response.statusText === "OK") {
+      if (response.status === 200) {
         setAllBatches(response.data.data)
       }
     } catch (error) {

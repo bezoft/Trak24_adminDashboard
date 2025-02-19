@@ -52,7 +52,7 @@ console.log(res.data.data[0]);
             const response = await axios.put(`/api-trkadn/add-update/${id}`, formData);
             console.log(response);
 
-            if (response.statusText === "OK") {
+            if (response.status === 200) {
 
                 setFormData({
                     details: "",

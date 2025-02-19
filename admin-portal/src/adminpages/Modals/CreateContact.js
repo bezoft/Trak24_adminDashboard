@@ -27,7 +27,7 @@ function CreateContact({ Mopen, MonClose, id }) {
             const response = await axios.put(`/api-trkadn/create-contact/${id}`, formData);
             console.log(response);
 
-            if (response.statusText === "OK") {
+            if (response.status === 200) {
 
                 setFormData({
                     name: "",

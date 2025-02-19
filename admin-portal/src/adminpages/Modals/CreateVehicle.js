@@ -16,7 +16,7 @@ function CreateVehicle({ open, onClose }) {
             const response = await axios.post('/api-trkadn/create-vehicle', { make });
             console.log(response.data);
 
-            if (response.statusText === "OK") {
+            if (response.status === 200) {
                 setMake("")
                 setActiveTab("model")
                 GetAllMakes()
@@ -31,9 +31,8 @@ function CreateVehicle({ open, onClose }) {
 
         try {
             const response = await axios.post('/api-trkadn/add-model', { make, model });
-            console.log(response.data);
-
-            if (response.statusText === "OK") {
+   
+            if (response.status === 200) {
                 setMake("")
                 setModel("")
                 onClose()
