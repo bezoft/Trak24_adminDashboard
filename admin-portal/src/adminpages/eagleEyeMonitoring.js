@@ -110,7 +110,7 @@ function EagleEyeMonitoring() {
         try {
             //setIsLoading(true);
             const res = await axios.get("/api-trkadn/all-users");
-            if (res.statusText === "OK") {
+            if (res.status === 200) {
                 setCustomers(res.data);
             } else {
                 console.log("Empty data received");
@@ -128,7 +128,7 @@ function EagleEyeMonitoring() {
             console.log("Loading");
             //setIsLoading(true);
             const res = await axios.post(`/api-trkadn/update-vehicle/${formData.id}`, formData);
-            if (res.statusText === "OK") {
+            if (res.status === 200) {
                 closeModal();
                 setFormData({
                     id: "",

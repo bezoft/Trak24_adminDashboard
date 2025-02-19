@@ -107,7 +107,7 @@ function AdminRoles() {
         try {
             //setIsLoading(true);
             const res = await axios.get("/api-trkadn/all-admins");
-            if (res.statusText === "OK") {
+            if (res.status === 200) {
                 setData(res.data.admins);
             } else {
          

@@ -29,7 +29,7 @@ function UpdateIncident() {
             console.log("Loading");
             //setIsLoading(true);
             const res = await axios.get(`/api-trkadn/getincidents-by-id/${id}`);
-            if (res.statusText === "OK") {
+            if (res.status === 200) {
 console.log(res.data.data[0]);
 
                 setData(res.data.data[0].updates);

@@ -20,6 +20,7 @@ function SimCardsList() {
   });
   const [open, setOpen] = useState(false)
 
+console.log(AllBatches);
 
   const toggleRow = (id) => {
     setExpandedRow(expandedRow === id ? null : id);

@@ -16,7 +16,6 @@ function Dashboard() {
   const { theme } = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [Analytics, setAnalytics] = useState([]);
-  console.log(theme);
 
   useEffect(() => {
     // Update isDarkMode based on the theme
@@ -30,7 +29,7 @@ function Dashboard() {
   const GetAnalytics = async () => {
     try {
       const response = await axios.get('/api-trkadn/get-analytics');
-      if (response.statusText === "OK") {
+      if (response.status === 200) {
         console.log(response.data.data);
         
         setAnalytics(response.data.data);

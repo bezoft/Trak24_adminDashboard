@@ -67,7 +67,7 @@ function ConfigureNewUnit() {
             const res = await axios.get("/api-trkadn/getall-shipmentcodes");
       
             
-            if (res.statusText === "OK") {
+            if (res.status === 200) {
                 setShipmentCodes(res.data.shipmentCodes);
             } 
         } catch (error) {

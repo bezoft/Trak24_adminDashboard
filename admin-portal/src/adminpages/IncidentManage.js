@@ -20,7 +20,7 @@ function IncidentManage() {
             console.log("Loading");
             //setIsLoading(true);
             const res = await axios.get("/api-trkadn/getall-incidents");
-            if (res.statusText === "OK") {
+            if (res.status === 200) {
                 setData(res.data.data);
             } else {
                 console.log("Empty data received");

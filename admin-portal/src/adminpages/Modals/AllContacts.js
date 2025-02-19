@@ -19,7 +19,7 @@ function AllContacts({ Aopen, AonClose, id,contacts }) {
             console.log("Loading");
             //setIsLoading(true);
             const res = await axios.get(`/api-trkadn/getcontacts-by-id/${id}`);
-            if (res.statusText === "OK") {
+            if (res.status === 200) {
                 console.log(res.data.contacts);
                 
                 setData(res.data.contacts);

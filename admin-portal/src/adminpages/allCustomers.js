@@ -76,7 +76,7 @@ function AllCustomers() {
 
             //setIsLoading(true);
             const res = await axios.get("/api-trkadn/all-users");
-            if (res.statusText === "OK") {
+            if (res.status === 200) {
                 setData(res.data);
             }
         } catch (error) {
