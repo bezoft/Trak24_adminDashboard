@@ -41,7 +41,7 @@ function DetachSim({ open, onClose }) {
             const response = await axios.get('/api-trkadn/get-attchedunits');
             console.log("makes", response.data.data);
 
-            if (response.statusText === 200) {
+            if (response.status === 200) {
                 setAvUnits(response.data.data)
             }
         } catch (error) {
@@ -70,6 +70,7 @@ function DetachSim({ open, onClose }) {
             console.error('Error saving batch:', error.response?.data?.message || error.message);
         }
     };
+console.log(AvUnits);
 
 
     return (

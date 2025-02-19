@@ -140,7 +140,7 @@ console.log(AllBatches);
       <div className=' mt-24 flex flex-row justify-between items-center h-full'>
         <div>
           <h1 className='text-gray-900 dark:text-gray-300 font-semibold text-3xl p-6'>
-            SIM Crads List
+            SIM Cards List
           </h1>
         </div>
 
