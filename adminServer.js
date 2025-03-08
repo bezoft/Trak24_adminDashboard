@@ -41,9 +41,9 @@ app.use("/api/api-trkadn",userRoute)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, 'admin-portal', 'build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'admin-portal', 'build', 'index.html'));
+});
 
 app.listen(7025, () => {
   console.log('Admin Portal server is running on port 7025');
