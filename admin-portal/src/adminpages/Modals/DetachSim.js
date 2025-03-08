@@ -92,7 +92,7 @@ console.log(AvUnits);
                             name="sim1Number"
                             value={formData.simNumber}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                             required
                         >
                             <option value="">Select a SIM</option>

@@ -80,7 +80,7 @@ function CreateVehicle({ open, onClose }) {
                                     //value={formData.name}
                                     placeholder="Enter Name"
                                     //onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                     required
                                 />
                             </div>
@@ -98,7 +98,7 @@ function CreateVehicle({ open, onClose }) {
                                     placeholder="Enter Username"
                                     //value={formData.username}
                                     //onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 />
                             </div>
                             <div>
@@ -115,7 +115,7 @@ function CreateVehicle({ open, onClose }) {
                                     placeholder="Enter Password"
                                     //value={formData.password}
                                     //onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                     required
                                 />
                             </div>
@@ -131,7 +131,7 @@ function CreateVehicle({ open, onClose }) {
                                     name="adminType"
                                     //value={formData.adminType}
                                     //onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                     required
                                 >
                                     <option value={0}>Super Admin</option>
@@ -202,7 +202,7 @@ function CreateVehicle({ open, onClose }) {
                                             name="makename"
                                             value={make}
                                             onChange={(e) => setMake(e.target.value)}
-                                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                             required
                                         >
                                             <option value="">Select a Make</option>
@@ -233,7 +233,7 @@ function CreateVehicle({ open, onClose }) {
                                             value={model}
                                             required
                                             onChange={(e) => setModel(e.target.value)}
-                                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         />
                                     </div>
                                     <div className="flex justify-between gap-4 mt-6">
@@ -274,7 +274,7 @@ function CreateVehicle({ open, onClose }) {
                                             value={make}
                                             placeholder="Enter Make Name"
                                             onChange={(e) => setMake(e.target.value)}
-                                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                             required
                                         />
                                     </div>

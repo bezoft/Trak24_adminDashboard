@@ -11,6 +11,15 @@ const unitsSchema = new mongoose.Schema({
     type: Boolean,
     default:false
   },
+  installation: {
+    type: Date
+  },
+  renewRange: {
+    type: Number
+  },
+  expiry: {
+    type: Date
+  },
   customer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users'

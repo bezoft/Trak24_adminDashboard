@@ -37,11 +37,11 @@ function AdminRoles() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            
-            const response = await axios.post("/api-trkadn/new-admin", formData);
-         
 
-            if (response.status ===201) {
+            const response = await axios.post("/api-trkadn/new-admin", formData);
+
+
+            if (response.status === 201) {
 
                 setFormData({
                     name: "",
@@ -58,7 +58,7 @@ function AdminRoles() {
         }
     }
 
-    const handleDelete =async (id) => {
+    const handleDelete = async (id) => {
         try {
 
             const response = await axios.delete(`/api-trkadn/delete-admin/${id}`);
@@ -110,7 +110,7 @@ function AdminRoles() {
             if (res.status === 200) {
                 setData(res.data.admins);
             } else {
-         
+
             }
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -137,7 +137,7 @@ function AdminRoles() {
                 <div className="px-6 py-4">
                     <table className="min-w-full border border-gray-300 dark:border-gray-700">
                         <thead>
-                            <tr className="bg-gray-200 dark:bg-[#343a46]">
+                            <tr className="bg-gray-200 dark:bg-[#3b3b3b]">
                                 <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 whitespace-nowrap text-center">No</th>
                                 <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">Name</th>
                                 <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">Role</th>
@@ -147,40 +147,40 @@ function AdminRoles() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                        {Array.isArray(Data) && Data.length > 0 &&
-  Data.map((item, index) => (
-                                <tr
-                                    key={index}
-                                    className="hover:bg-gray-200 dark:hover:bg-gray-800"
-                                >
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{index + 1}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.name}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">
-                                        <button className={`px-3 py-2 text-sm dark:text-white text-black ${item.adminType === 0 ? "bg-orange-500" : "bg-green-500"} bg-opacity-20 rounded-full transition duration-200`}>
-                                            {item.adminType === 0 ? "Super Admin" : "Admin"}
-                                        </button>
-                                    </td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.username}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">***************</td>
-                                    <td className="px-6 py-4 text-sm text-red-600 dark:text-red-600 text-center">
-                                        <a
-                                            className={`${AdminType === 0 || (AdminType === 1 && item._id === AdminId) ? "" : "disabled cursor-not-allowed"}`}
-                                            style={AdminType === 1 && item._id !== AdminId ? { color: "gray" } : {}}
-                                            onClick={() => AdminType === 0 || (AdminType === 1 && item._id === AdminId) ? handleEditinit(item._id, item.name, item.username, item.adminType) : null}
-                                        >
-                                            Edit &nbsp;
-                                        </a>
-                                        <a
-                                            className={`${AdminType === 0 ? "" : "disabled cursor-not-allowed"}`}
-                                            style={AdminType === 1 && item._id !== AdminId||item._id === AdminId ? { color: "gray" } : {}}
-                                            onClick={() => AdminType === 0  ? handleDelete(item._id) : null}
-                                        >
-                                             | &nbsp;Delete
-                                        </a>
-                                    </td>
+                            {Array.isArray(Data) && Data.length > 0 &&
+                                Data.map((item, index) => (
+                                    <tr
+                                        key={index}
+                                        className="hover:bg-gray-200 dark:hover:bg-[#28282a]"
+                                    >
+                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{index + 1}</td>
+                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.name}</td>
+                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">
+                                            <button className={`px-3 py-2 text-sm dark:text-white text-black ${item.adminType === 0 ? "bg-orange-500" : "bg-green-500"} bg-opacity-20 rounded-full transition duration-200`}>
+                                                {item.adminType === 0 ? "Super Admin" : "Admin"}
+                                            </button>
+                                        </td>
+                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.username}</td>
+                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">***************</td>
+                                        <td className="px-6 py-4 text-sm text-red-600 dark:text-red-600 text-center">
+                                            <a
+                                                className={`${AdminType === 0 || (AdminType === 1 && item._id === AdminId) ? "" : "disabled cursor-not-allowed"}`}
+                                                style={AdminType === 1 && item._id !== AdminId ? { color: "gray" } : {}}
+                                                onClick={() => AdminType === 0 || (AdminType === 1 && item._id === AdminId) ? handleEditinit(item._id, item.name, item.username, item.adminType) : null}
+                                            >
+                                                Edit &nbsp;
+                                            </a>
+                                            <a
+                                                className={`${AdminType === 0 ? "" : "disabled cursor-not-allowed"}`}
+                                                style={AdminType === 1 && item._id !== AdminId || item._id === AdminId ? { color: "gray" } : {}}
+                                                onClick={() => AdminType === 0 ? handleDelete(item._id) : null}
+                                            >
+                                                | &nbsp;Delete
+                                            </a>
+                                        </td>
 
-                                </tr>
-                            ))}
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 </div>
@@ -204,7 +204,7 @@ function AdminRoles() {
                                 value={formData.name}
                                 placeholder="Enter Name"
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             />
                         </div>
@@ -222,7 +222,7 @@ function AdminRoles() {
                                 placeholder="Enter Username"
                                 value={formData.username}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                             />
                         </div>
                         <div>
@@ -239,31 +239,31 @@ function AdminRoles() {
                                 placeholder="Enter Password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
 
                             />
                         </div>
-                        {AdminType===0?(
+                        {AdminType === 0 ? (
                             <div>
-                            <label
-                                className="block text-sm font-medium mb-2"
-                                htmlFor="adminType"
-                            >
-                                Admin Type
-                            </label>
-                            <select
-                                id="adminType2"
-                                name="adminType"
-                                value={formData.adminType}
-                                onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
-                                required
-                            >
-                                <option value={0}>Super Admin</option>
-                                <option value={1}>Admin</option>
-                            </select>
-                        </div>
-                        ):(null)}
+                                <label
+                                    className="block text-sm font-medium mb-2"
+                                    htmlFor="adminType"
+                                >
+                                    Admin Type
+                                </label>
+                                <select
+                                    id="adminType2"
+                                    name="adminType"
+                                    value={formData.adminType}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                    required
+                                >
+                                    <option value={0}>Super Admin</option>
+                                    <option value={1}>Admin</option>
+                                </select>
+                            </div>
+                        ) : (null)}
                         <div className="flex justify-between gap-4 mt-6">
                             <button
                                 type="button"
@@ -301,7 +301,7 @@ function AdminRoles() {
                                 value={formData.name}
                                 placeholder="Enter Name"
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             />
                         </div>
@@ -319,7 +319,7 @@ function AdminRoles() {
                                 placeholder="Enter Username"
                                 value={formData.username}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                             />
                         </div>
                         <div>
@@ -336,7 +336,7 @@ function AdminRoles() {
                                 placeholder="Enter Password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
 
                             />
                         </div>
@@ -352,7 +352,7 @@ function AdminRoles() {
                                 name="adminType"
                                 value={formData.adminType}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             >
                                 <option value={0}>Super Admin</option>

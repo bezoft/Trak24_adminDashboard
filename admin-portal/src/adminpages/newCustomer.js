@@ -136,7 +136,7 @@ const NewCustomer = () => {
                                 name="firstname"
                                 value={formData.firstname}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter First Name"
                             />
                         </div>
@@ -148,7 +148,7 @@ const NewCustomer = () => {
                                 name="lastname"
                                 value={formData.lastname}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter Last Name"
                             />
                         </div>
@@ -160,7 +160,7 @@ const NewCustomer = () => {
                                 name="mobile"
                                 value={formData.mobile}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter Mobile Number"
                             />
                         </div>
@@ -172,7 +172,7 @@ const NewCustomer = () => {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter Email Address"
                             />
                         </div>
@@ -184,7 +184,7 @@ const NewCustomer = () => {
                                 name="company"
                                 value={formData.company}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter Company Name"
                             />
                         </div>
@@ -195,7 +195,7 @@ const NewCustomer = () => {
                                 name="customerType"
                                 value={formData.customerType}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-md bg-white dark:bg-[#23272f] focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-md bg-white dark:bg-[#1b1b1d] focus:ring-indigo-500 focus:border-indigo-500"
                             >
                                 <option value="">Select Customer Type</option>
                                 <option value="Construction Company">Construction Company</option>
@@ -219,7 +219,7 @@ const NewCustomer = () => {
                                 name="street"
                                 value={formData.address.street}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter Building No, Street"
                             />
                         </div>
@@ -231,7 +231,7 @@ const NewCustomer = () => {
                                 name="district"
                                 value={formData.address.district}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter District"
                             />
                         </div>
@@ -243,7 +243,7 @@ const NewCustomer = () => {
                                 name="state"
                                 value={formData.address.state}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter State"
                             />
                         </div>
@@ -255,7 +255,7 @@ const NewCustomer = () => {
                                 name="pinCode"
                                 value={formData.address.pinCode}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter PIN Code"
                             />
                         </div>
@@ -267,7 +267,7 @@ const NewCustomer = () => {
                                 name="landline"
                                 value={formData.address.landline}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter Landline Number"
                             />
                         </div>
@@ -279,7 +279,7 @@ const NewCustomer = () => {
                                 name="salesPerson"
                                 value={formData.salesPerson}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Enter Sales Person Name"
                             />
                         </div>
@@ -293,7 +293,7 @@ const NewCustomer = () => {
                                         name="username"
                                         value={formData.username}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                        className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                         placeholder="Enter Login ID"
                                     />
                                 </div>
@@ -306,7 +306,7 @@ const NewCustomer = () => {
                                         name="password"
                                         value={formData.password}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                                        className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                                         placeholder="Enter Password"
                                     />
                                 </div>

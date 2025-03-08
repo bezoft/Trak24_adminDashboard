@@ -88,7 +88,7 @@ console.log(formData);
                 name="batch"
                 value={formData.batch}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
               >
                 <option value="">Select a Make</option>
                 {Array.isArray(AllBatches) && AllBatches.length > 0 ? (
@@ -109,7 +109,7 @@ console.log(formData);
                 name="sim1Number"
                 value={formData.sim1Number}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter SIM/eSIM1 Number"
               />
             </div>
@@ -121,7 +121,7 @@ console.log(formData);
                 name="eSim2Number"
                 value={formData.eSim2Number}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter eSIM 2 Number"
               />
             </div>
@@ -138,7 +138,7 @@ console.log(formData);
                 name="eSim2Provider"
                 value={formData.eSim2Provider}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
               >
                 <option value="">Select Network Provider</option>
                 <option value="Airtel">Airtel</option>
@@ -161,7 +161,7 @@ console.log(formData);
                 name="actDate"
                 value={formData.actDate}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter Company Name"
               />
             </div>
@@ -174,7 +174,7 @@ console.log(formData);
                 name="expyDate"
                 value={formData.expyDate}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter Building No, Street"
               />
             </div>
@@ -191,7 +191,7 @@ console.log(formData);
                 name="eSimServProvider"
                 value={formData.eSimServProvider}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
               >
                 <option value="">Select Service Provider</option>
                 <option value="Vodafone Idea Ltd">Vodafone Idea Ltd</option>
@@ -208,7 +208,7 @@ console.log(formData);
                 name="simId"
                 value={formData.simId}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter IMSI/ICCID Number"
               />
             </div>
@@ -225,7 +225,7 @@ console.log(formData);
                 name="simType"
                 value={formData.simType}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
               >
                 <option value="">Select SIM card Type</option>
                 <option value="Data">Data</option>
@@ -242,7 +242,7 @@ console.log(formData);
                 name="serialNo"
                 value={formData.serialNo}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter Serial No"
               />
             </div>
@@ -254,7 +254,7 @@ console.log(formData);
                 name="puc1"
                 value={formData.puc1}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter PUC 1 Number"
               />
             </div>
@@ -266,7 +266,7 @@ console.log(formData);
                 name="puc2"
                 value={formData.puc2}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#23272f] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Enter PUC 2 Number"
               />
             </div>

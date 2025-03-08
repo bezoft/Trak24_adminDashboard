@@ -107,7 +107,7 @@ export const getAllStock = async (req, res) => {
 
 export const installUnit = async (req, res) => {
   try {
-    const { imei, customer, assetRegNo, assetMake, assetModel, gprsPort } = req.body;
+    const { imei, customer, assetRegNo, assetMake, assetModel, gprsPort,installation,renewRange,expiry } = req.body;
 console.log(req.body);
 
     // Find the unit by IMEI
@@ -123,7 +123,9 @@ console.log(req.body);
     unit.assetMake = assetMake || unit.assetMake;
     unit.assetModel = assetModel || unit.assetModel;
     unit.gprsPort = gprsPort || unit.gprsPort;
-    unit.stockListed = false;
+    unit.installation = installation;
+    unit.renewRange = renewRange;
+    unit.expiry = expiry;
 
     // Save the updated unit
     await unit.save();
@@ -189,6 +191,27 @@ export const getUserUnits = async (req, res) => {
       message: "An error occurred while retrieving units by customer.",
       error: error.message,
     });
+  }
+};
+
+export const GetExpiringUnits=async (req, res) => {
+  try {
+    const { year, month } = req.params;
+
+    // Convert month and year into a date range
+    const startDate = new Date(`${year}-${month}-01T00:00:00.000+00:00`);
+    const endDate = new Date(startDate);
+    endDate.setMonth(endDate.getMonth() + 1);
+
+    // Find units where expiry falls within the range
+    const units = await Units.find(
+      { expiry: { $gte: startDate, $lt: endDate } },
+      { reports: 0 } // Exclude the reports field
+    ).populate("customer", "company firstname _id");
+
+    res.status(200).json(units);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 

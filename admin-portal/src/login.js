@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { BsGlobe2 } from "react-icons/bs";
 import ThemeSwitcher from './Components/themeSwitcher';
 import axios from "axios"
-import {  useAuth } from './contexts/AuthContext';
-import {message}from "antd"
+import { useAuth } from './contexts/AuthContext';
+import { message } from "antd"
 
 
 function Login() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const { encryptData} = useAuth()
+    const { encryptData } = useAuth()
 
     useEffect(() => {
         const token = localStorage.getItem('token'); // or use isAuthenticated() logic
@@ -32,10 +32,10 @@ function Login() {
                 message.success("Log In Success")
                 localStorage.setItem('token', response.data?.token)
                 localStorage.setItem('user', response.data?.userId)
-                
-                encryptData({id:response.data?.userId,name:response.data?.name,type:response.data?.type})
-           window.location.href = "/"
-            }else{
+
+                encryptData({ id: response.data?.userId, name: response.data?.name, type: response.data?.type })
+                window.location.href = "/"
+            } else {
                 message.error("Invalid credentials")
             }
         } catch (error) {
@@ -100,7 +100,7 @@ function Login() {
                                         id="uername"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
-                                         className="w-full px-4 py-2 mt-2 rounded-full border text-black border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-full px-4 py-2 mt-2 rounded-full border text-black border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         placeholder="Enter your username"
                                         required
                                     />
@@ -127,10 +127,6 @@ function Login() {
                                 </button>
                             </div>
 
-                            {/* Image section: 60% of the main container */}
-                            <div className='h-full w-3/5  p-3'>
-                                <img src='/assets/log2.png' className='rounded-2xl' />
-                            </div>
 
                         </div>
                     </div>
@@ -143,37 +139,36 @@ function Login() {
                     style={{ backgroundImage: 'url(/assets/GS-bg3.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
                 >
                     <div className='flex justify-center items-center min-h-screen'>
-                        {/* Main container: will adjust to fit the screen size */}
-                        <div className=' rounded-xl shadow-lg bg-orange-500 bg-opacity-5 w-[850px] h-[550px]'>
-                            <div className='flex h-full'>
+                  
+                        <div className=' rounded-xl shadow-lg bg-orange-500 bg-opacity-5 w-1/3 h-[550px]'>
 
-                                {/* Login form section: 40% of the main container */}
-                                <div className='flex flex-col items-center justify-center h-full space-y-3 w-2/4 p-4'>
+          
+                                <div className='flex flex-col items-center justify-center h-full space-y-6 w-full p-4'>
                                     <div className='flex flex-col items-center justify-center'>
-                                        <h1 className='text-3xl'>Log In</h1>
-                                        <p className='mt-1  mb-4'>Log in to continue to admin dashboard!</p>
+                                        <h1 className='text-4xl'>Log In</h1>
+                                        <p className='mt-1 mb-4'>Log in to continue to admin dashboard!</p>
                                     </div>
-                                    <div className='w-full px-10'>
+                                    <div className='w-full px-14'>
                                         <label htmlFor="email" className="block text-white">Username</label>
                                         <input
                                             value={username}
                                             onChange={(e) => setUsername(e.target.value)}
                                             type="uername"
                                             id="uername-d"
-                                            className="w-full px-4 py-2 mt-2 rounded-full border text-white bg-transparent border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                            className="w-full px-4 py-3 mt-2 rounded-2xl border text-white bg-transparent border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
                                             placeholder="Enter your username"
                                             required
                                         />
                                     </div>
 
-                                    <div className='w-full px-10'>
+                                    <div className='w-full px-14 mb-24'>
                                         <label htmlFor="password" className="block text-white">Password</label>
                                         <input
                                             type="password"
                                             id="password-d"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
-                                            className="w-full px-4 py-2 mt-2 mb-3 rounded-full border text-white bg-transparent border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                            className="w-full px-4 py-3 mt-2 mb-3 rounded-2xl border text-white bg-transparent border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
                                             placeholder="Enter your password"
                                             required
                                         />
@@ -181,18 +176,11 @@ function Login() {
 
                                     <button
                                         onClick={HandleLogin}
-                                        className="bg-orange-500 w-3/4 py-3  text-white rounded-full hover:bg-orange-600"
+                                        className="bg-orange-500 w-1/2 py-3 text-white rounded-2xl hover:bg-orange-600"
                                     >
                                         Login
                                     </button>
                                 </div>
-
-                                {/* Image section: 60% of the main container */}
-                                <div className='h-full w-3/5  p-3'>
-                                    <img src='/assets/log2.png' className='rounded-2xl' />
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                 </section>

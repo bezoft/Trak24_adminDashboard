@@ -97,14 +97,10 @@ function EagleEyeMonitoring() {
             //   setIsRefreshing(false);
         }
     };
-    console.log(Data, "dataaaa");
-
-
     useEffect(() => {
         GetallUsers()
     }, [])
 
-    console.log(Data);
 
     const GetallUsers = async () => {
         try {
@@ -179,7 +175,7 @@ function EagleEyeMonitoring() {
                         name="assetType"
                         value={selectedCustomer}
                         onChange={handleChange}
-                        className="w-full md:min-w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                        className="w-full md:min-w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                         required
                     >
                         <option value={""}>Select a Client</option>
@@ -194,7 +190,7 @@ function EagleEyeMonitoring() {
                 <div className="overflow-x-auto p-4 ">
                     <table className="min-w-full border border-gray-300  dark:border-gray-700">
                         <thead>
-                            <tr className="bg-gray-200 dark:bg-[#343a46]">
+                            <tr className="bg-gray-200 dark:bg-[#3b3b3b]">
                                 <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 whitespace-nowrap">Sl No</th>
                                 <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Asset Info</th>
                                 <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Unit Info</th>
@@ -211,7 +207,7 @@ function EagleEyeMonitoring() {
                                     <React.Fragment key={index}>
                                         {/* Main Row */}
                                         <tr
-                                            className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer"
+                                            className="hover:bg-gray-200 dark:hover:bg-[#28282a] cursor-pointer"
                                             onClick={() => toggleRow(index)}
                                         >
                                             <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{index + 1}</td>
@@ -237,7 +233,7 @@ function EagleEyeMonitoring() {
                                         {/* Collapsible Row */}
                                         {expandedRow === index && (
                                             <tr>
-                                                <td colSpan="10" className="px-6 py-4 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-300">
+                                                <td colSpan="10" className="px-6 py-4 bg-gray-100 dark:bg-[#1b1b1d] text-gray-900 dark:text-gray-300">
                                                     <div className="flex justify-between items-start">
                                                         {/* Information Section */}
                                                         <div className='space-y-7'>

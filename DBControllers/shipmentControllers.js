@@ -50,3 +50,15 @@ export const getAllShipmentCodes = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal Server Error", error: error.message });
   }
 };
+
+
+export const getAllShipments = async (req, res) => {
+  try {
+    const shipments = await ShipmentsModel.find({});
+
+    res.status(200).json({ success: true, shipments: shipments });
+  } catch (error) {
+    console.error("Error fetching shipment codes:", error.message);
+    res.status(500).json({ success: false, message: "Internal Server Error", error: error.message });
+  }
+};

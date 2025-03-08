@@ -14,7 +14,7 @@ export default function Modal({ open, onClose, children,size }) {
       <div
         onClick={(e) => e.stopPropagation()}
         className={`
-          bg-white dark:bg-[#23272f] rounded-2xl shadow-lg  ${size?`${size}`:"w-full max-w-lg"} p-8 relative
+          bg-white dark:bg-[#1b1b1d] rounded-2xl shadow-lg  ${size?`${size}`:"w-full max-w-lg"} p-8 relative
           transition-transform duration-300 ease-in-out transform
           ${open ? "scale-100 opacity-100" : "scale-90 opacity-0"}
         `}

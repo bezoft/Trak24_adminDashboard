@@ -8,16 +8,21 @@ import CreateAsset from './Modals/CreateAsset';
 function InstallNewUnit() {
     const [Customers, setCustomers] = useState([]);
     const { id, sim } = useParams();
- const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         imei: id,
         customer: "",
         customerInfo: "",
         assetMake: "",
         assetModel: "",
+
+        installation: "",
+        renewRange: 0,
+        expiry: "",
+
         assetRegNo: "",
         assetType: "",
-        simAttached:sim,
+        simAttached: sim,
         kmreading: "",
         gprsPort: 0,
     });
@@ -30,16 +35,16 @@ function InstallNewUnit() {
 
             if (response.status === 200) {
                 console.log("susssess");
-                
+
                 setFormData({
-                    imei:"",
+                    imei: "",
                     customer: "",
                     customerInfo: "",
                     assetMake: "",
                     assetModel: "",
                     assetRegNo: "",
                     assetType: "",
-                    simAttached:"",
+                    simAttached: "",
                     kmreading: "",
                     gprsPort: 0,
                 }); // Reset form
@@ -49,8 +54,42 @@ function InstallNewUnit() {
             console.error('Error saving shipment:', error.response?.data?.message || error.message);
         }
     };
-    console.log("Form",formData);
+    console.log(formData);
+
+    useEffect(() => {
+        if (formData.installation) {
+            console.log(formData.installation);
+
+            // Ensure the date is in ISO format before storing
+            const isoDate = new Date(formData.installation).toISOString();
+
+            setFormData((prevState) => ({
+                ...prevState,
+                installation: isoDate, // Store in full ISO format
+            }));
+        }
+    }, [formData.installation]);
+
+
+    useEffect(() => {
+        if (formData.installation && formData.renewRange) {
+            const installDate = new Date(formData.installation); // Convert to Date object
+            const renewMonths = parseInt(formData.renewRange, 10); // Convert to integer
     
+            if (!isNaN(renewMonths)) {
+                installDate.setMonth(installDate.getMonth() + renewMonths); // Add months to installation date
+    
+                const isoDate = installDate.toISOString(); // Convert back to ISO string
+    
+                setFormData((prevState) => ({
+                    ...prevState,
+                    expiry: isoDate, // Store in full ISO format
+                    renewRange:parseInt(formData.renewRange)
+                }));
+            }
+        }
+    }, [formData.renewRange,formData.installation]);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -131,7 +170,7 @@ function InstallNewUnit() {
                                         value={formData.customer}
                                         onChange={handleChange}
                                         name="customer"
-                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={""}>Select a Client</option>
@@ -156,7 +195,7 @@ function InstallNewUnit() {
                                         onChange={handleChange}
                                         name="kmreading"
                                         placeholder="Enter Km Reading"
-                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         required
                                     />
                                 </div>
@@ -190,13 +229,75 @@ function InstallNewUnit() {
                                         name="gprsPort"
                                         value={formData.gprsPort}
                                         onChange={handleChange}
-                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={""}>Select a Port</option>
                                         <option value={1235}>1235</option>
                                         <option value={9874}>9874</option>
                                     </select>
+                                </div>
+
+                                <div >
+                                    <label
+                                        className="block text-md font-medium mb-2 text-gray-700 dark:text-gray-300"
+                                        htmlFor="renewRange"
+                                    >
+                                        Renew Cycle
+                                    </label>
+                                    <select
+                                        id="renewRange"
+                                        name="renewRange"
+                                        value={formData.renewRange}
+                                        onChange={handleChange}
+                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        required
+                                    >
+                                        <option value={0}>Select a Cycle</option>
+                                        <option value={1}>1 month</option>
+                                        <option value={2}>2 Months</option>
+                                        <option value={3}>3 Month</option>
+                                        <option value={4}>4 Months</option>
+                                        <option value={5}>5 Months</option>
+                                        <option value={6}>6 months</option>
+                                        <option value={7}>7 Months</option>
+                                        <option value={8}>8 Month</option>
+                                        <option value={9}>9 Months</option>
+                                        <option value={10}>10 Months</option>
+                                        <option value={11}>11 months</option>
+                                        <option value={12}>12 Months</option>
+                                        <option value={13}>13 Month</option>
+                                        <option value={14}>14 Months</option>
+                                        <option value={15}>15 Months</option>
+                                        <option value={16}>16 Months</option>
+                                        <option value={17}>17 Months</option>
+                                        <option value={18}>18 Months</option>
+                                        <option value={19}>19 Months</option>
+                                        <option value={20}>20 Months</option>
+                                        <option value={21}>21 Months</option>
+                                        <option value={22}>22 Months</option>
+                                        <option value={23}>23 Months</option>
+                                        <option value={24}>24 Months</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label
+                                        className="block text-md font-medium mb-2 text-gray-700 dark:text-gray-300"
+                                        htmlFor="installation"
+                                    >
+                                        Install Date
+                                    </label>
+                                    <input
+                                        type="date"
+                                        name="installation"
+                                        value={formData.installation ? formData.installation.split("T")[0] : ""}
+                                        onChange={(e) => setFormData({
+                                            ...formData,
+                                            installation: new Date(e.target.value).toISOString() // Convert back to ISO on change
+                                        })}
+                                        className="w-72 px-4 py-[11px] bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                    />
                                 </div>
 
                             </div>
@@ -218,7 +319,7 @@ function InstallNewUnit() {
                                     <select
                                         id="adminType"
                                         name="adminType"
-                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={0}>Super Admin</option>
@@ -238,7 +339,7 @@ function InstallNewUnit() {
                                         id="KmReading"
                                         name="KmReading"
                                         placeholder="Enter KmReading"
-                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     />
                                 </div>
@@ -255,7 +356,7 @@ function InstallNewUnit() {
                                     <select
                                         id="customer"
                                         name="customer"
-                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={0}>Super Admin</option>

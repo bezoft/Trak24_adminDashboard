@@ -108,7 +108,7 @@ function AllCustomers() {
 
             </div>
 
-            <div className={`   min-h-screen`}> {/* Theme-based background and text color */}
+            <div className={`   min-h-screen`}>
                 <div className="overflow-x-auto p-4 ">
                     <table className="min-w-full border border-gray-300  dark:border-gray-700">
                         <thead>

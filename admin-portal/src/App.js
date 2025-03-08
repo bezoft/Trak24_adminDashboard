@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Home from './adminpages/home';
-import Login from "./login"; 
+import Login from "./login";
 import axios from "axios";
 import "./App.css"
-import ProtectedRoute from "./auth/protectedRoutes"; 
+import ProtectedRoute from "./auth/protectedRoutes";
 import NewCustomer from "./adminpages/newCustomer";
 import AllCustomers from "./adminpages/allCustomers";
 import AdminRoles from "./adminpages/adminRoles";
@@ -18,8 +18,10 @@ import IncidentManage from "./adminpages/IncidentManage";
 import CreateIncident from "./adminpages/CreateIncident";
 import UpdateIncident from "./adminpages/UpdateIncident";
 import EditIncident from "./adminpages/EditIncident";
+import Unitstatus from "./adminpages/Unitstatus";
+import CustomerBilling from "./adminpages/CustomerBilling";
 
-axios.defaults.baseURL = "https://manage.trak24.in/api/"
+axios.defaults.baseURL = "http://192.168.224.1:7025/api/"
 
 
 function App() {
@@ -68,7 +70,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-       <Route
+      <Route
         path="/new-shipment"
         element={
           <ProtectedRoute>
@@ -108,7 +110,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-       <Route
+      <Route
         path="/sim-cards"
         element={
           <ProtectedRoute>
@@ -116,7 +118,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-       <Route
+      <Route
         path="/sim-entry"
         element={
           <ProtectedRoute>
@@ -124,7 +126,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-       <Route
+      <Route
         path="/manage-incidents"
         element={
           <ProtectedRoute>
@@ -132,7 +134,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-       <Route
+      <Route
         path="/manage-incidents/update-status/:id"
         element={
           <ProtectedRoute>
@@ -140,7 +142,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-       <Route
+      <Route
         path="/create-incident/:name/:id"
         element={
           <ProtectedRoute>
@@ -153,6 +155,24 @@ function App() {
         element={
           <ProtectedRoute>
             <EditIncident />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/unit-status"
+        element={
+          <ProtectedRoute>
+            <Unitstatus />
+          </ProtectedRoute>
+        }
+      />
+
+<Route
+        path="/customer-billing"
+        element={
+          <ProtectedRoute>
+            <CustomerBilling />
           </ProtectedRoute>
         }
       />
