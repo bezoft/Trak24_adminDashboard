@@ -70,6 +70,7 @@ function Unitstatus() {
 
 
 
+
                         <table className="min-w-full border border-gray-300 dark:bg-[#16181d] dark:border-gray-700">
                             <thead>
                                 <tr className="bg-gray-200 dark:bg-[#3b3b3b]">
