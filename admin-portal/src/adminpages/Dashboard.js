@@ -152,7 +152,7 @@ console.log(Analytics);
                         color: isDarkMode ? "#ffffff" : "#000000", // Dynamic x-axis tick color
                       },
                       grid: {
-                        color: isDarkMode ? "#23272f" : "#FFFFFF", // Dynamic x-axis grid color
+                        color: isDarkMode ? "#1b1b1d" : "#FFFFFF", // Dynamic x-axis grid color
                       },
                     },
                     y: {

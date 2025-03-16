@@ -82,50 +82,66 @@ console.log(res.data.data[0]);
 
     return (
         <>
-            <Header />
-            <div className=' mt-24 flex flex-row justify-between items-center'>
-                <div className="px-6 py-4 flex w-full justify-between">
-                    <h1 className="text-3xl font-semibold text-gray-900 dark:text-gray-300">
-                        Update Case Status
-                    </h1>
-                    <button onClick={() => setOpen(true)} className='w-fit h-12 px-4 border border-orange-600 bg-[#f6f7f9] dark:bg-[#343a46] rounded-md flex justify-center items-center'>+ Add New Update</button>
-                </div>
+             <Header />
+    <div className="mt-24 flex flex-row justify-between items-center">
+        <div className="px-6 py-4 flex w-full justify-between">
+            <h1 className="text-3xl font-semibold text-gray-900 dark:text-gray-300">
+                Update Case Status
+            </h1>
+            <button
+                onClick={() => setOpen(true)}
+                className="w-fit h-12 px-4 border border-orange-600 bg-[#f6f7f9] dark:bg-[#1b1b1d] rounded-md flex justify-center items-center hover:bg-orange-50 dark:hover:bg-[#28282a] transition duration-200"
+            >
+                + Add New Update
+            </button>
+        </div>
+    </div>
 
-            </div>
-
-            <div > {/* Theme-based background and text color */}
-                <div className="flex w-full items-center justify-center overflow-x-auto p-4 ">
-                    <table className="min-w-full border border-gray-300  dark:border-gray-700">
-                        <thead>
-                            <tr className="bg-gray-200 dark:bg-[#343a46]">
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">No</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Updated By</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Date & Time</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Updates</th>
-                                {/* <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">More Info</th> */}
-                                {/* <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Event</th> */}
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Status</th>
+    <div className="min-h-screen px-6">
+        <div className="overflow-hidden rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+            <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead>
+                        <tr className="bg-gray-200 dark:bg-[#3b3b3b]">
+                            <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">No</th>
+                            <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Updated By</th>
+                            <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Date & Time</th>
+                            <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Updates</th>
+                            <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody className="bg-white dark:bg-[#1b1b1d] divide-y divide-gray-200 dark:divide-gray-700">
+                        {Data.length > 0 ? Data.map((item, index) => (
+                            <tr
+                                key={index}
+                                className="hover:bg-gray-100 dark:hover:bg-[#28282a] transition-colors duration-150"
+                            >
+                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-300">{index + 1}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{item.updatedBy}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{item.datetime}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{item.details}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                                        {item.status}
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                            {Data.length > 0 && Data?.map((item, index) => (
-                                <tr
-                                    key={index}
-                                    className="hover:bg-gray-200 dark:hover:bg-gray-800"
-                                >
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{index + 1}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.updatedBy}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.datetime}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.details}</td>
-                                    {/* 
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.caseAssigned}</td> */}
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.status}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                        )) : (
+                            <tr>
+                                <td colSpan="5" className="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
+                                    <div className="flex flex-col items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                                        </svg>
+                                        <span className="text-md font-medium">No data available</span>
+                                        <span className="text-xs">Add updates to see them here</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </div>
 
             <Modal open={open} onClose={() => setOpen(false)}>
 
@@ -145,7 +161,7 @@ console.log(res.data.data[0]);
                                 name="status"
                                 value={formData.status}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             >
                                 <option value="">Select Status</option>
@@ -170,7 +186,7 @@ console.log(res.data.data[0]);
                                 value={formData.details}
                                 placeholder="Enter Details"
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             />
                         </div>

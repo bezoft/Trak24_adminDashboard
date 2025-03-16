@@ -77,43 +77,42 @@ function Login() {
 
             {/* Main Content Section */}
             <section
-                className="min-h-screen flex flex-col justify-center dark:hidden bg-gray-100 dark:bg-[#23272f] p-6"
+                className="min-h-screen flex flex-col justify-center dark:hidden bg-gray-100 dark:bg-[#1b1b1d] p-6"
                 style={{ backgroundImage: 'url(/assets/GS-bg2.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
 
 
-                <div className='flex justify-center items-center min-h-screen'>
-                    {/* Main container: will adjust to fit the screen size */}
-                    <div className=' rounded-xl shadow-lg bg-orange-500 bg-opacity-5 w-[850px] h-[550px]'>
-                        <div className='flex h-full'>
+<div className='flex justify-center items-center min-h-screen'>
+                  
+                  <div className=' rounded-xl shadow-lg bg-orange-500 bg-opacity-5 w-1/3 h-[550px]'>
 
-                            {/* Login form section: 40% of the main container */}
-                            <div className='flex flex-col items-center justify-center h-full space-y-3 w-2/4 p-4'>
-                                <div className='flex flex-col items-center justify-center'>
-                                    <h1 className='text-3xl'>Log In</h1>
-                                    <p className='mt-1  mb-4'>Log in to continue to admin dashboard!</p>
-                                </div>
-                                <div className='w-full px-10'>
+    
+                  <div className='flex flex-col items-center justify-center h-full space-y-6 w-full p-4'>
+                              <div className='flex flex-col items-center justify-center'>
+                                  <h1 className='text-4xl'>Log In</h1>
+                                  <p className='mt-1 mb-4'>Log in to continue to admin dashboard!</p>
+                              </div>
+                              <div className='w-full px-14'>
                                     <label htmlFor="email" className="block text-gray-600">Username</label>
                                     <input
                                         type="text"
                                         id="uername"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
-                                        className="w-full px-4 py-2 mt-2 rounded-full border text-black border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-full px-4 py-3 mt-2 mb-3 rounded-2xl border text-white bg-transparent border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         placeholder="Enter your username"
                                         required
                                     />
                                 </div>
 
-                                <div className='w-full px-10'>
+                                <div className='w-full px-14 mb-24'>
                                     <label htmlFor="password" className="block text-gray-600">Password</label>
                                     <input
                                         type="password"
                                         id="password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full px-4 py-2 mt-2 mb-3 rounded-full border text-black border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-full px-4 py-3 mt-2 mb-3 rounded-2xl border text-white bg-transparent border-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         placeholder="Enter your password"
                                         required
                                     />
@@ -121,7 +120,7 @@ function Login() {
 
                                 <button
                                     onClick={HandleLogin}
-                                    className="bg-orange-500 w-3/4 py-3  text-white rounded-full hover:bg-orange-600"
+                                 className="bg-orange-500 w-1/2 py-3 text-white rounded-2xl hover:bg-orange-600"
                                 >
                                     Login
                                 </button>
@@ -130,12 +129,11 @@ function Login() {
 
                         </div>
                     </div>
-                </div>
             </section>
 
             <div className='hidden dark:block'>
                 <section
-                    className="min-h-screen flex flex-col justify-center bg-gray-100 dark:bg-[#23272f] p-6"
+                    className="min-h-screen flex flex-col justify-center bg-gray-100 dark:bg-[#1b1b1d] p-6"
                     style={{ backgroundImage: 'url(/assets/GS-bg3.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
                 >
                     <div className='flex justify-center items-center min-h-screen'>

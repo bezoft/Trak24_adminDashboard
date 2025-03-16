@@ -1,5 +1,5 @@
 import express from "express";
-import { createOrUpdateUnit, getAllStock, GetExpiringUnits, getUserUnits, installUnit, searchUnitByImei } from "../DBControllers/unitsControllers.js";
+import { createOrUpdateUnit, getAllStock, GetExpiringUnits, getUnitByShipment, getUnitsByModel, getUserUnits, installUnit, searchUnitByImei } from "../DBControllers/unitsControllers.js";
 const router = express.Router()
 
 
@@ -18,9 +18,9 @@ router.post("/config-new-unit", createOrUpdateUnit)
 
 router.get("/expiring-units/:year/:month", GetExpiringUnits)
 
-// router.post("/config-new-unit", createOrUpdateUnit)
+ router.get("/get-unit-model/:status/:shipmentCode", getUnitsByModel)
 
-// router.post("/config-new-unit", createOrUpdateUnit)
+ router.get("/unit-shipment/:shipmentCode", getUnitByShipment)
 
 
 export default router

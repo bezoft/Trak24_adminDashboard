@@ -44,7 +44,7 @@ console.log(Data);
             <div className="text-gray-900 dark:text-gray-200">
                 <h2 className="text-2xl font-bold mb-6 text-center">Contacts</h2>
                 <div className="flex justify-center overflow-x-auto p-4 mt-5 max-h-[400px] overflow-y-auto">
-                    <table className="min-w-fit border border-gray-300 dark:bg-[#16181d] dark:border-gray-700">
+                    <table className="min-w-fit border border-gray-300 dark:bg-[#1b1b1d] dark:border-gray-700">
                         <thead>
                             <tr className="bg-gray-200 dark:bg-[#343a46]">
                                 <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 ">No</th>

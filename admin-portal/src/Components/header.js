@@ -211,11 +211,11 @@ const Header = () => {
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/maintanace")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  {/* <div onClick={() => navigate("/maintanace")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Maintanace
                     </a>
-                  </div>
+                  </div> */}
 
                   <div onClick={() => navigate("/manage-incidents")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
@@ -223,11 +223,11 @@ const Header = () => {
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/auto-report-log")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  {/* <div onClick={() => navigate("/auto-report-log")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Auto Report Log
                     </a>
-                  </div>
+                  </div> */}
 
                   <div onClick={() => navigate("/live-caution")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">

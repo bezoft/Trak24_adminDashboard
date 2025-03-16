@@ -62,7 +62,7 @@ function HomePage() {
 
             {/* Main Content Section */}
             <section
-                className="min-h-screen flex flex-col justify-center dark:hidden bg-gray-100 dark:bg-[#23272f] p-6"
+                className="min-h-screen flex flex-col justify-center dark:hidden bg-gray-100 dark:bg-[#1b1b1d] p-6"
                 style={{ backgroundImage: 'url(/assets/GS-bg2.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
                 <div className="max-w-4xl mx-auto text-center">
@@ -90,7 +90,7 @@ function HomePage() {
             </section>
             <div className='hidden dark:block'>
                 <section
-                    className="min-h-screen flex flex-col justify-center bg-gray-100 dark:bg-[#23272f] p-6"
+                    className="min-h-screen flex flex-col justify-center bg-gray-100 dark:bg-[#1b1b1d] p-6"
                     style={{ backgroundImage: 'url(/assets/GS-bg3.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
                 >
                     <div className="max-w-4xl mx-auto text-center">
@@ -156,7 +156,7 @@ function HomePage() {
 
       <section
         id="pricing"
-        className="min-h-screen flex flex-col justify-center bg-gray-100 dark:bg-[#23272f] p-6"
+        className="min-h-screen flex flex-col justify-center bg-gray-100 dark:bg-[#1b1b1d] p-6"
       >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">

@@ -119,90 +119,132 @@ function ConfigureNewUnit() {
     
     return (
         <>
-            <Header />
-            <div className="mt-28">
-                <div className=" flex w-full items-left px-6 ">
-                    <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-200">
-                        Configure New Unit
-                    </h2>
-                </div>
+    <Header />
+    <div className="mt-28">
+        {/* Page Title */}
+        <div className="flex w-full items-left px-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-200">
+                Configure New Unit
+            </h2>
+        </div>
 
-                {/* Centered Search Section */}
-                <div className="mx-auto w-full max-w-lg mt-24">
-                    <div className="flex items-center space-x-5">
-                        <input
-                            type="text"
-                            value={unitId}
-                            onChange={(e) => setUnitId(e.target.value)}
-                            placeholder="Enter Unit ID"
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
-                        />
-                        <button
-                            onClick={handleSearch}
-                            className="px-6 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded-md shadow-md"
-                        >
-                            Search
-                        </button>
-                    </div>
-                </div>
-                {/* Conditional Add to Stock List Button */}
-                {stockList === false ? (
-                    <div className="mt-10 text-center">
-                        <button
-                            onClick={AddToStock}
-                            className="px-6 py-2 text-white bg-green-500 hover:bg-green-600 rounded-md shadow-md"
-                        >
-                            Add to Stock List
-                        </button>
-                    </div>
-                ) : stockList === true ? (
-                    <div className="mt-10 text-center">
-                        <p className="mt-4 text-red-500 text-center">
-                            Unit Already in Stock List
-                        </p>
-                    </div>
-                ) : (
-                    null // Display nothing when stockList is null
-                )}
+        {/* Search Section */}
+        <div className="mx-auto w-full max-w-lg mt-24">
+            <div className="flex items-center space-x-5">
+                <input
+                    type="text"
+                    value={unitId}
+                    onChange={(e) => setUnitId(e.target.value)}
+                    placeholder="Enter Unit ID"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                />
+                <button
+                    onClick={handleSearch}
+                    className="px-6 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded-md shadow-md transition duration-200"
+                >
+                    Search
+                </button>
+            </div>
+        </div>
 
-                {/* Feedback */}
-                {/* {!isUnitFound && unitId && (
-                    <p className="mt-4 text-red-500 text-center">
-                        Unit not found. Please check the ID and try again.
-                    </p>
-                )} */}
-                <div className="overflow-x-auto p-4 mt-10">
-                    <table className="min-w-full border border-gray-300 dark:bg-[#16181d] dark:border-gray-700">
+        {/* Conditional Add to Stock List Button */}
+        {stockList === false ? (
+            <div className="mt-10 text-center">
+                <button
+                    onClick={AddToStock}
+                    className="px-6 py-2 text-white bg-green-500 hover:bg-green-600 rounded-md shadow-md transition duration-200"
+                >
+                    Add to Stock List
+                </button>
+            </div>
+        ) : stockList === true ? (
+            <div className="mt-10 text-center">
+                <p className="mt-4 text-red-500 text-center">
+                    Unit Already in Stock List
+                </p>
+            </div>
+        ) : null}
+
+        {/* Table Section */}
+        <div className="min-h-screen px-6 mt-10">
+            <div className="overflow-hidden rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+                <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead>
-                            <tr className="bg-gray-200 dark:bg-[#343a46]">
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 whitespace-nowrap">Sl No</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Time of Signal</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">GPS</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">Reports</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 whitespace-nowrap">Geographic Area</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 ">Speed</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300">KM Reading</th>
+                            <tr className="bg-gray-200 dark:bg-[#3b3b3b]">
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Sl No</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Time of Signal</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">GPS</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Reports</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Geographic Area</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Speed</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">KM Reading</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                        {Array.isArray(Data) && Data.length > 0 &&
-  Data.map((item, index) => (
-                                <tr
-                                    className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer"
-                                >
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{index + 1}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">Current Time & Date: {formatDateTime(currentDate)}<br/>Unit Time & Date: {DateTimeFRMT(item.liveData.date,item.liveData.time)}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 flex justify-center " title={`Signal Strength ${item.liveData.gsm_signal}%`}><SignalStrengthIcon strength={item.liveData.gsm_signal} /></td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.reports.length}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center"><AddressCell latitude={item.liveData.latitude} longitude={item.liveData.longitude}/></td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.liveData.speed} km/h,<br/> Heading: {item.liveData.latitude_direction}{item.liveData.longitude_direction}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.liveData.gps_odometer} km</td>
+                        <tbody className="bg-white dark:bg-[#1b1b1d] divide-y divide-gray-200 dark:divide-gray-700">
+                            {Array.isArray(Data) && Data.length > 0 ? (
+                                Data.map((item, index) => (
+                                    <tr
+                                        key={index}
+                                        className="hover:bg-gray-100 dark:hover:bg-[#28282a] cursor-pointer transition-colors duration-150"
+                                    >
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-300 text-center">
+                                            {index + 1}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
+                                            Current Time & Date: {formatDateTime(currentDate)}<br />
+                                            Unit Time & Date: {DateTimeFRMT(item.liveData.date, item.liveData.time)}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
+                                            <div title={`Signal Strength ${item.liveData.gsm_signal}%`}>
+                                                <SignalStrengthIcon strength={item.liveData.gsm_signal} />
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
+                                            {item.reports.length}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
+                                            <AddressCell latitude={item.liveData.latitude} longitude={item.liveData.longitude} />
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
+                                            {item.liveData.speed} km/h,<br />
+                                            Heading: {item.liveData.latitude_direction}{item.liveData.longitude_direction}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
+                                            {item.liveData.gps_odometer} km
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="7" className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                                        <div className="flex flex-col items-center">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                className="h-10 w-10 mb-2"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={1.5}
+                                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                                                />
+                                            </svg>
+                                            <span className="text-lg font-medium">No data available</span>
+                                            <span className="text-sm">Please search for a unit to view data</span>
+                                        </div>
+                                    </td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
                 </div>
-            </div >
+            </div>
+        </div>
+    </div>
 
             <Modal open={open} onClose={() => setOpen(false)}>
                 <div className="text-gray-900 dark:text-gray-200">
@@ -222,7 +264,7 @@ function ConfigureNewUnit() {
                                 value={formData.imei}
                                 placeholder="Enter Name"
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             />
                         </div>
@@ -238,7 +280,7 @@ function ConfigureNewUnit() {
                                 name="shipment"
                                 value={formData.shipment}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             >
                                 <option>Select a Shipment Code</option>
@@ -259,7 +301,7 @@ function ConfigureNewUnit() {
                                 name="model"
                                 value={formData.model}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             >
                                 <option>Select a Model</option>
@@ -315,7 +357,7 @@ function ConfigureNewUnit() {
                                 name="status"
                                 value={formData.status}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             >
                                 <option>Select a Status</option>
@@ -354,7 +396,7 @@ function ConfigureNewUnit() {
                                 placeholder="Enter Remarks"
                                 value={formData.remarks}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             />
                         </div>

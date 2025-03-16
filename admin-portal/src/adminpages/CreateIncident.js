@@ -129,7 +129,7 @@ function CreateIncident() {
                                         value={formData.unit}
                                         onChange={handleChange}
                                         name="unit"
-                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={"dfd"}>Select a Unit</option>
@@ -153,7 +153,7 @@ function CreateIncident() {
                                         value={formData.caseType}
                                         onChange={handleChange}
                                         name="caseType"
-                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         required
                                     >
                                         <option value="">Select a Case Type</option>
@@ -179,7 +179,7 @@ function CreateIncident() {
                                         value={formData.caseDesc}
                                         onChange={handleChange}
                                         name="caseDesc"
-                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         required
                                         disabled={!formData.caseType} // Disable if no caseType selected
                                     >
@@ -211,7 +211,7 @@ function CreateIncident() {
                                         onChange={handleChange}
                                         name="details"
                                         placeholder="Enter Details"
-                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                        className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         required
                                     />
                                 </div>
@@ -227,7 +227,7 @@ function CreateIncident() {
                                         name="priority"
                                         value={formData.priority}
                                         onChange={handleChange}
-                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={""}>Select Case Priority</option>
@@ -249,7 +249,7 @@ function CreateIncident() {
                                         name="response"
                                         value={formData.response}
                                         onChange={handleChange}
-                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={""}>Select Case Priority</option>
@@ -281,7 +281,7 @@ function CreateIncident() {
                                         name="cuvisible"
                                         value={formData.cuvisible}
                                         onChange={handleChange}
-                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={false}>Hide</option>
@@ -301,7 +301,7 @@ function CreateIncident() {
                                         name="caseAssigned"
                                         value={formData.caseAssigned}
                                         onChange={handleChange}
-                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                        className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     >
                                         <option value={""}>Select Case Priority</option>
@@ -381,7 +381,7 @@ function CreateIncident() {
                                 name="assetMake"
                                 value={formData.assetMake}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             >
                                 <option value={""}>Select a Make</option>
@@ -401,7 +401,7 @@ function CreateIncident() {
                                 name="assetModel"
                                 value={formData.assetModel}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             >
                                 <option value={""}>Select a Model</option>
@@ -423,7 +423,7 @@ function CreateIncident() {
                                 placeholder="KL 12 A 1234"
                                 value={formData.assetRegNo}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                             />
                         </div>
                         <div>
@@ -438,7 +438,7 @@ function CreateIncident() {
                                 name="assetType"
                                 value={formData.assetType}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                                className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                 required
                             >
                                 <option value={""}>Select a Type</option>

@@ -15,10 +15,10 @@ export const searchUnitByImei = async (req, res) => {
     const { imei } = req.params; // Get IMEI from request parameters
 
     // Check if a document with the given IMEI exists
-    const existingData = await Units.findOne({ imei });
+    const existingData = await Units.findOne({ imei }, { reports: 0 ,liveData:0}).populate("customer", "company firstname _id");
 
 
-    res.status(200).json({ success: true, unit: existingData });
+    res.status(200).json({ success: true, unit: [existingData] });
   } catch (error) {
     console.error("Error searching for unit:", error.message);
     res.status(500).json({ success: false, message: "Internal Server Error", error: error.message });
@@ -216,5 +216,92 @@ export const GetExpiringUnits=async (req, res) => {
 };
 
 
+export const getUnitsByModel = async (req, res) => {
+  try {
+    const { status, shipmentCode } = req.params;
+
+    const matchCondition = {};
+
+    if (status && status !== "false") {
+      matchCondition.status = status;
+    } else if (shipmentCode) {
+      matchCondition.shipment = shipmentCode; // Ensure this matches your DB field name
+    }
+
+    const unitsByModel = await Units.aggregate([
+      {
+        $match: matchCondition // Filtering based on status or shipmentCode
+      },
+      {
+        $group: {
+          _id: { status: "$status", model: "$model" },
+          units: { 
+            $push: {
+              imei: "$imei",
+              simAttached: "$simAttached",
+              assetRegNo: "$assetRegNo",
+              assetType: "$assetType",
+              stockListed: "$stockListed",
+              model: "$model",
+              remarks: "$remarks",
+              shipment: "$shipment",
+              shipmentCode: "$shipmentCode",
+              status: "$status",
+              assetMake: "$assetMake",
+              assetModel: "$assetModel",
+              customer: "$customer",
+              gprsPort: "$gprsPort",
+              simNumber: "$simNumber",
+              expiry: "$expiry",
+              installation: "$installation",
+              renewRange: "$renewRange"
+            }
+          }
+        }
+      },
+      {
+        $project: {
+          _id: 0,
+          model: "$_id",
+          units: 1
+        }
+      }
+    ]);
+
+    return res.status(200).json({
+      success: true,
+      message: "Units retrieved successfully.",
+      data: unitsByModel,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error });
+  }
+};
 
 
+
+
+export const getUnitByShipment = async (req, res) => {
+  try {
+    const { shipmentCode } = req.params;
+
+    if (!shipmentCode) {
+      return res.status(400).json({ message: "Shipment code is required" });
+    }
+
+    const unit = await Units.findOne({ shipment: shipmentCode }).select("-reports -liveData");
+
+    if (!unit) {
+      return res.status(404).json({ message: "Unit not found" });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Units retrieved successfully.",
+      data: [unit],
+    });
+  } catch (error) {
+    console.error("Error fetching unit by shipment code:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};

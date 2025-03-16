@@ -59,7 +59,7 @@ function NewShipment() {
                             name="shipmentCode"
                             value={formData.shipmentCode}
                             onChange={handleChange}
-                           className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                           className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                             placeholder="Enter shipment code"
                         />
                     </div>
@@ -70,7 +70,7 @@ function NewShipment() {
                             name="branch"
                             value={formData.branch}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                         >
                             <option value="Kerala">Kerala</option>
                             <option value="Other">Other</option>
@@ -84,7 +84,7 @@ function NewShipment() {
                             name="quantity"
                             value={formData.quantity}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                             placeholder="Enter quantity"
                         />
                     </div>
@@ -95,7 +95,7 @@ function NewShipment() {
                             name="moreInfo"
                             value={formData.moreInfo}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                             placeholder="Additional information"
                         />
                     </div>
@@ -106,7 +106,7 @@ function NewShipment() {
                             name="vendor"
                             value={formData.vendor}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                         >
                              <option value="">Select Vendor</option>
                             <option value="rcbItem ">Select a Vendor</option>
@@ -129,7 +129,7 @@ function NewShipment() {
                             name="createdDate"
                             value={formData.createdDate}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#23272f] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                         />
                     </div>
                     {/* Actions */}
