@@ -124,67 +124,88 @@ function AdminRoles() {
 
     return (
         <>
-            <Header />
-            <div className="container mx-auto px-4 max-w-6xl mt-24">
-                <div className="px-6 py-4 mt-24 flex justify-between">
-                    <h1 className="text-3xl font-semibold text-gray-900 dark:text-gray-300">
-                        All Admins
-                    </h1>
-                    <button onClick={() => AdminType === 0 ? setOpen(true) : null} className={`${AdminType === 0 ? "" : "disabled cursor-not-allowed"} w-fit h-12 px-4 border border-orange-600 bg-transparent rounded-md flex justify-center items-center `}>+ Add New Admin</button>
-                </div>
-
-                {/* Table */}
-                <div className="px-6 py-4">
-                    <table className="min-w-full border border-gray-300 dark:border-gray-700">
+        <Header />
+        <div className="mt-24 flex flex-col md:flex-row justify-between items-center h-full">
+            <div>
+                <h1 className="text-black dark:text-white font-semibold text-4xl p-6 mb-10">
+                    All Admins
+                </h1>
+            </div>
+            <div className="flex flex-row justify-end m-4 p-3 mb-10">
+                <button
+                    onClick={() => AdminType === 0 ? setOpen(true) : null}
+                    className={`${AdminType === 0 ? "" : "disabled cursor-not-allowed"} w-fit h-12 px-4 border border-orange-600 bg-transparent rounded-md flex justify-center items-center text-orange-600 hover:bg-orange-600 hover:text-white transition-colors duration-200`}
+                >
+                    + Add New Admin
+                </button>
+            </div>
+        </div>
+    
+        <div className="min-h-screen px-6">
+            <div className="overflow-hidden rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+                <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead>
                             <tr className="bg-gray-200 dark:bg-[#3b3b3b]">
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 whitespace-nowrap text-center">No</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">Name</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">Role</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">Username</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">Password</th>
-                                <th className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">Edit / Delete</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">No</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Name</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Role</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Username</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Password</th>
+                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Edit / Delete</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-200 dark:divide-gray-600">
-                            {Array.isArray(Data) && Data.length > 0 &&
-                                Data.map((item, index) => (
-                                    <tr
-                                        key={index}
-                                        className="hover:bg-gray-200 dark:hover:bg-[#28282a]"
-                                    >
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{index + 1}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.name}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">
-                                            <button className={`px-3 py-2 text-sm dark:text-white text-black ${item.adminType === 0 ? "bg-orange-500" : "bg-green-500"} bg-opacity-20 rounded-full transition duration-200`}>
-                                                {item.adminType === 0 ? "Super Admin" : "Admin"}
-                                            </button>
-                                        </td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">{item.username}</td>
-                                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-300 text-center">***************</td>
-                                        <td className="px-6 py-4 text-sm text-red-600 dark:text-red-600 text-center">
-                                            <a
-                                                className={`${AdminType === 0 || (AdminType === 1 && item._id === AdminId) ? "" : "disabled cursor-not-allowed"}`}
-                                                style={AdminType === 1 && item._id !== AdminId ? { color: "gray" } : {}}
-                                                onClick={() => AdminType === 0 || (AdminType === 1 && item._id === AdminId) ? handleEditinit(item._id, item.name, item.username, item.adminType) : null}
-                                            >
-                                                Edit &nbsp;
-                                            </a>
-                                            <a
-                                                className={`${AdminType === 0 ? "" : "disabled cursor-not-allowed"}`}
-                                                style={AdminType === 1 && item._id !== AdminId || item._id === AdminId ? { color: "gray" } : {}}
-                                                onClick={() => AdminType === 0 ? handleDelete(item._id) : null}
-                                            >
-                                                | &nbsp;Delete
-                                            </a>
-                                        </td>
-
-                                    </tr>
-                                ))}
+                        <tbody className="bg-white dark:bg-[#1b1b1d] divide-y divide-gray-200 dark:divide-gray-700">
+                            {Array.isArray(Data) && Data.length > 0 ? Data.map((item, index) => (
+                                <tr
+                                    key={index}
+                                    className="hover:bg-gray-100 dark:hover:bg-[#28282a] cursor-pointer transition-colors duration-150"
+                                >
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-300">{index + 1}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{item.name}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                                        <button className={`px-3 py-2 text-sm dark:text-white text-black ${item.adminType === 0 ? "bg-orange-500" : "bg-green-500"} bg-opacity-20 rounded-full transition duration-200`}>
+                                            {item.adminType === 0 ? "Super Admin" : "Admin"}
+                                        </button>
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{item.username}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">***************</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-red-600 dark:text-red-600">
+                                        <a
+                                            className={`${AdminType === 0 || (AdminType === 1 && item._id === AdminId) ? "" : "disabled cursor-not-allowed"}`}
+                                            style={AdminType === 1 && item._id !== AdminId ? { color: "gray" } : {}}
+                                            onClick={() => AdminType === 0 || (AdminType === 1 && item._id === AdminId) ? handleEditinit(item._id, item.name, item.username, item.adminType) : null}
+                                        >
+                                            Edit &nbsp;
+                                        </a>
+                                        <a
+                                            className={`${AdminType === 0 ? "" : "disabled cursor-not-allowed"}`}
+                                            style={AdminType === 1 && item._id !== AdminId || item._id === AdminId ? { color: "gray" } : {}}
+                                            onClick={() => AdminType === 0 ? handleDelete(item._id) : null}
+                                        >
+                                            | &nbsp;Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            )) : (
+                                <tr>
+                                    <td colSpan="6" className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                                        <div className="flex flex-col items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                                            </svg>
+                                            <span className="text-lg font-medium">No data available</span>
+                                            <span className="text-sm">Please add an admin to view data</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>
             </div>
+        </div>
+    
 
             <Modal open={open2} onClose={() => setOpen2(false)}>
                 <div className="text-gray-900 dark:text-gray-200">

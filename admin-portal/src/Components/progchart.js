@@ -23,7 +23,7 @@ const ProgressBarChart = ({ label, total, active, isDarkMode }) => {
 
             {/* Progress bar container */}
             <div
-                className={`w-full h-2 rounded-full overflow-hidden ${isDarkMode ? "bg-gray-700" : "bg-gray-200"
+                className={`w-full h-2 rounded-full overflow-hidden ${isDarkMode ? "bg-[#2d2d2e]" : "bg-gray-200"
                     }`}
             >
                 {/* Progress bar */}
