@@ -49,7 +49,7 @@ export const AdminLogin = async (req, res) => {
 
   try {
     // Check if user exists
-    const user = await AdminRoles.findOne({ username });
+    const user = await AdminRoles.findOne({ username:username.toLowerCase() });
     if (!user) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }

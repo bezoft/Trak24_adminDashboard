@@ -13,7 +13,7 @@ console.log(req.body);
     const hashedPassword = await bcrypt.hash(password, 10);
     const newAdmin = new AdminRoles({
       name,
-      username,
+      username:username.toLowerCase(),
       adminType,
       password: hashedPassword,
     });
@@ -55,7 +55,7 @@ export const updateAdmin = async (req, res) => {
 
     // Update admin fields
     admin.name = name;
-    admin.username = username;
+    admin.username = username.toLowerCase();
     admin.adminType = adminType;
 
     if (password) {
