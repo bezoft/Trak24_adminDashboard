@@ -195,7 +195,7 @@ function Login() {
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
                                         onKeyPress={handleKeyPress}
-                                        className="block w-full px-4 py-3 rounded-xl border-gray-600 bg-transperent border text-white transition-all duration-200 ease-in-out"
+                                        className="block w-full px-4 py-3 rounded-xl border-gray-600 bg-[#1b1b1d]/20 border text-white transition-all duration-200 ease-in-out"
                                         placeholder="Enter your username"
                                         required
                                     />
@@ -214,7 +214,7 @@ function Login() {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         onKeyPress={handleKeyPress}
-                                        className="block w-full px-4 py-3 rounded-xl border-gray-600 bg-transperent border text-white transition-all duration-200 ease-in-out"
+                                        className="block w-full px-4 py-3 rounded-xl border-gray-600 bg-[#1b1b1d]/20 border text-white transition-all duration-200 ease-in-out"
                                         placeholder="Enter your password"
                                         required
                                     />
