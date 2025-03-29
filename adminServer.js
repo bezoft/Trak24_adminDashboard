@@ -42,7 +42,6 @@ app.use("/api/api-trkadn",analyticsRoute)
 app.use("/api/api-trkadn",adminRoute)
 app.use("/api/api-trkadn",userRoute)
 
-
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(staticPath, 'index.html'));
 });
