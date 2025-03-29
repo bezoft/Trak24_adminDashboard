@@ -166,7 +166,7 @@ const Header = () => {
 
       {/* Side Drawer */}
       <div
-        className={`fixed top-0 left-0 h-full bg-white dark:bg-[#1b1b1d] overflow-auto shadow-lg z-40 transform transition-transform duration-300 ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed top-0 left-0 h-full bg-white dark:bg-[#1b1b1d] overflow-auto shadow-lg overflow-x-hidden z-40 transform transition-transform duration-300 ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         style={{ width: '300px' }}
       >
@@ -406,10 +406,10 @@ const Header = () => {
 
       {/* Overlay */}
       {isDrawerOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30"
-          onClick={toggleDrawer}
-        ></div>
+     <div
+     className="fixed inset-0 hover:cursor-pointer bg-black/30 z-30"
+     onClick={toggleDrawer}
+   ></div>
       )}
       {isModalOpen === true ? (<CreateVehicle open={isModalOpen} onClose={closeModal} />) : null}
       {simBatchModal === true ? (<CreateSimBatch open={simBatchModal} onClose={closesimbModal} />) : null}

@@ -164,7 +164,7 @@ function AdminRoles() {
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-300">{index + 1}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">{item.name}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                                        <button className={`px-3 py-2 text-sm dark:text-white text-black ${item.adminType === 0 ? "bg-orange-500" : "bg-green-500"} bg-opacity-20 rounded-full transition duration-200`}>
+                                        <button className={`px-3 py-2 text-sm dark:text-white text-black ${item.adminType === 0 ? "bg-orange-500/20" : "bg-green-500/20"} bg-opacity-20 rounded-full transition duration-200`}>
                                             {item.adminType === 0 ? "Super Admin" : "Admin"}
                                         </button>
                                     </td>

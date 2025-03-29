@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 html {
   background-color: #ffffff; /* Custom dark theme background */
@@ -35,4 +35,3 @@ html.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 .slide-in-top {
   animation: slideInFromTop 1s ease-out; /* Duration: 1s, ease-out for smooth transition */
 }
-

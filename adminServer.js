@@ -42,7 +42,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'admin-portal', 'build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'admin-portal', 'dist', 'index.html'));
 });
 
 app.listen(7025, () => {
