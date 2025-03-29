@@ -25,7 +25,11 @@ app.use(cors({
   origin: '*',  // Allow requests from any origin
 }));
 app.use(express.json());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
+const staticPath = path.resolve(__dirname, 'admin-portal', 'dist');
+app.use(express.static(staticPath));
 
 app.use("/api/api-trkadn",authRoute)
 app.use("/api/api-trkadn",unitRoute)
@@ -38,11 +42,10 @@ app.use("/api/api-trkadn",adminRoute)
 app.use("/api/api-trkadn",userRoute)
 
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'admin-portal', 'dist', 'index.html'));
+  res.sendFile(path.resolve(staticPath, 'index.html'));
 });
 
 app.listen(7025, () => {
