@@ -29,8 +29,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 
-
-
 app.use("/api/api-trkadn",authRoute)
 app.use("/api/api-trkadn",unitRoute)
 app.use("/api/api-trkadn",simRoute)
