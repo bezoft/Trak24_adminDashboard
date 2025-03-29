@@ -28,8 +28,7 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const staticPath = path.resolve(__dirname, 'admin-portal', 'dist');
-app.use(express.static(staticPath));
+
 
 
 app.use("/api/api-trkadn",authRoute)
@@ -41,7 +40,8 @@ app.use("/api/api-trkadn",vehicleRoute)
 app.use("/api/api-trkadn",analyticsRoute)
 app.use("/api/api-trkadn",adminRoute)
 app.use("/api/api-trkadn",userRoute)
-
+const staticPath = path.resolve(__dirname, 'admin-portal', 'dist');
+app.use(express.static(staticPath));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(staticPath, 'index.html'));
 });
