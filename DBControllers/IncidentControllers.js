@@ -71,7 +71,7 @@ export const createIncident = async (req, res) => {
 export const getAllIncidents = async (req, res) => {
   try {
     // Fetch all incidents from the database
-    const incidents = await IncidentModel.find()
+    const incidents = await IncidentModel.find({ status: 1 })
       .sort({ createdAt: -1 }) // Sort by createdAt in descending order
       .populate({
         path: "unit",
@@ -162,6 +162,25 @@ export const updateIncident = async (req, res) => {
     return res.status(200).json({ success: true, message: "Incident updated successfully", data: updatedIncident });
   } catch (error) {
     console.error("Error updating incident:", error.message);
+    return res.status(500).json({ success: false, message: `Error updating incident: ${error.message}` });
+  }
+};
+
+
+export const DeactivateIncident = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const incident = await IncidentModel.findByIdAndUpdate(id, { status: 0 }, { new: true });
+
+    if (!incident) {
+      return res.status(404).json({ success: false, message: "Incident not found" });
+    }
+    let analytics = await AnalyticsModel.findOne();
+    analytics.incidents = analytics.incidents-1;
+    await analytics.save();
+    return res.status(200).json({ success: true, message: "Incident deactivated successfully"});
+  } catch (error) {
+    console.error(error);
     return res.status(500).json({ success: false, message: `Error updating incident: ${error.message}` });
   }
 };

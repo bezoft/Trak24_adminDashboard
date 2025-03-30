@@ -39,8 +39,8 @@ const incidentSchema = new mongoose.Schema(
       type:String
     },
     status: {
-      type: String,
-      default:"Active"
+      type: Number,
+      default:1
     },
     updates:[{
       status:{

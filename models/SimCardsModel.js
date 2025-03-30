@@ -6,7 +6,7 @@ const simCardsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    unitid:{
+    unitid: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Units',
     },
@@ -43,11 +43,11 @@ const simCardsSchema = new mongoose.Schema(
     puc2: {
       type: Number,
     },
-    attached:{
-      type:Boolean,
-      default:false
+    attached: {
+      type: Boolean,
+      default: false
     }
-  },
+  }, { timestamps: true }
 );
 
 export default mongoose.model("SimCards", simCardsSchema);

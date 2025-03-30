@@ -141,7 +141,7 @@ export const findSimByBatch = async (req, res) => {
     const data = await SimCardsModel.find({ batch })
       .populate({
         path: 'unitid', // Populate the unitid reference in the SimCards schema
-        select: 'imei assetRegNo assetMake assetModel model shipment', // Select the fields you want from the Units model
+        select: 'imei assetRegNo assetMake assetModel model shipment liveData.date liveData.time', // Select the fields you want from the Units model
         populate: {
           path: 'customer', // Populate the customer reference in the Units schema (referencing the User model)
           select: 'firstname company', // Select the fields you want from the User model

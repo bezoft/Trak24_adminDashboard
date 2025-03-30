@@ -132,8 +132,7 @@ function CreateIncident() {
                                         className="w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
                                         required
                                     >
-                                        <option value={"dfd"}>Select a Unit</option>
-                                        <option value={"4342"}>Select a Unit</option>
+                                        <option value={""}>Select a Unit</option>
                                         {userUnits.map((unit,index) => (
                                             <option value={unit._id} key={index}>{unit.assetMake} {unit.assetModel} - {unit.assetRegNo}</option>
                                         ))}
@@ -304,7 +303,7 @@ function CreateIncident() {
                                         className=" w-72 px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                         required
                                     >
-                                        <option value={""}>Select Case Priority</option>
+                                        <option value={""}>Select a admin</option>
                                         <option value="bz">bz</option>
                                     </select>
                                 </div>
@@ -359,7 +358,7 @@ function CreateIncident() {
                             className="w-full px-4 py-3 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600"
                             onClick={CreateIncident}
                         >
-                            Install Unit
+                            Create Case
                         </button>
                     </div>
                 </div>

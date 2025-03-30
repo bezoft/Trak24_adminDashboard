@@ -1,5 +1,5 @@
 import express from "express";
-import { addUpdateToIncident, createIncident, getAllIncidents, getIncidentById, updateIncident } from "../DBControllers/IncidentControllers.js";
+import { addUpdateToIncident, createIncident, DeactivateIncident, getAllIncidents, getIncidentById, updateIncident } from "../DBControllers/IncidentControllers.js";
 const router = express.Router()
 
 
@@ -15,5 +15,6 @@ router.put("/add-update/:id", addUpdateToIncident)
 
 router.put("/edit-incident/:id", updateIncident)
 
+router.post("/deactive-incident/:id", DeactivateIncident)
 
 export default router

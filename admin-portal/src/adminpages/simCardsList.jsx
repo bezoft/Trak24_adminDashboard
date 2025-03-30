@@ -6,6 +6,7 @@ import { processReportData } from '../DataHelpers/ReportPro';
 import Modal from '../Components/Modal';
 import ToggleButton from '../Components/ToggleButton';
 import {DateTimeFormatter} from '../Components/Date&TimeCell';
+import { DateTimeFRMT } from '../DataHelpers/Date&Time';
 
 function SimCardsList() {
 
@@ -51,9 +52,7 @@ console.log(AllBatches);
       //setIsLoading(true);
       const res = await axios.get(`/api-trkadn/getsim-by-batch/${batch}`);
       if (res.status === 200) {
-        console.log(res);
-        
-        console.log(res.data.data);
+        console.log(res.data);
         setData(res.data.data)
 
       } else {
@@ -75,7 +74,6 @@ console.log(AllBatches);
       //setIsLoading(true);
       const res = await axios.get(`/api-trkadn/getsim-by-number/${number}`);
       if (res.status === 200) {
-        console.log(res.data.data);
         setData([...res.data.data]);
 
       } else {
@@ -97,7 +95,7 @@ console.log(AllBatches);
       //setIsLoading(true);
       const res = await axios.get(`/api-trkadn/getsim-by-id/${id}`);
       if (res.status === 200) {
-        console.log(res);
+        console.log(res.data);
         setData([...res.data.data]);
 
       } else {
@@ -133,6 +131,27 @@ console.log(AllBatches);
       //   setIsRefreshing(false);
     }
   };
+  function formatDate(isoString) {
+    const date = new Date(isoString);
+
+    // Get the day, month, and year
+    const day = date.getUTCDate();
+    const month = date.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
+    const year = date.getUTCFullYear();
+
+    // Add ordinal suffix to the day
+    const suffix = (day) => {
+        if (day > 3 && day < 21) return 'th'; // 4th to 20th are 'th'
+        switch (day % 10) {
+            case 1: return 'st';
+            case 2: return 'nd';
+            case 3: return 'rd';
+            default: return 'th';
+        }
+    };
+
+    return `${day}${suffix(day)} ${month}, ${year}`;
+}
 
   return (
     <>
@@ -328,7 +347,7 @@ console.log(AllBatches);
                                                         <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Created on</span>
-                                                                <span className="text-sm font-medium text-gray-800 dark:text-gray-200">add date needed</span>
+                                                                <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{item.createdAt?formatDate(item.createdAt):"NULL"}</span>
                                                             </div>
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Unit Info</span>
@@ -345,7 +364,7 @@ console.log(AllBatches);
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Comments</span>
                                                                 <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
-                                                                    Attached & Active Last Signal<br />on 12-Sep-2024 07:21 PM
+                                                                    Active Last Signal on<br />{DateTimeFRMT(item.unitid?.liveData.date, item.unitid?.liveData.time)}
                                                                 </span>
                                                             </div>
                                                         </div>
