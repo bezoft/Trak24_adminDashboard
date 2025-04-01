@@ -16,9 +16,13 @@ export const searchUnitByImei = async (req, res) => {
 
     // Check if a document with the given IMEI exists
     const existingData = await Units.findOne({ imei }, { reports: 0 ,liveData:0}).populate("customer", "company firstname _id");
+if (existingData){
+  res.status(200).json({ success: true, unit: [existingData] });
+}else{
+  res.status(204).json({ success: true, unit: null });
+}
 
-
-    res.status(200).json({ success: true, unit: [existingData] });
+    
   } catch (error) {
     console.error("Error searching for unit:", error.message);
     res.status(500).json({ success: false, message: "Internal Server Error", error: error.message });

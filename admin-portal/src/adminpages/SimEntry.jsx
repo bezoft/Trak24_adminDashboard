@@ -93,7 +93,7 @@ console.log(formData);
                 <option value="">Select a Make</option>
                 {Array.isArray(AllBatches) && AllBatches.length > 0 ? (
                   AllBatches.map((batch, index) => (
-                    <option value={`${batch.batchName}, ${batch.gsmProvider}-${batch.purchaseDate}`}>{batch.batchName}, {batch.gsmProvider}-{batch.purchaseDate}</option>
+                    <option value={batch._id}>{batch.batchName}, {batch.gsmProvider}-{batch.purchaseDate}</option>
                   ))
                 ) : (
                   <option value="" disabled>No Make Found, Create One!</option>
@@ -115,6 +115,28 @@ console.log(formData);
             </div>
             {/* Mobile */}
             <div>
+              <label
+                className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
+                htmlFor="eSimServProvider"
+              >
+                eSIM Service Provider
+              </label>
+              <select
+                id="eSimServProvider"
+                name="eSimServProvider"
+                value={formData.eSimServProvider}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
+              >
+                <option value="">Select Service Provider</option>
+                <option value="Vodafone Idea Ltd">Vodafone Idea Ltd</option>
+                <option value="Taisys">Taisys</option>
+                <option value="Sensorise">Sensorise</option>
+
+              </select>
+            </div>
+            
+            <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">eSIM 2 Number</label>
               <input
                 type="text"
@@ -125,7 +147,6 @@ console.log(formData);
                 placeholder="Enter eSIM 2 Number"
               />
             </div>
-
             <div>
               <label
                 className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
@@ -179,27 +200,7 @@ console.log(formData);
               />
             </div>
             {/* Address - District */}
-            <div>
-              <label
-                className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
-                htmlFor="eSimServProvider"
-              >
-                eSIM Service Provider
-              </label>
-              <select
-                id="eSimServProvider"
-                name="eSimServProvider"
-                value={formData.eSimServProvider}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border bg-white dark:bg-[#1b1b1d] border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required
-              >
-                <option value="">Select Service Provider</option>
-                <option value="Vodafone Idea Ltd">Vodafone Idea Ltd</option>
-                <option value="Taisys">Taisys</option>
-                <option value="Sensorise">Sensorise</option>
-
-              </select>
-            </div>
+           
             {/* Address - State */}
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">IMSI/ICCID Number</label>

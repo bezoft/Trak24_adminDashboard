@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const simCardsSchema = new mongoose.Schema(
   {
     batch: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'SimBatches',
       required: true,
     },
     unitid: {

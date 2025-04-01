@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Creator: CorelDRAW 2021 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100.976mm" height="100.976mm" version="1.0" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 893.36 893.36"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <font id="FontID0" horiz-adv-x="507" font-variant="normal" style="fill-rule:nonzero" font-weight="400">
+	<font-face 
+		font-family="Impact">
+		<font-face-src>
+			<font-face-name name="Impact"/>
+		</font-face-src>
+	</font-face>
+   <missing-glyph><path d="M0 0z"/></missing-glyph>
+   <glyph unicode="2" horiz-adv-x="502" d="M460 135l0 -135 -434 0 0.33 113c128.66,210.16 205.16,340.17 229.5,390.17 24.33,50 36.49,89 36.49,116.83 0,21.5 -3.83,37.5 -11.17,48.17 -7.33,10.5 -18.5,15.83 -33.5,15.83 -15,0 -26.34,-5.83 -33.67,-17.5 -7.33,-11.67 -11,-34.83 -11,-69.49l0 -75 -177 0 0 28.83c0,44.17 2.33,79.17 6.83,104.67 4.5,25.5 15.83,50.67 33.66,75.34 18,24.67 41.33,43.5 70,56.17 28.68,12.66 63,19 103.01,19 78.5,0 137.83,-19.5 178.16,-58.33 40.17,-38.99 60.33,-88.17 60.33,-147.66 0,-45.33 -11.33,-93.17 -33.99,-143.66 -22.67,-50.51 -89.5,-157.51 -200.34,-321.34l216.34 0z"/>
+   <glyph unicode="4" horiz-adv-x="499" d="M438 791l0 -517 56 0 0 -135.01 -56 0 0 -139 -197 0 0 139 -235 0 0 135.01 170.83 517 261.16 0zm-197 -517l0 336.5 -87.67 -336.5 87.67 0z"/>
+  </font>
+  <style type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Impact";font-variant:normal;font-weight:normal;src:url("#FontID0") format(svg)}
+    .str0 {stroke:white;stroke-width:6.24;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:22.9256}
+    .str1 {stroke:white;stroke-width:1.77;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:22.9256}
+    .fil3 {fill:none}
+    .fil4 {fill:#1B5291}
+    .fil6 {fill:#2E7FB2}
+    .fil1 {fill:#FCFDFE}
+    .fil2 {fill:white}
+    .fil5 {fill:#2E7FB2;fill-rule:nonzero}
+    .fil0 {fill:url(#id0)}
+    .fnt0 {font-weight:normal;font-size:97.99px;font-family:'Impact'}
+   ]]>
+  </style>
+  <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="767.28" y1="757.71" x2="126.08" y2="135.65">
+   <stop offset="0" style="stop-opacity:1; stop-color:#213F78"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#10A7D9"/>
+  </linearGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0" d="M124.62 0l644.13 0c68.54,0 124.62,56.08 124.62,124.62l0 644.13c0,68.54 -56.08,124.62 -124.62,124.62l-644.13 0c-68.54,0 -124.62,-56.08 -124.62,-124.62l0 -644.13c0,-68.54 56.08,-124.62 124.62,-124.62z"/>
+  <path class="fil1" d="M764.61 691.4l0.36 -117.71c-44.12,-2.42 -48.62,9.02 -64.45,-37.83 -7.08,-20.94 -20.35,-64.52 -31.53,-75.44 -4.74,-4.63 -8.83,-7.16 -13.83,-12 -5.09,-4.92 -8.02,-7.67 -13.77,-12.09 -14.2,-10.91 -46.9,-33.54 -62.16,-40.43 -8.94,-4.03 -28.05,-12.07 -32.92,-19.92 47.41,-7.62 185.43,4.46 214.56,-2.67 1.55,-23.4 -11.48,-32.11 -24.62,-41.33 -74.64,-52.36 -125.82,-17.8 -222.93,-81.94 -17.26,-11.4 -68.24,-10.43 -94.96,-8.97 0.14,75.32 0.15,95.55 -0.09,170.86 -0.12,37.71 10.29,60.99 26.93,81.44 18.43,22.66 36.01,29.19 71.31,31.14 30.21,1.67 51.9,18.51 64.97,37.89 36.72,54.42 -3.96,117.68 36.72,126.91 17.74,4.03 128.18,3.08 146.4,2.08z"/>
+  <path class="fil1" d="M470.99 558.31c-62.54,12.23 -85.91,98.39 -28.81,142.21 52.62,40.38 141.81,-5.35 124.46,-82.62 -9.98,-44.43 -50.48,-68.43 -95.65,-59.59z"/>
+  <path class="fil2" d="M617.2 462.69l132.8 0c8.14,0 14.8,6.66 14.8,14.8l0 166.44 -147.6 0 0 -181.24z"/>
+  <path class="fil2" d="M-0 241.03l332.75 0c22.5,0 40.9,18.41 40.9,40.9l0 339.05c0,22.5 -18.41,40.9 -40.9,40.9l-332.75 0 0 -420.85z"/>
+  <path class="fil3 str0" d="M633.32 443.21c74.91,36.76 75.35,38.95 75.35,38.95"/>
+  <path class="fil4" d="M765.86 375.32l-212.4 0c-11.93,0 -21.69,9.76 -21.69,21.69l0 54.02c0,11.93 9.76,21.69 21.69,21.69l234.08 0 0 -75.7c0,-11.93 -9.76,-21.69 -21.69,-21.69z"/>
+  <g id="_2658838463232">
+   <path class="fil5" d="M250.61 267.89c-42.53,0 -77.14,34.62 -77.14,77.17 0,63.4 69.46,125.3 72.42,127.9 1.35,1.19 3.03,1.78 4.72,1.78 1.69,0 3.37,-0.59 4.72,-1.78 2.96,-2.6 72.42,-64.51 72.42,-127.9 0,-42.55 -34.6,-77.17 -77.14,-77.17zm0 189.92c-15.36,-14.88 -62.85,-64.79 -62.85,-112.75 0,-34.67 28.19,-62.88 62.85,-62.88 34.66,0 62.85,28.21 62.85,62.88 0,47.96 -47.49,97.87 -62.85,112.75z"/>
+   <path class="fil5" d="M250.61 309.11c-19.69,0 -35.71,16.13 -35.71,35.95 0,19.82 16.02,35.95 35.71,35.95 19.69,0 35.71,-16.13 35.71,-35.95 0,-19.82 -16.02,-35.95 -35.71,-35.95zm0 57.61c-11.81,0 -21.43,-9.72 -21.43,-21.66 0,-11.94 9.61,-21.66 21.43,-21.66 11.81,0 21.43,9.72 21.43,21.66 0,11.95 -9.61,21.66 -21.43,21.66z"/>
+   <rect class="fil2 str1" x="250.89" y="393.31" width="80.19" height="100.24"/>
+   <g transform="matrix(1.07745 0 0 1 5690.67 -7534.92)">
+    <text x="-5048.81" y="8009.53"  class="fil6 fnt0">24</text>
+   </g>
+  </g>
+ </g>
+</svg>

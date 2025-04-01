@@ -138,7 +138,8 @@ export const findSimByBatch = async (req, res) => {
     }
 
     // Fetch data by batch and populate related unit and user details
-    const data = await SimCardsModel.find({ batch })
+    const data = await SimCardsModel.find({ batch:batch })
+    .populate("batch")
       .populate({
         path: 'unitid', // Populate the unitid reference in the SimCards schema
         select: 'imei assetRegNo assetMake assetModel model shipment liveData.date liveData.time', // Select the fields you want from the Units model
@@ -182,7 +183,7 @@ console.log(provider);
     // Fetch data by eSim2Provider
     const data = await SimCardsModel.find({ eSim2Provider:provider }).populate({
       path: 'unitid', // Populate the unitid reference in the SimCards schema
-      select: 'imei assetRegNo assetMake assetModel model shipment', // Select the fields you want from the Units model
+      select: 'imei assetRegNo assetMake assetModel model shipment liveData.date liveData.time', // Select the fields you want from the Units model
       populate: {
         path: 'customer', // Populate the customer reference in the Units schema (referencing the User model)
         select: 'firstname company', // Select the fields you want from the User model
@@ -221,7 +222,7 @@ export const findBySim1Number = async (req, res) => {
     // Fetch data by number
     const data = await SimCardsModel.find({ eSim2Number:number }).populate({
       path: 'unitid', // Populate the unitid reference in the SimCards schema
-      select: 'imei assetRegNo assetMake assetModel model shipment', // Select the fields you want from the Units model
+      select: 'imei assetRegNo assetMake assetModel model shipment liveData.date liveData.time', // Select the fields you want from the Units model
       populate: {
         path: 'customer', // Populate the customer reference in the Units schema (referencing the User model)
         select: 'firstname company', // Select the fields you want from the User model
@@ -260,7 +261,7 @@ export const findBySimId = async (req, res) => {
     // Fetch data by simId
     const data = await SimCardsModel.find({ simId: id  }).populate({
       path: 'unitid',
-      select: 'imei assetRegNo assetMake assetModel model shipment',
+      select: 'imei assetRegNo assetMake assetModel model shipment liveData.date liveData.time',
       populate: {
         path: 'customer',
         select: 'firstname company',
