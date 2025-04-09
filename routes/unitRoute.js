@@ -23,5 +23,4 @@ router.get("/expiring-units/:year/:month", GetExpiringUnits)
 
  router.get("/unit-shipment/:shipmentCode", getUnitByShipment)
 
-searchconfig
 export default router
