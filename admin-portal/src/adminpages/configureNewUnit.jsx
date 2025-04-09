@@ -46,7 +46,7 @@ function ConfigureNewUnit() {
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get(`/api-trkadn/search-unit/${unitId}`);
+            const response = await axios.get(`/api-trkadn/searchconfig-unit/${unitId}`);
        
 
             if (response.data && response.data.unit?.stockListed === true) {
