@@ -34,7 +34,7 @@ export const searchConfigUnitByImei = async (req, res) => {
     const { imei } = req.params; // Get IMEI from request parameters
 
     // Check if a document with the given IMEI exists
-    const existingData = await Units.findOne({ imei }, { reports: 0}).populate("customer", "company firstname _id");
+    const existingData = await Units.findOne({ imei }).populate("customer", "company firstname _id");
 if (existingData){
   res.status(200).json({ success: true, unit: [existingData] });
 }else{
