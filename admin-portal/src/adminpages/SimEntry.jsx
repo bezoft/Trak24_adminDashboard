@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../Components/header";
 import { useParams } from "react-router-dom";
+import axiosInstance from "../auth/interceptor";
 
 const SimEntry = () => {
   // State to manage form data
@@ -24,7 +25,7 @@ const SimEntry = () => {
   const GetAllSimBatches = async () => {
 
     try {
-      const response = await axios.get('/api-trkadn/get-all-simbatches');
+      const response = await axiosInstance.get('/api-trkadn/get-all-simbatches');
       console.log("makes", response.data.data);
 
       if (response.status === 200) {
@@ -55,7 +56,7 @@ const SimEntry = () => {
 console.log(formData);
 
     try {
-      const response = await axios.post('/api-trkadn/create-sim-card', formData);
+      const response = await axiosInstance.post('/api-trkadn/create-sim-card', formData);
       console.log(response);
 
       if (response.status === 201) {

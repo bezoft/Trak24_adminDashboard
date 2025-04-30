@@ -7,6 +7,7 @@ import { caseDescOptions } from '../DataHelpers/caseOptions';
 import { ISTDateTimeFormatter } from '../Components/Date&TimeCell';
 import { useAuth } from '../contexts/AuthContext';
 import { useSearchParams } from "react-router-dom";
+import axiosInstance from '../auth/interceptor';
 
 function EditIncident() {
     const [searchParams] = useSearchParams();
@@ -62,7 +63,7 @@ function EditIncident() {
 
         try {
 
-            const response = await axios.put(`/api-trkadn/edit-incident/${data._id}`, formData);
+            const response = await axiosInstance.put(`/api-trkadn/edit-incident/${data._id}`, formData);
 
             if (response.status === 200) {
                 console.log("susssess");

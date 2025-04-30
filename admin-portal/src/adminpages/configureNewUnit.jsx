@@ -6,6 +6,7 @@ import SignalStrengthIcon from '../Components/SignalStrength';
 
 import AddressCell from '../Components/AddressCell';
 import { DateTimeFRMT } from '../DataHelpers/Date&Time';
+import axiosInstance from '../auth/interceptor';
 function ConfigureNewUnit() {
     const [unitId, setUnitId] = useState('');
     const currentDate = new Date();
@@ -46,7 +47,7 @@ function ConfigureNewUnit() {
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get(`/api-trkadn/searchconfig-unit/${unitId}`);
+            const response = await axiosInstance.get(`/api-trkadn/searchconfig-unit/${unitId}`);
        
 
             if (response.data && response.data.unit?.stockListed === true) {
@@ -64,7 +65,7 @@ function ConfigureNewUnit() {
     
     const GetallShipments = async () => {
         try {
-            const res = await axios.get("/api-trkadn/getall-shipmentcodes");
+            const res = await axiosInstance.get("/api-trkadn/getall-shipmentcodes");
       
             
             if (res.status === 200) {
@@ -92,7 +93,7 @@ function ConfigureNewUnit() {
       
 
         try {
-            const response = await axios.post("/api-trkadn/config-new-unit", formData);
+            const response = await axiosInstance.post("/api-trkadn/config-new-unit", formData);
 
             if (response.status === 200) {
 

@@ -149,6 +149,7 @@ console.log(req.body);
     unit.installation = installation;
     unit.renewRange = renewRange;
     unit.expiry = expiry;
+    unit.stockListed=false;
 
     // Save the updated unit
     await unit.save();

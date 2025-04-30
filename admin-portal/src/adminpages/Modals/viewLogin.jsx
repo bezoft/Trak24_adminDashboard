@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import axios from 'axios';
+import axiosInstance from '../../auth/interceptor';
 
 function ViewLogin({ open, onClose, username, id }) {
     const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ function ViewLogin({ open, onClose, username, id }) {
         try {
             console.log(formData,id);
 
-            const response = await axios.post(`/api-trkadn/update-user/${id}`, formData);
+            const response = await axiosInstance.post(`/api-trkadn/update-user/${id}`, formData);
 
             if (response.status === 200) {
                 setFormData({

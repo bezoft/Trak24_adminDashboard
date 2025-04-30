@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import axios from 'axios';
+import axiosInstance from '../../auth/interceptor';
 
 function AllContacts({ Aopen, AonClose, id,contacts }) {
     const [Data, setData] = useState([]);
@@ -18,7 +19,7 @@ function AllContacts({ Aopen, AonClose, id,contacts }) {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/getcontacts-by-id/${id}`);
+            const res = await axiosInstance.get(`/api-trkadn/getcontacts-by-id/${id}`);
             if (res.status === 200) {
                 console.log(res.data.contacts);
                 

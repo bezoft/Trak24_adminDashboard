@@ -42,8 +42,12 @@ function Login() {
                 message.error("Invalid credentials");
             }
         } catch (error) {
-            message.error("Failed to login");
-            console.error(error);
+            console.log(error);
+
+            if (error.status === 401) {
+                message.error("Invalid credentials");
+            } else { message.error("Failed to login"); }
+
         } finally {
             setLoading(false);
         }
@@ -97,7 +101,7 @@ function Login() {
                         <h1 className="text-3xl font-bold text-gray-800">Welcome Back!</h1>
                         <p className="mt-2 text-gray-600">Log in to continue to admin dashboard</p>
                     </div>
-                    
+
                     <div className="space-y-6">
                         <div>
                             <div className="flex items-center">
@@ -181,7 +185,7 @@ function Login() {
                             <h1 className="text-3xl font-bold text-white">Welcome Back!</h1>
                             <p className="mt-2 text-gray-300">Log in to continue to admin dashboard</p>
                         </div>
-                        
+
                         <div className="space-y-6">
                             <div>
                                 <div className="flex items-center">

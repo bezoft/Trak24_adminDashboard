@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { caseDescOptions } from '../DataHelpers/caseOptions';
 import { ISTDateTimeFormatter } from '../Components/Date&TimeCell';
 import { useAuth } from '../contexts/AuthContext';
+import axiosInstance from '../auth/interceptor';
 
 function CreateIncident() {
     const [userUnits, setuserUnits] = useState([]);
@@ -43,7 +44,7 @@ function CreateIncident() {
 
         try {
 
-            const response = await axios.post('/api-trkadn/create-incident', formData);
+            const response = await axiosInstance.post('/api-trkadn/create-incident', formData);
 
             if (response.status === 201) {
         
@@ -83,7 +84,7 @@ function CreateIncident() {
         try {
    
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/get-units/${id}`);
+            const res = await axiosInstance.get(`/api-trkadn/get-units/${id}`);
 
             if (res.status === 200) {
                 setuserUnits(res.data.data);

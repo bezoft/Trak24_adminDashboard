@@ -51,19 +51,19 @@ export const AdminLogin = async (req, res) => {
     // Check if user exists
     const user = await AdminRoles.findOne({ username:username.toLowerCase() });
     if (!user) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     // Generate JWT token with 1 hour expiry
     const token = jwt.sign(
       { userId: user._id },
-      'TR24-ADM', // Replace with process.env.SECRET_KEY for security
+      'TR24-PWRD-STRE', // Replace with process.env.SECRET_KEY for security
       { expiresIn: '1h' } // Set token expiration to 1 hour
     );
 

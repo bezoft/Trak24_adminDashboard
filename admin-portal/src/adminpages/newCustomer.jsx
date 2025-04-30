@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../Components/header";
 import { useParams } from "react-router-dom";
+import axiosInstance from "../auth/interceptor";
 
 const NewCustomer = () => {
     // State to manage form data
@@ -36,7 +37,7 @@ const NewCustomer = () => {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/get-user/${userid}`);
+            const res = await axiosInstance.get(`/api-trkadn/get-user/${userid}`);
             if (res.status === 200) {
                 console.log(res.data.data);
                 const userData = res.data;
@@ -93,7 +94,7 @@ const NewCustomer = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/api-trkadn/new-user', formData);
+            const response = await axiosInstance.post('/api-trkadn/new-user', formData);
             console.log(response);
 
             if (response.status === 201) {
@@ -108,7 +109,7 @@ const NewCustomer = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.put(`/api-trkadn/update-user/${id}`, formData);
+            const response = await axiosInstance.put(`/api-trkadn/update-user/${id}`, formData);
             console.log(response);
 
             if (response.status === 200) {

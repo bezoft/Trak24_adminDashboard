@@ -5,6 +5,7 @@ import RTemplate from '../Components/ReportTemplate';
 import { useSearchParams } from "react-router-dom";
 import axios from 'axios';
 import { processReportData } from '../DataHelpers/ReportPro';
+import axiosInstance from '../auth/interceptor';
 
 function ReportViewer() {
     const [searchParams] = useSearchParams();
@@ -22,7 +23,7 @@ function ReportViewer() {
         try {
             setIsFetching(true); // Start fetching
             const url = `http://148.113.44.181:8001/reports/by-date?startDate=${date}&endDate=${date}&imei=${imei}`;
-            const response = await axios.get(url);
+            const response = await axiosInstance.get(url);
 
             setIsFetching(false); // Fetching complete
             setIsProcessing(true); // Start processing

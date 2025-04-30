@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Components/header'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../auth/interceptor';
 
 function StockList() {
 
@@ -12,7 +13,7 @@ function StockList() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get("/api-trkadn/getall-stock");
+            const res = await axiosInstance.get("/api-trkadn/getall-stock");
             if (res.status === 200) {
                 console.log(res.data.stock);
                 

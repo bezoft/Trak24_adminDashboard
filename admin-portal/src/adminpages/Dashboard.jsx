@@ -4,6 +4,7 @@ import { Line } from "react-chartjs-2";
 import { useTheme } from "../contexts/ThemeContext";
 import ProgressBarChart from "../Components/progchart";
 import axios from "axios";
+import axiosInstance from "../auth/interceptor";
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -27,7 +28,7 @@ function Dashboard() {
 
   const GetAnalytics = async () => {
     try {
-      const response = await axios.get('/api-trkadn/get-analytics');
+      const response = await axiosInstance.get('/api-trkadn/get-analytics');
       if (response.status === 200) {
         console.log(response.data.data);
         setAnalytics(response.data.data);

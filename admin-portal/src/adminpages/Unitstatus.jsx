@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Components/header';
 import axios from 'axios';
 import { Search, Eye, ChevronDown, ChevronUp, Edit, Package, User,PcCase } from 'lucide-react';
+import axiosInstance from '../auth/interceptor';
 
 function Unitstatus() {
     const [shipments, setShipments] = useState([]);
@@ -16,7 +17,7 @@ function Unitstatus() {
     const GetallShipments = async () => {
         try {
             setLoading(true);
-            const res = await axios.get("/api-trkadn/getall-shipments");
+            const res = await axiosInstance.get("/api-trkadn/getall-shipments");
             if (res.status === 200) {
                 setShipments(res.data.shipments);
             }
@@ -32,7 +33,7 @@ function Unitstatus() {
             setLoading(true);
             if (shipment) setActiveShipment(shipment);
             
-            const res = await axios.get(`/api-trkadn/get-unit-model/${shipment ? "false" : status}/${shipment ? shipment : "null"}`);
+            const res = await axiosInstance.get(`/api-trkadn/get-unit-model/${shipment ? "false" : status}/${shipment ? shipment : "null"}`);
             if (res.status === 200) {
                 setUnitsBM(res.data.data);
             }
@@ -60,7 +61,7 @@ function Unitstatus() {
         
         try {
             setLoading(true);
-            const response = await axios.get(`/api-trkadn/search-unit/${unitid}`);
+            const response = await axiosInstance.get(`/api-trkadn/search-unit/${unitid}`);
             if (response.status === 200) {
                 setUnits(response.data.unit);
             }

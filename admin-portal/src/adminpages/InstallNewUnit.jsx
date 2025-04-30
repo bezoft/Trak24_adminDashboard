@@ -4,6 +4,7 @@ import Header from '../Components/header';
 import Modal from '../Components/Modal';
 import { useParams } from "react-router-dom";
 import CreateAsset from './Modals/CreateAsset';
+import axiosInstance from '../auth/interceptor';
 
 function InstallNewUnit() {
     const [Customers, setCustomers] = useState([]);
@@ -31,7 +32,7 @@ function InstallNewUnit() {
     const InstallUnit = async () => {
         try {
 
-            const response = await axios.post('/api-trkadn/install-new-unit', formData);
+            const response = await axiosInstance.post('/api-trkadn/install-new-unit', formData);
 
             if (response.status === 200) {
                 console.log("susssess");
@@ -123,7 +124,7 @@ function InstallNewUnit() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get("/api-trkadn/all-users");
+            const res = await axiosInstance.get("/api-trkadn/all-users");
             if (res.status === 200) {
                 setCustomers(res.data);
             } else {

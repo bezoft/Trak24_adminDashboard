@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import axios from 'axios';
+import axiosInstance from '../../auth/interceptor';
 
 function CreateSimBatch({ open, onClose }) {
     const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ function CreateSimBatch({ open, onClose }) {
         try {
             console.log(formData);
 
-            const response = await axios.post('/api-trkadn/create-sim-batch', formData);
+            const response = await axiosInstance.post('/api-trkadn/create-sim-batch', formData);
 console.log(response);
 
             if (response.status === 201) {

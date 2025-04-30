@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../Components/header'
 import axios from 'axios';
 import { DateTimeFRMT } from '../DataHelpers/Date&Time';
+import axiosInstance from '../auth/interceptor';
 
 function CustomerBilling() {
 
@@ -13,7 +14,7 @@ function CustomerBilling() {
     const GetUnits = async () => {
         try {
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/expiring-units/${year}/${month}`);
+            const res = await axiosInstance.get(`/api-trkadn/expiring-units/${year}/${month}`);
             if (res.status === 200) {
                 console.log(res.data);
                 

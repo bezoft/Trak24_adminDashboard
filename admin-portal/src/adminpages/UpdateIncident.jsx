@@ -6,6 +6,7 @@ import { TableRow } from '../DataHelpers/caseOptions';
 import Modal from '../Components/Modal';
 import { useParams } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
+import axiosInstance from '../auth/interceptor';
 
 function UpdateIncident() {
 
@@ -28,7 +29,7 @@ function UpdateIncident() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/getincidents-by-id/${id}`);
+            const res = await axiosInstance.get(`/api-trkadn/getincidents-by-id/${id}`);
             if (res.status === 200) {
 console.log(res.data.data[0]);
 
@@ -49,7 +50,7 @@ console.log(res.data.data[0]);
         e.preventDefault();
         
         try {
-            const response = await axios.put(`/api-trkadn/add-update/${id}`, formData);
+            const response = await axiosInstance.put(`/api-trkadn/add-update/${id}`, formData);
             console.log(response);
 
             if (response.status === 200) {

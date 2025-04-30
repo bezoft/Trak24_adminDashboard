@@ -11,6 +11,7 @@ import AllContacts from './Modals/AllContacts';
 import CreateAsset from './Modals/CreateAsset';
 import { DateTimeFRMT } from '../DataHelpers/Date&Time';
 import { useAuth } from '../contexts/AuthContext';
+import axiosInstance from '../auth/interceptor';
 
 function EagleEyeMonitoring() {
 
@@ -83,7 +84,7 @@ function EagleEyeMonitoring() {
     const GetUserUnits = async (selectedCustomer) => {
         try {
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/get-units/${selectedCustomer}`);
+            const res = await axiosInstance.get(`/api-trkadn/get-units/${selectedCustomer}`);
             if (res.status === 200) {
                 setData(res.data.data);
             } else {
@@ -105,7 +106,7 @@ function EagleEyeMonitoring() {
     const GetallUsers = async () => {
         try {
             //setIsLoading(true);
-            const res = await axios.get("/api-trkadn/all-users");
+            const res = await axiosInstance.get("/api-trkadn/all-users");
             if (res.status === 200) {
                 setCustomers(res.data);
             } else {
@@ -123,7 +124,7 @@ function EagleEyeMonitoring() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.post(`/api-trkadn/update-vehicle/${formData.id}`, formData);
+            const res = await axiosInstance.post(`/api-trkadn/update-vehicle/${formData.id}`, formData);
             if (res.status === 200) {
                 closeModal();
                 setFormData({

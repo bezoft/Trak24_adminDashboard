@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Header from '../Components/header';
+import axiosInstance from '../auth/interceptor';
 
 function NewShipment() {
     const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ function NewShipment() {
         try {
             console.log(formData);
             
-            const response = await axios.post('/api-trkadn/new-shipment', formData);
+            const response = await axiosInstance.post('/api-trkadn/new-shipment', formData);
             if (response.status === 200) {
                 setFormData({
                     shipmentCode: '',

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { TableRow } from '../DataHelpers/caseOptions';
 import LastUpdated from '../Components/LastUpdated';
+import axiosInstance from '../auth/interceptor';
 
 function IncidentManage() {
 
@@ -22,7 +23,7 @@ function IncidentManage() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get("/api-trkadn/getall-incidents");
+            const res = await axiosInstance.get("/api-trkadn/getall-incidents");
             if (res.status === 200) {
                 setData(res.data.data);
             } else {
@@ -50,7 +51,7 @@ function IncidentManage() {
     const confirmCloseCase = async () => {
         if (caseToClose) {
             try {
-                const res = await axios.post(`/api-trkadn/deactive-incident/${caseToClose}`);
+                const res = await axiosInstance.post(`/api-trkadn/deactive-incident/${caseToClose}`);
                 console.log(res.status);
                 
                 if (res.status === 200) {

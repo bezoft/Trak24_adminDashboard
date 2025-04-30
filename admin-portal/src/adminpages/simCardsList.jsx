@@ -7,6 +7,7 @@ import Modal from '../Components/Modal';
 import ToggleButton from '../Components/ToggleButton';
 import { DateTimeFormatter } from '../Components/Date&TimeCell';
 import { DateTimeFRMT } from '../DataHelpers/Date&Time';
+import axiosInstance from '../auth/interceptor';
 
 function SimCardsList() {
 
@@ -30,7 +31,7 @@ function SimCardsList() {
     const GetAllSimBatches = async () => {
 
         try {
-            const response = await axios.get('/api-trkadn/get-all-simbatches');
+            const response = await axiosInstance.get('/api-trkadn/get-all-simbatches');
             console.log("makes", response.data.data);
 
             if (response.status === 200) {
@@ -50,7 +51,7 @@ function SimCardsList() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/getsim-by-batch/${batch}`);
+            const res = await axiosInstance.get(`/api-trkadn/getsim-by-batch/${batch}`);
             if (res.status === 200) {
                 console.log(res.data);
                 setData(res.data.data)
@@ -72,7 +73,7 @@ function SimCardsList() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/getsim-by-number/${number}`);
+            const res = await axiosInstance.get(`/api-trkadn/getsim-by-number/${number}`);
             if (res.status === 200) {
                 setData([...res.data.data]);
 
@@ -93,7 +94,7 @@ function SimCardsList() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/getsim-by-id/${id}`);
+            const res = await axiosInstance.get(`/api-trkadn/getsim-by-id/${id}`);
             if (res.status === 200) {
                 console.log(res.data);
                 setData([...res.data.data]);
@@ -115,7 +116,7 @@ function SimCardsList() {
         try {
             console.log("Loading");
             //setIsLoading(true);
-            const res = await axios.get(`/api-trkadn/getsim-by-provider/${provider}`);
+            const res = await axiosInstance.get(`/api-trkadn/getsim-by-provider/${provider}`);
             if (res.status === 200) {
                 console.log(res.data.data);
                 setData(res.data.data)

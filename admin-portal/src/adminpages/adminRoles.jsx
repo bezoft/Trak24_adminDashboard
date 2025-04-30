@@ -3,6 +3,7 @@ import Header from '../Components/header'
 import axios from 'axios';
 import Modal from '../Components/Modal';
 import { useAuth } from '../contexts/AuthContext';
+import axiosInstance from '../auth/interceptor';
 
 function AdminRoles() {
 
@@ -38,7 +39,7 @@ function AdminRoles() {
         e.preventDefault();
         try {
 
-            const response = await axios.post("/api-trkadn/new-admin", formData);
+            const response = await axiosInstance.post("/api-trkadn/new-admin", formData);
 
 
             if (response.status === 201) {
@@ -61,7 +62,7 @@ function AdminRoles() {
     const handleDelete = async (id) => {
         try {
 
-            const response = await axios.delete(`/api-trkadn/delete-admin/${id}`);
+            const response = await axiosInstance.delete(`/api-trkadn/delete-admin/${id}`);
 
             if (response.status === 200) {
                 GetallAdmins()
@@ -85,7 +86,7 @@ function AdminRoles() {
         e.preventDefault();
         try {
 
-            const response = await axios.post(`/api-trkadn/update-admin/${formData.id}`, formData);
+            const response = await axiosInstance.post(`/api-trkadn/update-admin/${formData.id}`, formData);
 
             if (response.status === 200) {
                 setFormData({
@@ -106,7 +107,7 @@ function AdminRoles() {
     const GetallAdmins = async () => {
         try {
             //setIsLoading(true);
-            const res = await axios.get("/api-trkadn/all-admins");
+            const res = await axiosInstance.get("/api-trkadn/all-admins");
             if (res.status === 200) {
                 setData(res.data.admins);
             } else {

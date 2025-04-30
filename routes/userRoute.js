@@ -1,23 +1,24 @@
 import express from "express";
 import { addContact, createCustomer, getAllUsers, getContacts, getUserById, updatePermissions, updateUser, updateUsernameAndPassword } from "../DBControllers/userControllers.js";
+import { Authentication } from "../middlewares/authMiddleware.js";
 const router = express.Router()
 
 
-router.get("/all-users", getAllUsers)
+router.get("/all-users",Authentication, getAllUsers)
 
-router.post("/new-user", createCustomer)
+router.post("/new-user",Authentication, createCustomer)
 
-router.get("/get-user/:id", getUserById)
+router.get("/get-user/:id",Authentication, getUserById)
 
-router.put("/update-user/:id", updateUser)
+router.put("/update-user/:id",Authentication, updateUser)
 
-router.put("/create-contact/:id", addContact)
+router.put("/create-contact/:id",Authentication, addContact)
 
-router.get("/getcontacts-by-id/:id", getContacts)
+router.get("/getcontacts-by-id/:id",Authentication, getContacts)
 
-router.post("/update-user/:id", updateUsernameAndPassword)
+router.post("/update-user/:id",Authentication, updateUsernameAndPassword)
 
-router.put("/update-permissions/:id", updatePermissions)
+router.put("/update-permissions/:id",Authentication, updatePermissions)
 
 
 export default router

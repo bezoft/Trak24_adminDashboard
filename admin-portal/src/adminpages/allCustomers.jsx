@@ -9,6 +9,7 @@ import CreateContact from './Modals/CreateContact';
 import AllContacts from './Modals/AllContacts';
 import ViewLogin from './Modals/viewLogin';
 import { useAuth } from '../contexts/AuthContext';
+import axiosInstance from '../auth/interceptor';
 
 function AllCustomers() {
 
@@ -54,7 +55,7 @@ function AllCustomers() {
         e.preventDefault();
 
         try {
-            const response = await axios.put(`/api-trkadn/update-permissions/${userid}`, permissions);
+            const response = await axiosInstance.put(`/api-trkadn/update-permissions/${userid}`, permissions);
 
 
             if (response.status === 200) {
@@ -75,7 +76,7 @@ function AllCustomers() {
         try {
 
             //setIsLoading(true);
-            const res = await axios.get("/api-trkadn/all-users");
+            const res = await axiosInstance.get("/api-trkadn/all-users");
             if (res.status === 200) {
                 setData(res.data);
             }

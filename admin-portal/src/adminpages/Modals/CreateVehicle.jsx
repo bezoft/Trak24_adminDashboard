@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import axios from 'axios';
+import axiosInstance from '../../auth/interceptor';
 
 function CreateVehicle({ open, onClose }) {
     const [activeTab, setActiveTab] = useState('model'); // Default tab is 'model'
@@ -13,7 +14,7 @@ function CreateVehicle({ open, onClose }) {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/api-trkadn/create-vehicle', { make });
+            const response = await axiosInstance.post('/api-trkadn/create-vehicle', { make });
             console.log(response.data);
 
             if (response.status === 200) {
@@ -30,7 +31,7 @@ function CreateVehicle({ open, onClose }) {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/api-trkadn/add-model', { make, model });
+            const response = await axiosInstance.post('/api-trkadn/add-model', { make, model });
    
             if (response.status === 200) {
                 setMake("")
@@ -45,7 +46,7 @@ function CreateVehicle({ open, onClose }) {
     const GetAllMakes = async () => {
 
         try {
-            const response = await axios.get('/api-trkadn/get-all-makes');
+            const response = await axiosInstance.get('/api-trkadn/get-all-makes');
             console.log("makes", response);
 
             if (response.status === 200) {

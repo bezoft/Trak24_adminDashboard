@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import axios from 'axios';
+import axiosInstance from '../../auth/interceptor';
 
 function AttachSim({ open, onClose }) {
     const [AvUnits, setAvUnits] = useState([]);
@@ -38,7 +39,7 @@ function AttachSim({ open, onClose }) {
     const GetAvUnits = async () => {
 
         try {
-            const response = await axios.get('/api-trkadn/get-unitnotAttached');
+            const response = await axiosInstance.get('/api-trkadn/get-unitnotAttached');
             console.log("makes", response.data.data);
 
             if (response.status === 200) {
@@ -52,7 +53,7 @@ function AttachSim({ open, onClose }) {
     const GetAvSIM = async () => {
 
         try {
-            const response = await axios.get('/api-trkadn/get-simnotAttached');
+            const response = await axiosInstance.get('/api-trkadn/get-simnotAttached');
             console.log("makes", response.data.data);
 
             if (response.status === 200) {
@@ -72,7 +73,7 @@ function AttachSim({ open, onClose }) {
         e.preventDefault();
 
         try {
-            const response = await axios.put('/api-trkadn/attach-sim', formData);
+            const response = await axiosInstance.put('/api-trkadn/attach-sim', formData);
             if (response.status === 200) {
                 setFormData({
                     unitid: "",

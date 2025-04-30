@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import axios from 'axios';
+import axiosInstance from '../../auth/interceptor';
 
 function DetachSim({ open, onClose }) {
     const [AvUnits, setAvUnits] = useState([]);
@@ -38,7 +39,7 @@ function DetachSim({ open, onClose }) {
     const GetAttachedUnits = async () => {
 
         try {
-            const response = await axios.get('/api-trkadn/get-attchedunits');
+            const response = await axiosInstance.get('/api-trkadn/get-attchedunits');
             console.log("makes", response.data.data);
 
             if (response.status === 200) {
@@ -57,7 +58,7 @@ function DetachSim({ open, onClose }) {
         e.preventDefault();
 
         try {
-            const response = await axios.put('/api-trkadn/detach-sim', formData);
+            const response = await axiosInstance.put('/api-trkadn/detach-sim', formData);
             if (response.status === 200) {
                 setFormData({
                     unitid: "",

@@ -55,7 +55,7 @@ authRouter.post('/login', async (req, res) => {
     }
 
     // Generate JWT token without expiration
-    const token = jwt.sign({ userId: user._id }, 'SECRET_KEY'); 
+    const token = jwt.sign({ userId: user._id }, 'TR24-PWRD-STRE'); 
 
     res.status(200).json({ message: 'Login successful', token });
   } catch (error) {

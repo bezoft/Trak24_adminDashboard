@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import axios from 'axios';
+import axiosInstance from '../../auth/interceptor';
 
 function CreateAsset({ open, formData, handleChange, onClose,action }) {
   const [Allmake, setallMake] = useState([]);
@@ -9,7 +10,7 @@ function CreateAsset({ open, formData, handleChange, onClose,action }) {
     const GetAllMakes = async () => {
 
         try {
-            const response = await axios.get('/api-trkadn/get-all-makes');
+            const response = await axiosInstance.get('/api-trkadn/get-all-makes');
             console.log("makes", response.data.data);
 
             if (response.status === 200) {
@@ -24,7 +25,7 @@ function CreateAsset({ open, formData, handleChange, onClose,action }) {
 
        if(formData.assetMake!==""){
         try {
-            const response = await axios.get(`/api-trkadn/get-models/${formData.assetMake}`);
+            const response = await axiosInstance.get(`/api-trkadn/get-models/${formData.assetMake}`);
             console.log("models", response.data.data);
 
             if (response.status === 200) {

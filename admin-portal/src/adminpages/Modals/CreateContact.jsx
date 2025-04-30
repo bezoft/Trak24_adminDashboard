@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../../Components/Modal';
 import axios from 'axios';
+import axiosInstance from '../../auth/interceptor';
 
 function CreateContact({ Mopen, MonClose, id }) {
     const [Data, setData] = useState([]);
@@ -24,7 +25,7 @@ function CreateContact({ Mopen, MonClose, id }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`/api-trkadn/create-contact/${id}`, formData);
+            const response = await axiosInstance.put(`/api-trkadn/create-contact/${id}`, formData);
             console.log(response);
 
             if (response.status === 200) {
@@ -88,9 +89,7 @@ function CreateContact({ Mopen, MonClose, id }) {
                                 required
                             >
                                 <option value="">Select a Type</option>
-                                <option value="SMS&Email">SMS &amp; Email</option>
-                                <option value="SMS Only">SMS Only</option>
-                                <option value="Email Only">Email Only</option>
+                                <option value="Email">Email</option>
                             </select>
                         </div>
 
