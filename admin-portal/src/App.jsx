@@ -22,7 +22,7 @@ import Unitstatus from "./adminpages/Unitstatus";
 import CustomerBilling from "./adminpages/CustomerBilling";
 
 //axios.defaults.baseURL = "https://manage.trak24.in/api/"
-axios.defaults.baseURL ="http://manage.trak24.in/api/"
+axios.defaults.baseURL ="https://manage.trak24.in/api/"
 function App() {
   return (
     <Routes>
