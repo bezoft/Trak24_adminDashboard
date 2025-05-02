@@ -20,6 +20,7 @@ import UpdateIncident from "./adminpages/UpdateIncident";
 import EditIncident from "./adminpages/EditIncident";
 import Unitstatus from "./adminpages/Unitstatus";
 import CustomerBilling from "./adminpages/CustomerBilling";
+import ServiceRenewal from "./adminpages/ServiceRenewal";
 
 //axios.defaults.baseURL = "https://manage.trak24.in/api/"
 axios.defaults.baseURL ="https://manage.trak24.in/api/"
@@ -172,6 +173,14 @@ function App() {
         element={
           <ProtectedRoute>
             <CustomerBilling />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/service-renewal/:id"
+        element={
+          <ProtectedRoute>
+            <ServiceRenewal />
           </ProtectedRoute>
         }
       />

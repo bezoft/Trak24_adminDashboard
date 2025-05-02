@@ -4,16 +4,14 @@ import axios from "axios";
 
 // Create an Axios instance
 const axiosInstance = axios.create({
-  baseURL: "https://manage.trak24.in/api/", // Replace with your actual API base URL
+  baseURL: "http://192.168.224.1:7025/api/", // Replace with your actual API base URL
   timeout: 10000, // Optional: Set a timeout for requests
 });
 
 // Add a request interceptor to attach token automatically
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token"); // Fetch the token from localStorage
-    console.log(token);
-    
+    const token = localStorage.getItem("token"); 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`; // Attach token in Authorization header
     }

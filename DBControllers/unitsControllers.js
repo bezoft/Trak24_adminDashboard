@@ -218,6 +218,41 @@ export const getUserUnits = async (req, res) => {
   }
 };
 
+export const getRenewalUnit = async (req, res) => {
+  try {
+    const { id } = req.params; // Get customerId from the request parameters
+
+    // Validate input
+    if (!id) {
+      return res.status(400).json({ success: false, message: "Customer ID is required." });
+    }
+
+    // Fetch units by customer ID and populate customer details
+    const unitsData = await Units.findById(id)
+    .select('-liveData -reports')
+    .populate({
+      path: 'customer',
+      select: 'firstname company',
+    }).exec();
+
+    if (unitsData.length === 0) {
+      return res.status(404).json({ success: false, message: "No units found for the specified customer." });
+    }
+
+    return res.status(200).json({
+      data: unitsData,
+    });
+  } catch (error) {
+    console.error("Error retrieving units by customer:", error.message);
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while retrieving units by customer.",
+      error: error.message,
+    });
+  }
+};
+
+
 export const GetExpiringUnits=async (req, res) => {
   try {
     const { year, month } = req.params;
@@ -327,5 +362,39 @@ export const getUnitByShipment = async (req, res) => {
   } catch (error) {
     console.error("Error fetching unit by shipment code:", error);
     res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const RenewService = async (req, res) => {
+  try {
+    const { assetId, duration, renewalDate, expiry,newExpiry,customer,handler } = req.body;
+
+    if (!assetId || !duration || !renewalDate || !expiry) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    const unit = await Units.findById(assetId);
+    if (!unit) {
+      return res.status(404).json({ message: "Asset not found" });
+    }
+
+
+    const newRenewal = {
+      customer:customer|| "NIL",
+      expiredDate: expiry,
+      renewalDate,
+      duration,
+      handler: handler || "NIL"
+    };
+
+    unit.renewals.push(newRenewal);
+    unit.expiry = new Date(newExpiry);
+
+    await unit.save();
+
+    res.status(200).json({ message: "Service renewed successfully", unit });
+  } catch (error) {
+    console.error("Error renewing service:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };

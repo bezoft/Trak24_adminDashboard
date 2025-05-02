@@ -85,6 +85,23 @@ const unitsSchema = new mongoose.Schema({
     type: Boolean,
     default:false
   },
+  renewals: [{
+    customer: {
+      type: String
+    },
+    expiredDate: {
+      type: Date
+    },
+    renewalDate: {
+      type: Date
+    },
+    duration:{
+      type:Number
+    },
+    handler:{
+      type:String
+    }
+  }],
   reports: [{
     travelid: {
       type: String
