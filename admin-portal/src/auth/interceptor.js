@@ -4,7 +4,7 @@ import axios from "axios";
 
 // Create an Axios instance
 const axiosInstance = axios.create({
-  baseURL: "http://192.168.224.1:7025/api/", // Replace with your actual API base URL
+  baseURL: "https://manage.trak24.in/api/", // Replace with your actual API base URL
   timeout: 10000, // Optional: Set a timeout for requests
 });
 

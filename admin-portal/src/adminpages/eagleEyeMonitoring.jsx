@@ -156,7 +156,7 @@ function EagleEyeMonitoring() {
         const admid = decryptData().id
         const data = encodeURIComponent(JSON.stringify({ admid: admid, clid: id }));
 
-        window.open(`http://192.168.224.1:3001/login?data=${data}`, "_blank")
+        window.open(`https://clientdashboard.trak24.in/login?data=${data}`, "_blank")
     }
 
 
