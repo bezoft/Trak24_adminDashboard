@@ -9,7 +9,7 @@ import SimCardsModel from '../models/SimCardsModel.js';
 import IncidentModel from '../models/IncidentModel.js';
 import AnalyticsModel from '../models/AnalyticsModel.js';
 import axios from 'axios';
-import CordinateAdress from '../models/CordinateAdrsModel.js';
+import CordinateAdrsModel from '../models/CordinateAdrsModel.js';
 
 
 export const searchUnitByImei = async (req, res) => {
@@ -415,7 +415,7 @@ export const GetAddress = async (req, res) => {
     const roundedLon = roundCoord(long);
 
     // Step 1: Check by coordinates (fast path)
-    let existing = await CordinateAdress.findOne({ lat: roundedLat, lon: roundedLon });
+    let existing = await CordinateAdrsModel.findOne({ lat: roundedLat, lon: roundedLon });
     if (existing) {
       return res.status(200).json({ address: existing.address });
     } else {
@@ -431,13 +431,13 @@ export const GetAddress = async (req, res) => {
       }
 
       // Step 3: Check if this address already exists (regardless of coordinates)
-      existing = await CordinateAdress.findOne({ address });
+      existing = await CordinateAdrsModel.findOne({ address });
       if (existing) {
         return res.status(200).json({ address: existing.address });
       }
 
       // Step 4: Save only if address is new
-      const newEntry = new CordinateAdress({
+      const newEntry = new CordinateAdrsModel({
         lat: roundedLat,
         lon: roundedLon,
         address,
