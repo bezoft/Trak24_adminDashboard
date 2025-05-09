@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { UpdateCordAdress } from "../DataHelpers/getCordAddress";
 
 const AddressCell = ({ latitude, longitude }) => {
   const [address, setAddress] = useState("Fetching address...");
