@@ -1,5 +1,5 @@
 import express from "express";
-import { createOrUpdateUnit, getAllStock, GetExpiringUnits, getRenewalUnit, getUnitByShipment, getUnitsByModel, getUserUnits, installUnit, RenewService, searchConfigUnitByImei, searchUnitByImei } from "../DBControllers/unitsControllers.js";
+import { createOrUpdateUnit, GetAddress, getAllStock, GetExpiringUnits, getRenewalUnit, getUnitByShipment, getUnitsByModel, getUserUnits, installUnit, RenewService, searchConfigUnitByImei, searchUnitByImei } from "../DBControllers/unitsControllers.js";
 import { Authentication } from "../middlewares/authMiddleware.js";
 const router = express.Router()
 
@@ -27,5 +27,7 @@ router.get("/expiring-units/:year/:month",Authentication, GetExpiringUnits)
  router.get("/renewal-unit/:id", getRenewalUnit)
 
  router.post("/renew-service", RenewService)
+
+ router.get("/get-address/:lat/:long/:lang", GetAddress)
 
 export default router

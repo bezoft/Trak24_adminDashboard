@@ -8,7 +8,7 @@ const AddressCell = ({ latitude, longitude }) => {
   useEffect(() => {
     const fetchAddress = async () => {
       try {
-        const response = await UpdateCordAdress(latitude, longitude)
+        const response = await axios.get(`/api-trkadn/get-address/${latitude}/${longitude}/${"en"}`);
         setAddress(response); // Update state with the fetched address
       } catch (error) {
         setAddress("Unable to fetch address");

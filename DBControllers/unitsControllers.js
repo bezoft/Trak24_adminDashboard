@@ -398,3 +398,58 @@ export const RenewService = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+
+const roundCoord = (value, decimals = 6) => {
+  return Number(Number.parseFloat(value).toFixed(decimals));
+};
+
+export const GetAddress = async (req, res) => {
+  try {
+    const { lat, long, lang } = req.params;
+    const lng = lang || 'en';
+
+    const roundedLat = roundCoord(lat);
+    const roundedLon = roundCoord(long);
+
+    // Step 1: Check by coordinates (fast path)
+    let existing = await CordinateAdress.findOne({ lat: roundedLat, lon: roundedLon });
+    if (existing) {
+      return res.status(200).json({ address: existing.address });
+    } else {
+
+      // Step 2: Fetch from Google API
+      const response = await axios.get(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyBdtCj5H0N2_vLOHy4YuFKz_tc_NfPI5XI&language=${lng}`
+      );
+      const address = response.data.results[2]?.formatted_address || response.data.results[0]?.formatted_address;
+
+      if (!address) {
+        return res.status(404).json({ success: false, message: 'Address not found' });
+      }
+
+      // Step 3: Check if this address already exists (regardless of coordinates)
+      existing = await CordinateAdress.findOne({ address });
+      if (existing) {
+        return res.status(200).json({ address: existing.address });
+      }
+
+      // Step 4: Save only if address is new
+      const newEntry = new CordinateAdress({
+        lat: roundedLat,
+        lon: roundedLon,
+        address,
+        lastFetched: new Date(),
+      });
+
+      await newEntry.save();
+      return res.status(200).json({ address });
+    }
+  } catch (error) {
+    console.error('Error fetching address:', error);
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while fetching the address',
+    });
+  }
+};
