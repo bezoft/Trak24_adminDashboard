@@ -8,6 +8,7 @@ import SimBatchesModel from '../models/SimBatchesModel.js';
 import SimCardsModel from '../models/SimCardsModel.js';
 import IncidentModel from '../models/IncidentModel.js';
 import AnalyticsModel from '../models/AnalyticsModel.js';
+import axios from 'axios';
 
 
 export const searchUnitByImei = async (req, res) => {
