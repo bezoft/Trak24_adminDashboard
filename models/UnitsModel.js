@@ -102,6 +102,12 @@ const unitsSchema = new mongoose.Schema({
       type:String
     }
   }],
+  settings: {
+      odometer: {
+        type: Boolean,
+        default: true,
+      },
+    },
   reports: [{
     travelid: {
       type: String

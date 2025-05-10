@@ -9,6 +9,7 @@ import AllContacts from './Modals/AllContacts';
 import ViewLogin from './Modals/viewLogin';
 import { useAuth } from '../contexts/AuthContext';
 import axiosInstance from '../auth/interceptor';
+import { TruncatedAddress } from '../Components/TruncatedAddress';
 
 function AllCustomers() {
 
@@ -143,8 +144,11 @@ function AllCustomers() {
                                             </button>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">{item.company}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                        {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
                                             {item.address.street}, {item.address.district}-{item.address.pinCode}, Ph: {item.address.landline}
+                                        </td> */}
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                            <TruncatedAddress address={item.address}/>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">{item.imeis.length}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">Upload Invoice</td>

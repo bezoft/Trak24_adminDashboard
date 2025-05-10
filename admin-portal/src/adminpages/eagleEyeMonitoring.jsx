@@ -11,6 +11,7 @@ import CreateAsset from './Modals/CreateAsset';
 import { DateTimeFRMT } from '../DataHelpers/Date&Time';
 import { useAuth } from '../contexts/AuthContext';
 import axiosInstance from '../auth/interceptor';
+import UnitSettings from './Modals/unitSettings';
 
 function EagleEyeMonitoring() {
 
@@ -41,6 +42,9 @@ function EagleEyeMonitoring() {
 
     const [allContactModal, setallContactModal] = useState(false);
     const closeallContactModal = () => setallContactModal(false);
+
+     const [settingsModal, setsettingsModal] = useState(false);
+    const closesettingsModal = () => setsettingsModal(false);
 
     const handleToggle = (key) => {
         setPermissions((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -241,7 +245,8 @@ function EagleEyeMonitoring() {
 
 
                                                     <div className="flex flex-col space-y-8">
-                                                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-5">
+                                                        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-5">
+                                                            {/* Client Portal Login */}
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Client Portal</span>
                                                                 <button
@@ -255,11 +260,29 @@ function EagleEyeMonitoring() {
                                                                 </button>
                                                             </div>
 
+                                                            {/* Settings */}
+                                                            <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
+                                                                <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Unit Settings</span>
+                                                                <button
+                                                                    onClick={() => setsettingsModal(true)}
+                                                                    className="text-sm font-medium text-orange-600 dark:text-orange-500 hover:text-orange-700 dark:hover:text-orange-400 flex items-center"
+                                                                >
+                                                                    Settings
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                                        <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                                                                    </svg>
+                                                                </button>
+                                                                {settingsModal === true ? (<UnitSettings open={settingsModal} GetUserUnits={GetUserUnits} onClose={closesettingsModal} unit={item}  />) : null}
+                                                            </div>
+
+                                                            {/* GPS Coordinates */}
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">GPS Coordinates</span>
                                                                 <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{item.liveData?.latitude}, {item.liveData?.longitude}</span>
                                                             </div>
 
+                                                            {/* Add To Incidents */}
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Add To Incidents</span>
                                                                 <a
@@ -273,6 +296,7 @@ function EagleEyeMonitoring() {
                                                                 </a>
                                                             </div>
 
+                                                            {/* Contacts */}
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Contacts</span>
                                                                 <button
@@ -288,6 +312,7 @@ function EagleEyeMonitoring() {
                                                                 {allContactModal === true ? (<AllContacts Aopen={allContactModal} AonClose={closeallContactModal} contacts={item.customer.contacts} />) : null}
                                                             </div>
 
+                                                            {/* Update Vehicle */}
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Update Vehicle</span>
                                                                 <button
@@ -309,9 +334,9 @@ function EagleEyeMonitoring() {
                                                                         <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                                                                     </svg>
                                                                 </button>
-                                                                {allContactModal === true ? (<AllContacts Aopen={allContactModal} AonClose={closeallContactModal} contacts={item.customer.contacts} />) : null}
                                                             </div>
-                                                            
+
+                                                            {/* Quick Map View */}
                                                             <div className="flex flex-col p-4 bg-white dark:bg-[#28282a] rounded-lg shadow-sm">
                                                                 <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Quick Map View</span>
                                                                 <a
@@ -327,7 +352,6 @@ function EagleEyeMonitoring() {
                                                                         <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                                                                     </svg>
                                                                 </a>
-                                                                {allContactModal === true ? (<AllContacts Aopen={allContactModal} AonClose={closeallContactModal} contacts={item.customer.contacts} />) : null}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -337,16 +361,16 @@ function EagleEyeMonitoring() {
                                     </React.Fragment>
                                 )) : (
                                     <tr>
-                                    <td colSpan="7" className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
-                                        <div className="flex flex-col items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                                            </svg>
-                                            <span className="text-lg font-medium">No data available</span>
-                                            <span className="text-sm">Please select a client to view data</span>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <td colSpan="7" className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                                            <div className="flex flex-col items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                                                </svg>
+                                                <span className="text-lg font-medium">No data available</span>
+                                                <span className="text-sm">Please select a client to view data</span>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 )}
                             </tbody>
                         </table>
