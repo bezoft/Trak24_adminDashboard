@@ -422,7 +422,7 @@ export const GetAddress = async (req, res) => {
 
       // Step 2: Fetch from Google API
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyBdtCj5H0N2_vLOHy4YuFKz_tc_NfPI5XI&language=${lng}`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=AIzaSyDs3BF4HE5kdu27oCgeZP3wlcR-c4euzNk&language=${lng}`
       );
       const address = response.data.results[2]?.formatted_address || response.data.results[0]?.formatted_address;
 
