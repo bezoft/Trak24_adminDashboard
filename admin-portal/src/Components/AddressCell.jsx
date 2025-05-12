@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import axiosInstance from "../auth/interceptor";
 
 const AddressCell = ({ latitude, longitude, maxLength = 70 }) => {
   const [address, setAddress] = useState("Fetching address...");
@@ -21,7 +22,7 @@ console.log(address);
   useEffect(() => {
     const fetchAddress = async () => {
       try {
-        const response = await axios.get(`/api-trkadn/get-address/${latitude}/${longitude}/${"en"}`);
+        const response = await axiosInstance.get(`/api-trkadn/get-address/${latitude}/${longitude}/${"en"}`);
         setAddress(response.data.address); // Update state with the fetched address
       } catch (error) {
         setAddress("Unable to fetch address");
