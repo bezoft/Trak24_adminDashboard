@@ -45,22 +45,24 @@ function ConfigureNewUnit() {
 
 
 
-    const handleSearch = async () => {
-        try {
-            const response = await axiosInstance.get(`/api-trkadn/searchconfig-unit/${unitId}`);
-       
-
-            if (response.data && response.data.unit?.stockListed === true) {
-                setstockList(true); // Unit is in stock
-            } else {
-                setData(response.data.unit);
-                setstockList(false); // Unit is not in stock or not found
-            }
-        } catch (error) {
-            console.error("Error searching for unit:", error);
-            setstockList(null); // Set to null if an error occurs
+   const handleSearch = async () => {
+    try {
+        // Remove whitespace from unitId before making the API call
+        const cleanUnitId = unitId.trim();
+        
+        const response = await axiosInstance.get(`/api-trkadn/searchconfig-unit/${cleanUnitId}`);
+   
+        if (response.data && response.data.unit?.stockListed === true) {
+            setstockList(true); // Unit is in stock
+        } else {
+            setData(response.data.unit);
+            setstockList(false); // Unit is not in stock or not found
         }
-    };
+    } catch (error) {
+        console.error("Error searching for unit:", error);
+        setstockList(null); // Set to null if an error occurs
+    }
+};
    
     
     const GetallShipments = async () => {
@@ -189,30 +191,30 @@ function ConfigureNewUnit() {
                                         key={index}
                                         className="hover:bg-gray-100 dark:hover:bg-[#28282a] cursor-pointer transition-colors duration-150"
                                     >
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-300 text-center">
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-300 ">
                                             {index + 1}
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
                                             Current Time & Date: {formatDateTime(currentDate)}<br />
-                                            Unit Time & Date: {DateTimeFRMT(item.liveData.date, item.liveData.time)}
+                                            Unit Time & Date: {DateTimeFRMT(item.liveData?.date, item.liveData?.time)}
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
-                                            <div title={`Signal Strength ${item.liveData.gsm_signal}%`}>
-                                                <SignalStrengthIcon strength={item.liveData.gsm_signal} />
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                            <div title={`Signal Strength ${item.liveData?.gsm_signal}%`}>
+                                                <SignalStrengthIcon strength={item.liveData?.gsm_signal} />
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
-                                            {item.reports.length}
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                            {item.reports?.length}
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
-                                            <AddressCell latitude={item.liveData.latitude} longitude={item.liveData.longitude} />
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                            <AddressCell latitude={item.liveData?.latitude} longitude={item.liveData?.longitude} />
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
-                                            {item.liveData.speed} km/h,<br />
-                                            Heading: {item.liveData.latitude_direction}{item.liveData.longitude_direction}
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                            {item.liveData?.speed} km/h,<br />
+                                            Heading: {item.liveData?.latitude_direction}{item.liveData?.longitude_direction}
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 text-center">
-                                            {item.liveData.gps_odometer} km
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                            {item.liveData?.gps_odometer} km
                                         </td>
                                     </tr>
                                 ))

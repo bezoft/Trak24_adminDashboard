@@ -73,6 +73,33 @@ export const AdminLogin = async (req, res) => {
   }
 };
 
+export const verifyAdminPassword = async (req, res) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).json({ message: "Username and password are required." });
+  }
+
+  try {
+    const user = await AdminRoles.findOne({ username: username.toLowerCase() });
+
+    if (!user) {
+      return res.status(404).json({ message: "Admin not found." });
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordCorrect) {
+      return res.status(401).json({ message: "Incorrect password." });
+    }
+
+    // If password is correct, proceed with whatever action you want
+    return res.status(200).json({ message: "Password verified successfully." });
+  } catch (error) {
+    return res.status(500).json({ message: "Server error", error });
+  }
+};
+
 export const ClientLogin= async (req, res) => {
   const { username, password } = req.body;
 

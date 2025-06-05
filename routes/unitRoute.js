@@ -28,7 +28,7 @@ router.get("/expiring-units/:year/:month",Authentication, GetExpiringUnits)
 
  router.post("/renew-service",Authentication, RenewService)
 
- router.get("/get-address/:lat/:long/:lang",Authentication, GetAddress)
+ router.get("/get-address/:lat/:long/:lang", GetAddress)
 
  router.post("/update-unitsettings/:unitid",Authentication, UnitSettings)
 
