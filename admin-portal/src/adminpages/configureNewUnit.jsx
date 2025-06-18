@@ -59,7 +59,6 @@ function ConfigureNewUnit() {
             setstockList(false); // Unit is not in stock or not found
         }
     } catch (error) {
-        console.error("Error searching for unit:", error);
         setstockList(null); // Set to null if an error occurs
     }
 };
@@ -74,7 +73,6 @@ function ConfigureNewUnit() {
                 setShipmentCodes(res.data.shipmentCodes);
             } 
         } catch (error) {
-            console.error("Error fetching data:", error);
         } finally {
             // Ensure loading and refreshing states are reset
             //   setIsLoading(false);
@@ -113,7 +111,6 @@ function ConfigureNewUnit() {
                 window.location.href = "/stock-list"
             }
         } catch (error) {
-            console.error("Error searching for unit:", error);
             //setstockList(false);
         }
     };
