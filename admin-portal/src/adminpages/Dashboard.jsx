@@ -270,8 +270,8 @@ function Dashboard() {
                 isDarkMode={isDarkMode}
               />
               <ProgressBarChart
-                total={Analytics[0]?.totalUnits - Analytics[0]?.stockUnits}
-                active={Analytics[0]?.stockUnits}
+                total={Analytics[0]?.totalRfids}
+                active={Analytics[0]?.ActiveRfids}
                 label={"Active Beacons"}
                 isDarkMode={isDarkMode}
               />

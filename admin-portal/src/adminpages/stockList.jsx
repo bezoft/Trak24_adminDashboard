@@ -15,8 +15,6 @@ function StockList() {
             //setIsLoading(true);
             const res = await axiosInstance.get("/api-trkadn/getall-stock");
             if (res.status === 200) {
-                console.log(res.data.stock);
-                
                 setData(res.data.stock);
             } else {
                 console.log("Empty data received");

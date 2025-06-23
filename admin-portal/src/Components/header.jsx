@@ -384,6 +384,18 @@ const Header = () => {
               </div>
             </div>
 
+            <div onClick={() => navigate("/raw-data")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+              <a className="block text-gray-800 dark:text-gray-200">
+                Raw Data Manager
+              </a>
+            </div>
+
+            <div onClick={() => navigate("/port-forwarder")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+              <a className="block text-gray-800 dark:text-gray-200">
+                Port Forwarder
+              </a>
+            </div>
+
             <div onClick={() => navigate("/customer-billing")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
               <a className="block text-gray-800 dark:text-gray-200">
                 Customer Billing

@@ -4,6 +4,9 @@ const unitsSchema = new mongoose.Schema({
   imei: {
     type: String,
   },
+  rawData: {
+    type: String,
+  },
   simNumber: {
     type: Number,
   },
@@ -85,29 +88,68 @@ const unitsSchema = new mongoose.Schema({
     type: Boolean,
     default:false
   },
-  renewals: [{
-    customer: {
-      type: String
-    },
-    expiredDate: {
-      type: Date
-    },
-    renewalDate: {
-      type: Date
-    },
-    duration:{
-      type:Number
-    },
-    handler:{
-      type:String
-    }
-  }],
-  settings: {
-      odometer: {
-        type: Boolean,
-        default: true,
-      },
-    },
+ settings: {
+  odometer: {
+    type: Boolean,
+    default: true,
+  },
+  tripStart: {
+    type: Boolean,
+    default: false,
+  },
+  tripStop: {
+    type: Boolean,
+    default: false,
+  },
+  powerDisconnected: {
+    type: Boolean,
+    default: false,
+  },
+  powerConnected: {
+    type: Boolean,
+    default: false,
+  },
+  acOn: {
+    type: Boolean,
+    default: false,
+  },
+  acOff: {
+    type: Boolean,
+    default: false,
+  },
+  doorOpen: {
+    type: Boolean,
+    default: false,
+  },
+  doorClose: {
+    type: Boolean,
+    default: false,
+  },
+  overSpeed: {
+    type: Boolean,
+    default: false,
+  },
+  harshAcceleration: {
+    type: Boolean,
+    default: false,
+  },
+  harshBraking: {
+    type: Boolean,
+    default: false,
+  },
+  noMovement: {
+    type: Boolean,
+    default: false,
+  },
+  idling: {
+    type: Boolean,
+    default: false,
+  },
+  acOnAlert: {
+    type: Boolean,
+    default: false,
+  }
+},
   reports: [{
     travelid: {
       type: String
@@ -149,22 +191,6 @@ const unitsSchema = new mongoose.Schema({
         },
       },
     },
-    history: [
-      {
-        latitude: {
-          type: Number,
-        },
-        latiD: {
-          type: String,
-        },
-        longitude: {
-          type: Number,
-        },
-        longiD: {
-          type: String,
-        },
-      }
-    ],
     Distance: {
       startOdometer: {
         type: Number,

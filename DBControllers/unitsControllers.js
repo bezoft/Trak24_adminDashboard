@@ -510,3 +510,23 @@ export const UnitSettings = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+
+
+export const getUnitsRaw= async (req, res) => {
+  try {
+    // Fetch only imei, rawData, and model fields
+    const units = await Units.find({}, 'imei rawData model');
+
+    res.status(200).json({
+      success: true,
+      data: units,
+    });
+  } catch (error) {
+    console.error("Error fetching units summary:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+};
