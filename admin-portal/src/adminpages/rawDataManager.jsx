@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import Header from '../Components/header'
 import axiosInstance from '../auth/interceptor';
 import axios from 'axios';
@@ -11,24 +11,29 @@ function RawDataManager() {
     const [error, setError] = useState(null);
     const [hasDataLoaded, setHasDataLoaded] = useState(false);
 
-     const getAllUnitsRawData = async () => {
+    // Memoized filter function to prevent unnecessary re-filtering
+    const filterData = useCallback((dataToFilter, searchValue) => {
+        if (searchValue.trim() === '') {
+            return dataToFilter;
+        }
+        return dataToFilter.filter(item => 
+            item.imei && item.imei.toLowerCase().includes(searchValue.toLowerCase())
+        );
+    }, []);
+
+    const getAllUnitsRawData = async () => {
         try {
             setIsLoading(true);
             setError(null);
-            console.log("Loading raw data...");
             const res = await axiosInstance.get("/api-trkadn/getall-rawdata");
             if (res.status === 200) {
                 console.log(res.data.data);
                 if (res.data.data && Array.isArray(res.data.data) && res.data.data.length > 0) {
                     setData(res.data.data);
-                    setFilteredData(res.data.data);
                     setHasDataLoaded(true);
                 } else {
-                    console.log("Empty data received");
                     setData([]);
-                    setFilteredData([]);
                     setHasDataLoaded(true);
-                    setError("No raw data found");
                 }
             } else {
                 setError("Failed to fetch data");
@@ -38,28 +43,54 @@ function RawDataManager() {
             console.error("Error fetching raw data:", error);
             setError("Failed to load raw data. Please try again later.");
             setData([]);
-            setFilteredData([]);
             setHasDataLoaded(true);
         } finally {
             setIsLoading(false);
         }
     };
 
-    useEffect(() => {
-        getAllUnitsRawData();
-    }, []);
+    const getAllUnitsRawData2 = async () => {
+        try {
+            setError(null);
+            const res = await axiosInstance.get("/api-trkadn/getall-rawdata");
+            if (res.status === 200) {
+                console.log(res.data.data);
+                if (res.data.data && Array.isArray(res.data.data) && res.data.data.length > 0) {
+                    setData(res.data.data);
+                    setHasDataLoaded(true);
+                } else {
+                    setData([]);
+                    setHasDataLoaded(true);
+                }
+            } else {
+                setError("Failed to fetch data");
+                setHasDataLoaded(true);
+            }
+        } catch (error) {
+            console.error("Error fetching raw data:", error);
+            setError("Failed to load raw data. Please try again later.");
+            setData([]);
+            setHasDataLoaded(true);
+        } 
+    };
 
-    // Filter data based on search term (IMEI)
     useEffect(() => {
-        if (searchTerm.trim() === '') {
-            setFilteredData(data);
-        } else {
-            const filtered = data.filter(item => 
-                item.imei && item.imei.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-            setFilteredData(filtered);
-        }
-    }, [searchTerm, data]);
+        // Call immediately once
+        getAllUnitsRawData();
+
+        // Set interval to run every 10 seconds (10000 ms)
+        const intervalId = setInterval(() => {
+            getAllUnitsRawData2();
+        }, 10000);
+
+        // Cleanup on unmount
+        return () => clearInterval(intervalId);
+    }, []); // Remove searchTerm dependency
+
+    // Filter data when either searchTerm OR data changes
+    useEffect(() => {
+        setFilteredData(filterData(data, searchTerm));
+    }, [searchTerm, data, filterData]); // Keep data dependency to update filtered results
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -143,7 +174,7 @@ function RawDataManager() {
                             placeholder="Search by IMEI number..."
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            className="w-full md:w-80 px-3 py-3 pl-12 bg-white dark:bg-[#2d2d2f] border border-gray-300 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            className="w-full md:w-80 px-3 py-3 pl-12 bg-white dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-xl text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                         />
                         <svg
                             className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"

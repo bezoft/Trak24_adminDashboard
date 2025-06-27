@@ -351,17 +351,14 @@ function Unitstatus() {
                                                                         <div className="text-xs text-gray-500 dark:text-gray-400">Asset Details</div>
                                                                         <div className="flex items-center font-medium text-gray-900 dark:text-gray-100">
                                                                             <Package className="h-4 w-4 mr-2 text-orange-600" />
-                                                                            {item?.assetMake} {item?.assetModel} 
-                                                                            {item?.assetRegNo && <span className="ml-1 text-gray-600 dark:text-gray-400">({item?.assetRegNo})</span>}
+                                                                            {item?.assetMake} {item?.assetModel}<br/>
+                                                                            {item?.assetRegNo}
                                                                         </div>
                                                                     </div>
                                                                     
                                                                     <div className="space-y-1">
                                                                         <div className="text-xs text-gray-500 dark:text-gray-400">Customer</div>
-                                                                        <div className="flex items-center font-medium text-gray-900 dark:text-gray-100">
-                                                                            <User className="h-4 w-4 mr-2 text-orange-600" />
-                                                                            {item?.customer.company || item?.customer.firstname}
-                                                                        </div>
+                                                                        <CustomerName customer={item?.customer?.company || item?.customer?.firstname} userid={item?.customer} />
                                                                     </div>
                                                                     
                                                                     <div className="space-y-1">
@@ -395,5 +392,37 @@ function Unitstatus() {
         </>
     );
 }
+const CustomerName = ({ customer,userid }) => {
+  const [name, setName] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (customer) {
+      setName(customer);
+    } 
+    else{
+      const fetchCustomer = async () => {
+        try {
+          setLoading(true);
+          const res = await axiosInstance.get(`/api-trkadn/basicinfo-by-id/${userid}`);
+          setName(res.data.company || res.data.firstname);
+        } catch (error) {
+          console.error('Failed to fetch customer', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchCustomer();
+    }
+  }, [customer]);
+
+  return (
+    <div className="flex items-center font-medium text-gray-900 dark:text-gray-100">
+      <User className="h-4 w-4 mr-2 text-orange-600" />
+      {loading ? 'Loading...' : name || 'Unknown'}
+    </div>
+  );
+};
+
 
 export default Unitstatus;

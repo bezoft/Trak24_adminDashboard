@@ -105,6 +105,24 @@ function EagleEyeMonitoring() {
         GetallUsers()
     }, [])
 
+    
+        useEffect(() => {
+    // If no customer is selected, do not set up the interval
+    if (!selectedCustomer) return;
+
+    // Run once immediately
+    GetUserUnits(selectedCustomer);
+
+    // Set interval to run every 10 seconds
+    const intervalId = setInterval(() => {
+        GetUserUnits(selectedCustomer);
+    }, 10000);
+
+    // Cleanup interval when customer changes or component unmounts
+    return () => clearInterval(intervalId);
+
+}, [selectedCustomer])
+
 
     const GetallUsers = async () => {
         try {

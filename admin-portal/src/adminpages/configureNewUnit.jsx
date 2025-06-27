@@ -3,7 +3,7 @@ import Header from '../Components/header';
 import axios from 'axios';
 import Modal from '../Components/Modal';
 import SignalStrengthIcon from '../Components/SignalStrength';
-
+import { message } from "antd"
 import AddressCell from '../Components/AddressCell';
 import { DateTimeFRMT } from '../DataHelpers/Date&Time';
 import axiosInstance from '../auth/interceptor';
@@ -33,45 +33,68 @@ function ConfigureNewUnit() {
     function formatDateTime(date) {
         const options = { day: "2-digit", month: "short", year: "numeric" }; // Format: 04 Jan 2025
         const datePart = date.toLocaleDateString("en-US", options);
-    
+
         const timePart = date.toLocaleTimeString("en-US", {
             hour: "2-digit",
             minute: "2-digit",
             hour12: true, // Ensures AM/PM format
         });
-    
+
         return `${datePart}, ${timePart}`;
     }
 
 
 
-   const handleSearch = async () => {
+const handleSearch = async () => {
     try {
-        // Remove whitespace from unitId before making the API call
         const cleanUnitId = unitId.trim();
-        
         const response = await axiosInstance.get(`/api-trkadn/searchconfig-unit/${cleanUnitId}`);
-   
-        if (response.data && response.data.unit?.stockListed === true) {
-            setstockList(true); // Unit is in stock
+        console.log(response.data);
+
+        const units = response.data.unit; // This is an array
+        if(!units || units.length === 0){
+            message.warning("Unit Not Found!");
         } else {
-            setData(response.data.unit);
-            setstockList(false); // Unit is not in stock or not found
+            const unit = units[0]; // Get the first unit from the array
+            
+            // Ensure unit exists before proceeding
+            if (unit) {
+                const hasCustomer = unit.customer && Object.keys(unit.customer).length > 0;
+
+                if (!unit.stockListed && hasCustomer) {
+                    // Unit stockListed false and customer array present - show "already attached" message
+                    setstockList(true);
+                } else if (unit.stockListed && !hasCustomer) {
+                    // Unit stockListed true and customer array not present - show "already in stock" message
+                    setstockList(true);
+                } else if (!unit.stockListed && !hasCustomer) {
+                    // Unit stockListed false and customer array not present - show "Add to Stock" button
+                    setstockList(false);
+                } else {
+                    // Any other case - hide button and message
+                    setstockList(null);
+                }
+
+                setData(units); // Save the units array for table display
+            } else {
+                setstockList(null);
+            }
         }
     } catch (error) {
         setstockList(null); // Set to null if an error occurs
     }
 };
-   
-    
+
+
+
     const GetallShipments = async () => {
         try {
             const res = await axiosInstance.get("/api-trkadn/getall-shipmentcodes");
-      
-            
+
+
             if (res.status === 200) {
                 setShipmentCodes(res.data.shipmentCodes);
-            } 
+            }
         } catch (error) {
         } finally {
             // Ensure loading and refreshing states are reset
@@ -90,7 +113,7 @@ function ConfigureNewUnit() {
 
     const handleAddToStock = async (e) => {
         e.preventDefault();
-      
+
 
         try {
             const response = await axiosInstance.post("/api-trkadn/config-new-unit", formData);
@@ -115,136 +138,143 @@ function ConfigureNewUnit() {
         }
     };
 
+    console.log("stockkkkkk", Data);
 
-    
+
     return (
         <>
-    <Header />
-    <div className="mt-28">
-        {/* Page Title */}
-        <div className="flex w-full items-left px-6">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-200">
-                Configure New Unit
-            </h2>
-        </div>
+            <Header />
+            <div className="mt-28">
+                {/* Page Title */}
+                <div className="flex w-full items-left px-6">
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-200">
+                        Configure New Unit
+                    </h2>
+                </div>
 
-        {/* Search Section */}
-        <div className="mx-auto w-full max-w-lg mt-24">
-            <div className="flex items-center space-x-5">
-                <input
-                    type="text"
-                    value={unitId}
-                    onChange={(e) => setUnitId(e.target.value)}
-                    placeholder="Enter Unit ID"
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
-                />
-                <button
-                    onClick={handleSearch}
-                    className="px-6 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded-md shadow-md transition duration-200"
-                >
-                    Search
-                </button>
-            </div>
-        </div>
+                {/* Search Section */}
+                <div className="mx-auto w-full max-w-lg mt-24">
+                    <div className="flex items-center space-x-5">
+                        <input
+                            type="text"
+                            value={unitId}
+                            onChange={(e) => setUnitId(e.target.value)}
+                            placeholder="Enter Unit ID"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-[#1b1b1d] border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-1 focus:ring-orange-500"
+                        />
+                        <button
+                            onClick={handleSearch}
+                            className="px-6 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded-md shadow-md transition duration-200"
+                        >
+                            Search
+                        </button>
+                    </div>
+                </div>
 
-        {/* Conditional Add to Stock List Button */}
-        {stockList === false ? (
-            <div className="mt-10 text-center">
-                <button
-                    onClick={AddToStock}
-                    className="px-6 py-2 text-white bg-green-500 hover:bg-green-600 rounded-md shadow-md transition duration-200"
-                >
-                    Add to Stock List
-                </button>
-            </div>
-        ) : stockList === true ? (
-            <div className="mt-10 text-center">
-                <p className="mt-4 text-red-500 text-center">
-                    Unit Already in Stock List
-                </p>
-            </div>
-        ) : null}
+                {/* Conditional Add to Stock List Button */}
+              {stockList === false && (
+    <div className="mt-10 text-center">
+        <button
+            onClick={AddToStock}
+            className="px-6 py-2 text-white bg-green-500 hover:bg-green-600 rounded-md shadow-md transition duration-200"
+        >
+            Add to Stock List
+        </button>
+    </div>
+)}
 
-        {/* Table Section */}
-        <div className="min-h-screen px-6 mt-10">
-            <div className="overflow-hidden rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
-                <div className="overflow-x-auto">
-                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                        <thead>
-                            <tr className="bg-gray-200 dark:bg-[#3b3b3b]">
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Sl No</th>
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Time of Signal</th>
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">GPS</th>
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Reports</th>
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Geographic Area</th>
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Speed</th>
-                                <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">KM Reading</th>
-                            </tr>
-                        </thead>
-                        <tbody className="bg-white dark:bg-[#1b1b1d] divide-y divide-gray-200 dark:divide-gray-700">
-                            {Array.isArray(Data) && Data.length > 0 ? (
-                                Data.map((item, index) => (
-                                    <tr
-                                        key={index}
-                                        className="hover:bg-gray-100 dark:hover:bg-[#28282a] cursor-pointer transition-colors duration-150"
-                                    >
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-300 ">
-                                            {index + 1}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
-                                            Current Time & Date: {formatDateTime(currentDate)}<br />
-                                            Unit Time & Date: {DateTimeFRMT(item.liveData?.date, item.liveData?.time)}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
-                                            <div title={`Signal Strength ${item.liveData?.gsm_signal}%`}>
-                                                <SignalStrengthIcon strength={item.liveData?.gsm_signal} />
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
-                                            {item.reports?.length}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
-                                            <AddressCell latitude={item.liveData?.latitude} longitude={item.liveData?.longitude} />
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
-                                            {item.liveData?.speed} km/h,<br />
-                                            Heading: {item.liveData?.latitude_direction}{item.liveData?.longitude_direction}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
-                                            {item.liveData?.gps_odometer} km
-                                        </td>
+{stockList === true && (
+    <div className="mt-10 text-center">
+        <p className="mt-4 text-red-500 text-center">
+            {Data[0]?.customer && Object.keys(Data[0].customer).length > 0
+                ? `Unit already attached to ${Data[0].customer.company ? Data[0].customer.company : Data[0].customer.firstname}`
+                : "Unit Already in Stock List"
+            }
+        </p>
+    </div>
+)}
+
+
+                {/* Table Section */}
+                <div className="min-h-screen px-6 mt-10">
+                    <div className="overflow-hidden rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+                        <div className="overflow-x-auto">
+                            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                <thead>
+                                    <tr className="bg-gray-200 dark:bg-[#3b3b3b]">
+                                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Sl No</th>
+                                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Time of Signal</th>
+                                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">GPS</th>
+                                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Reports</th>
+                                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Geographic Area</th>
+                                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">Speed</th>
+                                        <th scope="col" className="px-6 py-4 text-left text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wider">KM Reading</th>
                                     </tr>
-                                ))
-                            ) : (
-                                <tr>
-                                    <td colSpan="7" className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
-                                        <div className="flex flex-col items-center">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-10 w-10 mb-2"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
+                                </thead>
+                                <tbody className="bg-white dark:bg-[#1b1b1d] divide-y divide-gray-200 dark:divide-gray-700">
+                                    {Array.isArray(Data) && Data.length > 0 ? (
+                                        Data.map((item, index) => (
+                                            <tr
+                                                key={index}
+                                                className="hover:bg-gray-100 dark:hover:bg-[#28282a] cursor-pointer transition-colors duration-150"
                                             >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth={1.5}
-                                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                                                />
-                                            </svg>
-                                            <span className="text-lg font-medium">No data available</span>
-                                            <span className="text-sm">Please search for a unit to view data</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-300 ">
+                                                    {index + 1}
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                                    Current Time & Date: {formatDateTime(currentDate)}<br />
+                                                    Unit Time & Date: {DateTimeFRMT(item.liveData?.date, item.liveData?.time)}
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                                    <div title={`Signal Strength ${item.liveData?.gsm_signal}%`}>
+                                                        <SignalStrengthIcon strength={item.liveData?.gsm_signal} />
+                                                    </div>
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                                    {item.reports?.length}
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                                    <AddressCell latitude={item.liveData?.latitude} longitude={item.liveData?.longitude} />
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                                    {item.liveData?.speed} km/h,<br />
+                                                    Heading: {item.liveData?.latitude_direction}{item.liveData?.longitude_direction}
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300 ">
+                                                    {item.liveData?.gps_odometer} km
+                                                </td>
+                                            </tr>
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan="7" className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                                                <div className="flex flex-col items-center">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        className="h-10 w-10 mb-2"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        stroke="currentColor"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth={1.5}
+                                                            d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                                                        />
+                                                    </svg>
+                                                    <span className="text-lg font-medium">No data available</span>
+                                                    <span className="text-sm">Please search for a unit to view data</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
             <Modal open={open} onClose={() => setOpen(false)}>
                 <div className="text-gray-900 dark:text-gray-200">
