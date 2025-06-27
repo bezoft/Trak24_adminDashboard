@@ -1,5 +1,5 @@
 import express from "express";
-import { addContact, createCustomer, getAllUsers, getContacts, getUserById, updatePermissions, updateUser, updateUsernameAndPassword } from "../DBControllers/userControllers.js";
+import { addContact, createCustomer, getAllUsers, getContacts, getUserBasicInfoById, getUserById, updatePermissions, updateUser, updateUsernameAndPassword } from "../DBControllers/userControllers.js";
 import { Authentication } from "../middlewares/authMiddleware.js";
 const router = express.Router()
 
@@ -15,6 +15,8 @@ router.put("/update-user/:id",Authentication, updateUser)
 router.put("/create-contact/:id",Authentication, addContact)
 
 router.get("/getcontacts-by-id/:id",Authentication, getContacts)
+
+router.get("/basicinfo-by-id/:id",Authentication, getUserBasicInfoById)
 
 router.post("/update-user/:id",Authentication, updateUsernameAndPassword)
 
