@@ -22,6 +22,7 @@ import Unitstatus from "./adminpages/Unitstatus";
 import CustomerBilling from "./adminpages/CustomerBilling";
 import ServiceRenewal from "./adminpages/ServiceRenewal";
 import RawDataManager from "./adminpages/rawDataManager";
+import ClientLogins from "./adminpages/clientLogins";
 
 axios.defaults.baseURL ="https://manage.trak24.in/api/"
 function App() {
@@ -180,6 +181,15 @@ function App() {
         element={
           <ProtectedRoute>
             <RawDataManager />
+          </ProtectedRoute>
+        }
+      />
+      
+      <Route
+        path="/client-Logins"
+        element={
+          <ProtectedRoute>
+            <ClientLogins />
           </ProtectedRoute>
         }
       />

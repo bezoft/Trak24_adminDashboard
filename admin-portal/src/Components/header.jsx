@@ -271,17 +271,17 @@ const Header = () => {
                 </div>
 
                 <div>
-                  <div onClick={() => navigate("/login-log")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  <div onClick={() => navigate("/client-Logins")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Login Log
                     </a>
                   </div>
 
-                  <div onClick={() => navigate("/custom-reports")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
+                  {/* <div onClick={() => navigate("/custom-reports")} className={`cursor-pointer hover:bg-gray-100 dark:hover:bg-[#28282a] w-72 p-3 justify-center rounded-tr-2xl rounded-br-2xl`}>
                     <a className="block ">
                       Custom Reports
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

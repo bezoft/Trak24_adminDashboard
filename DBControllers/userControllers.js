@@ -8,6 +8,7 @@ import SimBatchesModel from '../models/SimBatchesModel.js';
 import SimCardsModel from '../models/SimCardsModel.js';
 import IncidentModel from '../models/IncidentModel.js';
 import AnalyticsModel from '../models/AnalyticsModel.js';
+import LoginModel from '../models/LoginModel.js';
 
 
 export const getAllUsers = async (req, res) => {
@@ -252,5 +253,36 @@ export const updatePermissions = async (req, res) => {
       message: "An error occurred while updating permissions.",
       error: error.message,
     });
+  }
+};
+
+export const getRecentUserLogins = async () => {
+  try {
+    // Find all login histories and populate user fields
+    const loginHistories = await LoginModel.find({})
+      .populate({
+        path: 'customer',
+        select: 'firstname company', // only get these two fields
+      });
+
+    // Extract the most recent login per user
+    const recentLogins = loginHistories.map(entry => {
+      const lastLogin = entry.logins?.length
+        ? entry.logins[entry.logins.length - 1] // assuming logins are pushed chronologically
+        : null;
+
+      return {
+        userId: entry.customer?._id,
+        firstname: entry.customer?.firstname,
+        company: entry.customer?.company,
+        lastLogin: lastLogin?.date,
+        platform: lastLogin?.platform,
+      };
+    });
+
+    return recentLogins;
+  } catch (error) {
+    console.error('Error fetching recent logins:', error);
+    throw error;
   }
 };

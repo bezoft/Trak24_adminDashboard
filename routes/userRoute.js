@@ -1,5 +1,5 @@
 import express from "express";
-import { addContact, createCustomer, getAllUsers, getContacts, getUserBasicInfoById, getUserById, updatePermissions, updateUser, updateUsernameAndPassword } from "../DBControllers/userControllers.js";
+import { addContact, createCustomer, getAllUsers, getContacts, getRecentUserLogins, getUserBasicInfoById, getUserById, updatePermissions, updateUser, updateUsernameAndPassword } from "../DBControllers/userControllers.js";
 import { Authentication } from "../middlewares/authMiddleware.js";
 const router = express.Router()
 
@@ -9,6 +9,8 @@ router.get("/all-users",Authentication, getAllUsers)
 router.post("/new-user",Authentication, createCustomer)
 
 router.get("/get-user/:id",Authentication, getUserById)
+
+router.get("/get-recentlogins",Authentication, getRecentUserLogins)
 
 router.put("/update-user/:id",Authentication, updateUser)
 

@@ -44,34 +44,34 @@ const unitsSchema = new mongoose.Schema({
   gprsPort: {
     type: String,
   },
-  liveData: {
-    header: { type: String },
-    device_id: { type: String },
-    gps_validity: { type: String },
-    date: { type: String },
-    time: { type: String },
-    latitude: { type: String },
-    latitude_direction: { type: String },
-    longitude: { type: String },
-    longitude_direction: { type: String },
-    speed: { type: String },
-    gps_odometer: { type: String },
-    direction: { type: String },
-    num_satellites: { type: String },
-    box_status: { type: String },
-    gsm_signal: { type: String },
-    main_battery_status: { type: String },
-    digital_input_1_status: { type: String },
-    digital_input_2_status: { type: String },
-    digital_input_3_status: { type: String },
-    analog_input_1: { type: String },
-    reserved: { type: String },
-    internal_battery_voltage: { type: String },
-    firmware_version: { type: String },
-    ccid_number: { type: String },
-    external_battery_voltage: { type: String },
-    rpm_value: { type: String },
-  },
+ liveData: {
+  header: { type: String, default: "" },
+  device_id: { type: String, default: "" },
+  gps_validity: { type: String, default: "" },
+  date: { type: String, default: "" },
+  time: { type: String, default: "" },
+  latitude: { type: String, default: "" },
+  latitude_direction: { type: String, default: "" },
+  longitude: { type: String, default: "" },
+  longitude_direction: { type: String, default: "" },
+  speed: { type: String, default: "" },
+  gps_odometer: { type: String, default: "" },
+  direction: { type: String, default: "" },
+  num_satellites: { type: String, default: "" },
+  box_status: { type: String, default: "" },
+  gsm_signal: { type: String, default: "" },
+  main_battery_status: { type: String, default: "" },
+  digital_input_1_status: { type: String, default: "" },
+  digital_input_2_status: { type: String, default: "" },
+  digital_input_3_status: { type: String, default: "" },
+  analog_input_1: { type: String, default: "" },
+  reserved: { type: String, default: "" },
+  internal_battery_voltage: { type: String, default: "" },
+  firmware_version: { type: String, default: "" },
+  ccid_number: { type: String, default: "" },
+  external_battery_voltage: { type: String, default: "" },
+  rpm_value: { type: String, default: "" },
+},
   shipment: {
     type: String,
   },
@@ -218,7 +218,20 @@ const unitsSchema = new mongoose.Schema({
       default: [],
     },
 
+  }],
+  activity: [{
+    type: {
+      type: String
+    },
+    body: {
+      type: String
+    },
+    date: { 
+      type: Date,
+      default: Date.now
+    }
   }]
+
 });
 
 // Default export for the model
